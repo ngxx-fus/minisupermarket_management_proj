@@ -8,15 +8,15 @@ private:
     string ID;
     string inputPath;
     string outputPath;
-protected:
-    //reference to *ID*
-    string &refID(){ return ID;  }
-    //reference to *name*
-    string &refName(){ return name; }
-    //reference to *inputPath*
-    string &refInputPath(){ return inputPath; }
-    //reference to *outputPath*
-    string &refOutputPath(){ return outputPath; }
+// protected:
+//     //reference to *ID*
+//     string &refID(){ return ID;  }
+//     //reference to *name*
+//     string &refName(){ return name; }
+//     //reference to *inputPath*
+//     string &refInputPath(){ return inputPath; }
+//     //reference to *outputPath*
+//     string &refOutputPath(){ return outputPath; }
 public:
     //constructor template_class
     templateClass(string defaultName = "unknown", 
