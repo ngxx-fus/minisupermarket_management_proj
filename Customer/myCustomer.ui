@@ -37,7 +37,7 @@
      <string>Customer's name</string>
     </property>
    </widget>
-   <widget class="QLabel" name="customer_numberphone">
+   <widget class="QLabel" name="customer_phoneNumber">
     <property name="geometry">
      <rect>
       <x>351</x>

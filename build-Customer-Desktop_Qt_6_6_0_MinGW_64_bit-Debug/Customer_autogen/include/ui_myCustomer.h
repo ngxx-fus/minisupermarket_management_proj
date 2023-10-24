@@ -29,7 +29,7 @@ public:
     QWidget *centralwidget;
     QListWidget *listWidget;
     QLabel *customer_name;
-    QLabel *customer_numberphone;
+    QLabel *customer_phoneNumber;
     QLabel *customer_ID;
     QLabel *customer_point;
     QLabel *customer_BOD;
@@ -53,12 +53,12 @@ public:
         customer_name = new QLabel(centralwidget);
         customer_name->setObjectName("customer_name");
         customer_name->setGeometry(QRect(111, 20, 151, 20));
-        customer_numberphone = new QLabel(centralwidget);
-        customer_numberphone->setObjectName("customer_numberphone");
-        customer_numberphone->setGeometry(QRect(351, 20, 91, 20));
+        customer_phoneNumber = new QLabel(centralwidget);
+        customer_phoneNumber->setObjectName("customer_phoneNumber");
+        customer_phoneNumber->setGeometry(QRect(351, 20, 91, 20));
         customer_ID = new QLabel(centralwidget);
         customer_ID->setObjectName("customer_ID");
-        customer_ID->setGeometry(QRect(51, 20, 51, 20));
+        customer_ID->setGeometry(QRect(41, 20, 61, 20));
         customer_point = new QLabel(centralwidget);
         customer_point->setObjectName("customer_point");
         customer_point->setGeometry(QRect(471, 20, 121, 16));
@@ -96,7 +96,7 @@ public:
     {
         myCustomer->setWindowTitle(QCoreApplication::translate("myCustomer", "Customers Management", nullptr));
         customer_name->setText(QCoreApplication::translate("myCustomer", "Customer's name", nullptr));
-        customer_numberphone->setText(QCoreApplication::translate("myCustomer", "Phone number", nullptr));
+        customer_phoneNumber->setText(QCoreApplication::translate("myCustomer", "Phone number", nullptr));
         customer_ID->setText(QCoreApplication::translate("myCustomer", "ID", nullptr));
         customer_point->setText(QCoreApplication::translate("myCustomer", "Accumulation point", nullptr));
         customer_BOD->setText(QCoreApplication::translate("myCustomer", "Birth", nullptr));

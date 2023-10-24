@@ -7,32 +7,34 @@ class customers : public templateClass
 {
 private:
 
-    QString numberPhone;
-    unsigned int accumulationPoint;
+    QString phoneNumber;
+    int accumulationPoint;
 
 public:
 
     customers(QString name = "none",
               QString ID = "none",
-              QString numberPhone = "none",
-              unsigned int accumulationPoint = 0)
+              QString BOD = "none",
+              QString phoneNumber = "none",
+              int accumulationPoint = 0)
     {
         this->setName(name);
         this->setID(ID);
-        this->numberPhone = numberPhone;
+        this->phoneNumber = phoneNumber;
         this->accumulationPoint = accumulationPoint;
+        this->setBOD(BOD);
     }
 
-    void setNumberPhone(QString numberPhone){
-        this->numberPhone = numberPhone;
+    void setphoneNumber(QString phoneNumber){
+        this->phoneNumber = phoneNumber;
     }
 
     void setAccumulationPoint(unsigned int accumulationPoint){
         this->accumulationPoint = accumulationPoint;
     }
 
-    QString getNumberPhone(){
-        return this->numberPhone;
+    QString getphoneNumber(){
+        return this->phoneNumber;
     }
 
     int getAccumulationPoint(){
