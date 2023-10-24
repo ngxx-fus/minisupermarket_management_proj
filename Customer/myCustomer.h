@@ -14,9 +14,15 @@ private:
     Q_OBJECT
     Ui::myCustomer *ui;
     QVector<customers*> m_customer;
+
 public:
+
     myCustomer(QWidget *parent = nullptr);
     ~myCustomer();
+
+    void handleItemClicked(QListWidgetItem* item) {
+        qDebug() << "item clicked";
+    }
 
     void addCustomer(customers* cus);//cus : customer
     void addCustomer(QString cus_name);
@@ -35,6 +41,6 @@ public:
     }
 
 private slots:
-    void on_listWidget_itemDoubleClicked(QListWidgetItem *item);
+    void on_listWidget_itemClicked(QListWidgetItem *item);
 };
 #endif // MYCUSTOMER_H

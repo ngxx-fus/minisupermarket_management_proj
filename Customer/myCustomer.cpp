@@ -7,22 +7,26 @@ myCustomer::myCustomer(QWidget *parent)
     , ui(new Ui::myCustomer)
 {
     ui->setupUi(this);
-    customers* cus = new customers;
-    cus->setName("Nguyễn Thanh Phú");
-    cus->setID("22119211");
-    cus->setBOD("03/02/2004");
-    ui->listWidget->addItem((QListWidgetItem*) cus);
+
+    connect(
+        ui->listWidget,
+        &QListWidget::itemClicked,
+        this,
+        &myCustomer::handleItemClicked
+    );
 
 }
 
-void myCustomer::on_listWidget_itemDoubleClicked(QListWidgetItem *item)
+void myCustomer::on_listWidget_itemClicked(QListWidgetItem *item)
 {
     customers* cus = (customers*) item;
+
     ui->customer_name->setText(cus->getName());
     ui->customer_ID->setText(cus->getID());
     ui->customer_phoneNumber->setText(cus->getphoneNumber());
     ui->customer_point->setNum(cus->getAccumulationPoint());
     ui->customer_BOD->setText(cus->getBirthOfDay());
+
 }
 
 void myCustomer::addCustomer(customers* cus)//cus : customer
@@ -51,9 +55,13 @@ void myCustomer::removeCustomer(customers* cus)
 {
     ui->listWidget->removeItemWidget(cus);
     m_customer.remove( findByPtr(cus) );
+    delete cus;
 }
 
 myCustomer::~myCustomer()
 {
+    rep(i, 0, m_customer.size()-1){
+        removeCustomer( m_customer[i] );
+    }
     delete ui;
 }

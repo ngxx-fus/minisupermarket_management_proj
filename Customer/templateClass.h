@@ -6,6 +6,8 @@
 #include <QString>
 #include <QVector>
 #include <algorithm>
+#define  rep(i, a, b) for(int i = a; i <= b; i++)
+#define  rev(i, b, a) for(int i = b; i >= a; i--)
 
 using namespace std ;
 
