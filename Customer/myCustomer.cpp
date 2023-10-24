@@ -9,18 +9,15 @@ myCustomer::myCustomer(QWidget *parent)
     ui->setupUi(this);
 
     connect(
-        ui->listWidget,
-        &QListWidget::itemClicked,
-        this,
-        &myCustomer::handleItemClicked
+        ui->listWidget, &QListWidget::itemClicked,
+        this, &myCustomer::handleItemClicked
     );
 
 }
 
-void myCustomer::on_listWidget_itemClicked(QListWidgetItem *item)
+void myCustomer::on_listWidget_itemClicked(QListWidgetItem *itemm)
 {
-    customers* cus = (customers*) item;
-
+    customers* cus = (customers*) itemm;
     ui->customer_name->setText(cus->getName());
     ui->customer_ID->setText(cus->getID());
     ui->customer_phoneNumber->setText(cus->getphoneNumber());
@@ -65,3 +62,5 @@ myCustomer::~myCustomer()
     }
     delete ui;
 }
+
+

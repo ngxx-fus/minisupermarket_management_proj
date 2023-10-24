@@ -262,6 +262,12 @@
 			null
 		],
 		[
+			"D:/vscode/oop-hehehe/Customer/diag.h",
+			"MU",
+			"EWIEGA46WW/moc_diag.cpp",
+			null
+		],
+		[
 			"D:/vscode/oop-hehehe/Customer/myCustomer.h",
 			"MU",
 			"EWIEGA46WW/moc_myCustomer.cpp",
@@ -344,6 +350,7 @@
 	"SOURCES" : 
 	[
 		[ "D:/vscode/oop-hehehe/Customer/customers.cpp", "MU", null ],
+		[ "D:/vscode/oop-hehehe/Customer/diag.cpp", "MU", null ],
 		[ "D:/vscode/oop-hehehe/Customer/main.cpp", "MU", null ],
 		[ "D:/vscode/oop-hehehe/Customer/myCustomer.cpp", "MU", null ]
 	],

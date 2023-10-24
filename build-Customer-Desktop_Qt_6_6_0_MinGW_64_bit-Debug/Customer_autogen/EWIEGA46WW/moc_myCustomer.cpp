@@ -42,7 +42,7 @@ static constexpr auto qt_meta_stringdata_CLASSmyCustomerENDCLASS = QtMocHelpers:
     "on_listWidget_itemClicked",
     "",
     "QListWidgetItem*",
-    "item"
+    "itemm"
 );
 #else  // !QT_MOC_HAS_STRING_DATA
 struct qt_meta_stringdata_CLASSmyCustomerENDCLASS_t {
@@ -51,7 +51,7 @@ struct qt_meta_stringdata_CLASSmyCustomerENDCLASS_t {
     char stringdata1[26];
     char stringdata2[1];
     char stringdata3[17];
-    char stringdata4[5];
+    char stringdata4[6];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(sizeof(qt_meta_stringdata_CLASSmyCustomerENDCLASS_t::offsetsAndSizes) + ofs), len 
@@ -61,13 +61,13 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSmyCustomerENDCLASS_t qt_meta_st
         QT_MOC_LITERAL(11, 25),  // "on_listWidget_itemClicked"
         QT_MOC_LITERAL(37, 0),  // ""
         QT_MOC_LITERAL(38, 16),  // "QListWidgetItem*"
-        QT_MOC_LITERAL(55, 4)   // "item"
+        QT_MOC_LITERAL(55, 5)   // "itemm"
     },
     "myCustomer",
     "on_listWidget_itemClicked",
     "",
     "QListWidgetItem*",
-    "item"
+    "itemm"
 };
 #undef QT_MOC_LITERAL
 #endif // !QT_MOC_HAS_STRING_DATA

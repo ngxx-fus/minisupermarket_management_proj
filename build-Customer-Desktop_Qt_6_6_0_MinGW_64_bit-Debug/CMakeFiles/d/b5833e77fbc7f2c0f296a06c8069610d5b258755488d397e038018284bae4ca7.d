@@ -534,6 +534,8 @@ Customer_autogen/timestamp: \
   D:/vscode/oop-hehehe/Customer/CMakeLists.txt \
   D:/vscode/oop-hehehe/Customer/customers.cpp \
   D:/vscode/oop-hehehe/Customer/customers.h \
+  D:/vscode/oop-hehehe/Customer/diag.cpp \
+  D:/vscode/oop-hehehe/Customer/diag.h \
   D:/vscode/oop-hehehe/Customer/main.cpp \
   D:/vscode/oop-hehehe/Customer/myCustomer.cpp \
   D:/vscode/oop-hehehe/Customer/myCustomer.h \

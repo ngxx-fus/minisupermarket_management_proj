@@ -373,8 +373,10 @@ D:/vscode/oop-hehehe/Customer/myCustomer.h
  mdp:C:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/wchar.h
  mdp:D:/vscode/oop-hehehe/Customer/customers.h
  mdp:D:/vscode/oop-hehehe/Customer/templateClass.h
-D:/vscode/oop-hehehe/Customer/templateClass.h
+D:/vscode/oop-hehehe/Customer/diag.cpp
 D:/vscode/oop-hehehe/Customer/main.cpp
+D:/vscode/oop-hehehe/Customer/templateClass.h
 D:/vscode/oop-hehehe/Customer/customers.cpp
 D:/vscode/oop-hehehe/Customer/myCustomer.cpp
  uic:ui_myCustomer.h
+D:/vscode/oop-hehehe/Customer/diag.h
