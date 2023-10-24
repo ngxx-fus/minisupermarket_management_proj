@@ -47,6 +47,10 @@ public:
         this->BOD = BOD;
     }
 
+    virtual void setBOD(QString BOD){
+        this->BOD = BOD;
+    }
+
     virtual void setBOD(int DD, int MM, int YYYY){
         if( checkDate(DD,MM,YYYY) == false ) return;
         this->BOD.clear();
