@@ -7,29 +7,19 @@ myCustomer::myCustomer(QWidget *parent)
     , ui(new Ui::myCustomer)
 {
     ui->setupUi(this);
-
-    connect(
-        ui->listWidget, &QListWidget::itemClicked,
-        this, &myCustomer::handleItemClicked
-    );
-
 }
 
-void myCustomer::on_listWidget_itemClicked(QListWidgetItem *itemm)
+void myCustomer::on_listWidget_itemClicked(QListWidgetItem *item)
 {
-    customers* cus = (customers*) itemm;
-    ui->customer_name->setText(cus->getName());
-    ui->customer_ID->setText(cus->getID());
-    ui->customer_phoneNumber->setText(cus->getphoneNumber());
-    ui->customer_point->setNum(cus->getAccumulationPoint());
-    ui->customer_BOD->setText(cus->getBirthOfDay());
+    customers* cus = (customers*) item;
 
 }
 
 void myCustomer::addCustomer(customers* cus)//cus : customer
 {
     myCustomer::m_customer.push_back(cus);
-    ui->listWidget->addItem( (QListWidgetItem*) cus );
+//    ui->listWidget->addItem( (QListWidgetItem*) cus );// the reason for error "Slots named on_foo_bar are error prone [clazy-connect-by-name]"
+//    ui->tableWidget->
 }
 
 void myCustomer::addCustomer(QString name)
@@ -50,7 +40,7 @@ void myCustomer::addCustomer(QString cus_name,
 
 void myCustomer::removeCustomer(customers* cus)
 {
-    ui->listWidget->removeItemWidget(cus);
+//    ui->listWidget->removeItemWidget(cus);
     m_customer.remove( findByPtr(cus) );
     delete cus;
 }

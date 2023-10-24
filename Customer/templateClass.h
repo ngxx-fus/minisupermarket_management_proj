@@ -2,6 +2,8 @@
 #define TEMPLATECLASS_H
 
 #include <QListWidgetItem>
+#include <QTableWidget>
+#include <QTableWidgetItem>
 #include <QMainWindow>
 #include <QString>
 #include <QVector>

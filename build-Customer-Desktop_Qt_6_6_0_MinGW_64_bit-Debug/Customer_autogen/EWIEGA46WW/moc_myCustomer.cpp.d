@@ -148,6 +148,8 @@ D:/vscode/oop-hehehe/build-Customer-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/Customer
   C:/Qt/6.6.0/mingw_64/include/QtGui/qwindowdefs_win.h \
   C:/Qt/6.6.0/mingw_64/include/QtWidgets/QListWidgetItem \
   C:/Qt/6.6.0/mingw_64/include/QtWidgets/QMainWindow \
+  C:/Qt/6.6.0/mingw_64/include/QtWidgets/QTableWidget \
+  C:/Qt/6.6.0/mingw_64/include/QtWidgets/QTableWidgetItem \
   C:/Qt/6.6.0/mingw_64/include/QtWidgets/qabstractitemdelegate.h \
   C:/Qt/6.6.0/mingw_64/include/QtWidgets/qabstractitemview.h \
   C:/Qt/6.6.0/mingw_64/include/QtWidgets/qabstractscrollarea.h \
@@ -163,6 +165,8 @@ D:/vscode/oop-hehehe/build-Customer-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/Customer
   C:/Qt/6.6.0/mingw_64/include/QtWidgets/qstyle.h \
   C:/Qt/6.6.0/mingw_64/include/QtWidgets/qstyleoption.h \
   C:/Qt/6.6.0/mingw_64/include/QtWidgets/qtabbar.h \
+  C:/Qt/6.6.0/mingw_64/include/QtWidgets/qtableview.h \
+  C:/Qt/6.6.0/mingw_64/include/QtWidgets/qtablewidget.h \
   C:/Qt/6.6.0/mingw_64/include/QtWidgets/qtabwidget.h \
   C:/Qt/6.6.0/mingw_64/include/QtWidgets/qtwidgets-config.h \
   C:/Qt/6.6.0/mingw_64/include/QtWidgets/qtwidgetsexports.h \

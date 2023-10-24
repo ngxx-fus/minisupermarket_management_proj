@@ -3,7 +3,7 @@
 
 #include "templateClass.h"
 
-class customers : public templateClass
+class customers : public templateClass, public QListWidget, public QTableWidget
 {
 private:
 

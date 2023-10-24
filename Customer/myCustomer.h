@@ -40,7 +40,9 @@ public:
         return 0;
     }
 
+
 private slots:
     void on_listWidget_itemClicked(QListWidgetItem *item);
+
 };
 #endif // MYCUSTOMER_H
