@@ -23,6 +23,20 @@ public:
 
     ~my_customer();
 
+
+
+private slots:
+    void on_pushButtonExportFile_clicked();
+
+
+    void on_pushButtonADD_clicked();
+
+    void on_tableWidget_cellClicked(int row, int column);
+
+    void on_tableWidget_itemClicked(QTableWidgetItem *item);
+
+    void on_pushButtonDelete_clicked();
+
 private:
     Ui::my_customer *ui;
 

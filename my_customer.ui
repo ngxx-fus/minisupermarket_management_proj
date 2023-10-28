@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>842</width>
-    <height>600</height>
+    <width>921</width>
+    <height>624</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,12 +17,15 @@
    <widget class="QTableWidget" name="tableWidget">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>20</y>
-      <width>900</width>
-      <height>321</height>
+      <x>30</x>
+      <y>280</y>
+      <width>881</width>
+      <height>251</height>
      </rect>
     </property>
+    <attribute name="horizontalHeaderDefaultSectionSize">
+     <number>150</number>
+    </attribute>
     <column>
      <property name="text">
       <string>Customer's name</string>
@@ -49,13 +52,154 @@
      </property>
     </column>
    </widget>
+   <widget class="QPushButton" name="pushButtonADD">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>240</y>
+      <width>80</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Add</string>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="textEditName">
+    <property name="geometry">
+     <rect>
+      <x>190</x>
+      <y>100</y>
+      <width>171</width>
+      <height>31</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="textEditPhoneNumber">
+    <property name="geometry">
+     <rect>
+      <x>190</x>
+      <y>140</y>
+      <width>171</width>
+      <height>31</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="textEditPoint">
+    <property name="geometry">
+     <rect>
+      <x>190</x>
+      <y>180</y>
+      <width>171</width>
+      <height>31</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButtonExportFile">
+    <property name="geometry">
+     <rect>
+      <x>750</x>
+      <y>540</y>
+      <width>80</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Export FILE</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButtonImportFile">
+    <property name="geometry">
+     <rect>
+      <x>640</x>
+      <y>540</y>
+      <width>80</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Import FILE</string>
+    </property>
+   </widget>
+   <widget class="QWidget" name="">
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>100</y>
+      <width>101</width>
+      <height>111</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <property name="spacing">
+      <number>10</number>
+     </property>
+     <item>
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>Name</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_2">
+       <property name="text">
+        <string>Phone number</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_3">
+       <property name="text">
+        <string>Point</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QTextEdit" name="textEditPhoneNumberDelete">
+    <property name="geometry">
+     <rect>
+      <x>600</x>
+      <y>140</y>
+      <width>171</width>
+      <height>31</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButtonDelete">
+    <property name="geometry">
+     <rect>
+      <x>650</x>
+      <y>230</y>
+      <width>80</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Delete</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>600</x>
+      <y>100</y>
+      <width>201</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Enter customer's phone number</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>842</width>
+     <width>921</width>
      <height>21</height>
     </rect>
    </property>

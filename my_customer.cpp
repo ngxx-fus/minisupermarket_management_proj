@@ -1,5 +1,6 @@
 #include "my_customer.h"
 #include "ui_my_customer.h"
+#include <QString>
 
 
 
@@ -67,4 +68,88 @@ my_customer::~my_customer()
 {
     delete ui;
 }
+
+
+
+
+
+void my_customer::on_pushButtonExportFile_clicked()
+{
+    QString text;
+    int current_row = ui->tableWidget->rowCount();
+    QFile file("E:/demo_qt_write_file.txt");
+    //    if (!file.open(QFile::WriteOnly | QFile::Text))
+    //    {
+    //        QMessageBox::warning(this, "Message", "File can not open!!!");
+    //    }
+    if (file.open(QIODevice::WriteOnly | QIODevice::ReadWrite))
+    {
+        QTextStream out(&file);
+
+        for (int i = 0; i < current_row; i++)
+        {
+            for (int j = 0; j < 4; j++)
+            {
+                text = ui->tableWidget->item(i, j)->text();
+                out << text;
+                out << "  ";
+                file.flush();
+            }
+            out << "\n";
+        }
+    }
+    file.close();
+}
+
+void my_customer::on_pushButtonADD_clicked()
+{
+    int current_row = ui->tableWidget->rowCount();
+    ui->tableWidget->insertRow(current_row);
+
+    add_customer(ui->textEditName->toPlainText(), ui->textEditPhoneNumber->toPlainText(), ui->textEditPoint->toPlainText().toInt());
+    _customers cus = qv_cus.at(current_row);
+    ui->tableWidget->setItem(current_row,0, new QTableWidgetItem(cus.getName()));
+    ui->tableWidget->setItem(current_row,1, new QTableWidgetItem(cus.getPhoneNumber()));
+    ui->tableWidget->setItem(current_row,2, new QTableWidgetItem(_time().int_to_QString(cus.getPoint())));
+    ui->tableWidget->setItem(current_row,3, new QTableWidgetItem(cus.getLatestModification().get_date()));
+    ui->tableWidget->setItem(current_row,4, new QTableWidgetItem(cus.getID()));
+
+}
+
+void my_customer::on_pushButtonDelete_clicked()
+{
+    remove_by_phoneNumber(ui->textEditPhoneNumberDelete->toPlainText());
+    int indexPhoneNumber;
+
+    int current_row = ui->tableWidget->rowCount();
+
+    for (int i = 0; i < current_row; i++)
+    {
+        QString text = ui->tableWidget->item(i, 1)->text();
+        if(text == ui->textEditPhoneNumberDelete->toPlainText())
+        {
+            indexPhoneNumber = i;
+            break;
+        }
+    }
+
+    ui->tableWidget->removeRow(indexPhoneNumber);
+}
+
+
+
+
+void my_customer::on_tableWidget_cellClicked(int row, int column)
+{
+
+}
+
+
+void my_customer::on_tableWidget_itemClicked(QTableWidgetItem *item)
+{
+
+}
+
+
+
 
