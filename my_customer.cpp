@@ -19,7 +19,7 @@ my_customer::my_customer(QWidget *parent)
 void my_customer::refresh_list_view(){
 
     int const max_column = 5,
-        max_row = (qv_cus.size()<=10 ? qv_cus.size() : 10);
+        max_row = (qv_cus.size()<=100 ? qv_cus.size() : 100);
 
     ui->tableWidget->setRowCount(max_row);
     ui->tableWidget->setColumnCount(max_column);
@@ -39,13 +39,15 @@ void my_customer::refresh_list_view(){
     //setup column 4
     ui->tableWidget->setColumnWidth(4,170);
 
-    for(int r = 0; r < max_row; r++){
+//    for(int r = 0; r < max_row; r++){
+    for(int r = max_row - 1; r >= 0; r--)
+    {
         _customers cus = qv_cus.at(r);
-        ui->tableWidget->setItem(r,0, new QTableWidgetItem(cus.getName()));
-        ui->tableWidget->setItem(r,1, new QTableWidgetItem(cus.getPhoneNumber()));
-        ui->tableWidget->setItem(r,2, new QTableWidgetItem(_time().int_to_QString(cus.getPoint())));
-        ui->tableWidget->setItem(r,3, new QTableWidgetItem(cus.getLatestModification().get_date()));
-        ui->tableWidget->setItem(r,4, new QTableWidgetItem(cus.getID()));
+        ui->tableWidget->setItem((max_row - 1)- r,0, new QTableWidgetItem(cus.getName()));
+        ui->tableWidget->setItem((max_row - 1)- r,1, new QTableWidgetItem(cus.getPhoneNumber()));
+        ui->tableWidget->setItem((max_row - 1)- r,2, new QTableWidgetItem(_time().int_to_QString(cus.getPoint())));
+        ui->tableWidget->setItem((max_row - 1)- r,3, new QTableWidgetItem(cus.getLatestModification().get_date()));
+        ui->tableWidget->setItem((max_row - 1)- r,4, new QTableWidgetItem(cus.getID()));
 
     }
 }
@@ -68,10 +70,6 @@ my_customer::~my_customer()
 {
     delete ui;
 }
-
-
-
-
 
 void my_customer::on_pushButtonExportFile_clicked()
 {
@@ -103,45 +101,68 @@ void my_customer::on_pushButtonExportFile_clicked()
 
 void my_customer::on_pushButtonADD_clicked()
 {
-    int current_row = ui->tableWidget->rowCount();
-    ui->tableWidget->insertRow(current_row);
+//    int current_row = ui->tableWidget->rowCount();
+//    ui->tableWidget->insertRow(current_row);
 
     add_customer(ui->textEditName->toPlainText(), ui->textEditPhoneNumber->toPlainText(), ui->textEditPoint->toPlainText().toInt());
-    _customers cus = qv_cus.at(current_row);
-    ui->tableWidget->setItem(current_row,0, new QTableWidgetItem(cus.getName()));
-    ui->tableWidget->setItem(current_row,1, new QTableWidgetItem(cus.getPhoneNumber()));
-    ui->tableWidget->setItem(current_row,2, new QTableWidgetItem(_time().int_to_QString(cus.getPoint())));
-    ui->tableWidget->setItem(current_row,3, new QTableWidgetItem(cus.getLatestModification().get_date()));
-    ui->tableWidget->setItem(current_row,4, new QTableWidgetItem(cus.getID()));
+    check_customer();
+    refresh_list_view();
+
+    //    _customers cus = qv_cus.at(current_row);
+//    ui->tableWidget->setItem(current_row,0, new QTableWidgetItem(cus.getName()));
+//    ui->tableWidget->setItem(current_row,1, new QTableWidgetItem(cus.getPhoneNumber()));
+//    ui->tableWidget->setItem(current_row,2, new QTableWidgetItem(_time().int_to_QString(cus.getPoint())));
+//    ui->tableWidget->setItem(current_row,3, new QTableWidgetItem(cus.getLatestModification().get_date()));
+//    ui->tableWidget->setItem(current_row,4, new QTableWidgetItem(cus.getID()));
 
 }
 
 void my_customer::on_pushButtonDelete_clicked()
 {
     remove_by_phoneNumber(ui->textEditPhoneNumberDelete->toPlainText());
-    int indexPhoneNumber;
+    refresh_list_view();
 
-    int current_row = ui->tableWidget->rowCount();
+//    int indexPhoneNumber;
 
-    for (int i = 0; i < current_row; i++)
+//    int current_row = ui->tableWidget->rowCount();
+
+//    for (int i = 0; i < current_row; i++)
+//    {
+//        QString text = ui->tableWidget->item(i, 1)->text();
+//        if(text == ui->textEditPhoneNumberDelete->toPlainText())
+//        {
+//            indexPhoneNumber = i;
+//            break;
+//        }
+//    }
+
+//    ui->tableWidget->removeRow(indexPhoneNumber);
+}
+
+void my_customer::check_customer()
+{
+    int max_row = (qv_cus.size()<=100 ? qv_cus.size() : 100);
+    _customers temp_cus = qv_cus.at(max_row - 1);
+    for(int i = 0; i < (max_row - 1); i++)
     {
-        QString text = ui->tableWidget->item(i, 1)->text();
-        if(text == ui->textEditPhoneNumberDelete->toPlainText())
+        _customers cus = qv_cus.at(i);
+        if((temp_cus.getName() == cus.getName()) && (temp_cus.getPhoneNumber() == cus.getPhoneNumber()))
         {
-            indexPhoneNumber = i;
+            remove_by_phoneNumber(cus.getPhoneNumber());
+                break;
+        }
+        else if((temp_cus.getPhoneNumber() == cus.getPhoneNumber()) || temp_cus.getName() == "")
+        {
+            qv_cus.pop_back();
             break;
         }
     }
-
-    ui->tableWidget->removeRow(indexPhoneNumber);
 }
-
-
 
 
 void my_customer::on_tableWidget_cellClicked(int row, int column)
 {
-
+    refresh_list_view();
 }
 
 
