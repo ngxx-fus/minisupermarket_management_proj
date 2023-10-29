@@ -16,7 +16,7 @@ public:
         setDOB(new_dob);
         setPhoneNumber(new_phoneNumber);
         setPoint(new_point);
-        setID(generate_ID("cus"));       
+        setID(generate_ID());
     }
 
 
@@ -25,6 +25,7 @@ public:
     }
 
     void setPoint(int point){
+
         this->point = point;
     }
 
