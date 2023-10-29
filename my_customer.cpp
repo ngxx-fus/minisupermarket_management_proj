@@ -184,6 +184,6 @@ void my_customer::on_tableWidget_cellClicked(int row, int column)
 
 void my_customer::on_pushButtonCancel_clicked()
 {
-
+    clear_all_text_in_add_box();
 }
 
