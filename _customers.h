@@ -9,13 +9,14 @@ private:
     int point;
     QString phoneNumber;
 public:
-    _customers(QString new_name = "none", QString new_phoneNumber = "none", int new_point = 0)
+    _customers(QString new_name = "none", QString new_dob = "none", QString new_phoneNumber = "none", int new_point = 0)
     //: QListWidgetItem(new_phoneNumber) //to notice QListWidgetItem know what will be showed in LIST
     {
         setName(new_name);
+        setDOB(new_dob);
         setPhoneNumber(new_phoneNumber);
         setPoint(new_point);
-        setID(generate_ID("cus"));
+        setID(generate_ID("cus"));       
     }
 
 

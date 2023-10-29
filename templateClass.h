@@ -50,8 +50,8 @@ public:
         return res;
     }
 
-    virtual void setDOB(int DD, int MM, int YYYY){
-        this->DOB = _time(DD, MM,YYYY).get_date();
+    virtual void setDOB(QString newDOB){
+        this->DOB = newDOB;
     }
 
     //date of birth

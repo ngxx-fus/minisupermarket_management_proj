@@ -19,7 +19,7 @@ public:
 
     void refresh_list_view();
     void remove_by_phoneNumber(QString cus_phoneNumber);
-    void add_customer(QString cus_name, QString cus_phoneNumber, int cus_point);
+    void add_customer(QString cus_name, QString cus_dob, QString cus_phoneNumber, int cus_point);
     void check_customer();
     ~my_customer();
 
