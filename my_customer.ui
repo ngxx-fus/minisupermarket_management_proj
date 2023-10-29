@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1016</width>
+    <width>1128</width>
     <height>676</height>
    </rect>
   </property>
@@ -17,8 +17,8 @@
    <widget class="QPushButton" name="pushButtonExportFile">
     <property name="geometry">
      <rect>
-      <x>920</x>
-      <y>30</y>
+      <x>1010</x>
+      <y>40</y>
       <width>80</width>
       <height>24</height>
      </rect>
@@ -30,8 +30,8 @@
    <widget class="QPushButton" name="pushButtonImportFile">
     <property name="geometry">
      <rect>
-      <x>920</x>
-      <y>60</y>
+      <x>1010</x>
+      <y>70</y>
       <width>80</width>
       <height>24</height>
      </rect>
@@ -99,27 +99,6 @@
       <bool>false</bool>
      </property>
     </widget>
-    <widget class="QTextEdit" name="textEditName">
-     <property name="geometry">
-      <rect>
-       <x>40</x>
-       <y>50</y>
-       <width>254</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>Arial</family>
-       <pointsize>10</pointsize>
-       <italic>false</italic>
-       <bold>false</bold>
-       <underline>false</underline>
-       <strikeout>false</strikeout>
-       <kerning>true</kerning>
-      </font>
-     </property>
-    </widget>
     <widget class="QLabel" name="label_2">
      <property name="geometry">
       <rect>
@@ -142,48 +121,6 @@
      </property>
      <property name="text">
       <string>Phone number:</string>
-     </property>
-    </widget>
-    <widget class="QTextEdit" name="textEditPhoneNumber">
-     <property name="geometry">
-      <rect>
-       <x>40</x>
-       <y>110</y>
-       <width>254</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>Futura Book</family>
-       <pointsize>10</pointsize>
-       <italic>false</italic>
-       <bold>false</bold>
-       <underline>false</underline>
-       <strikeout>false</strikeout>
-       <kerning>true</kerning>
-      </font>
-     </property>
-    </widget>
-    <widget class="QTextEdit" name="textEditPoint">
-     <property name="geometry">
-      <rect>
-       <x>40</x>
-       <y>170</y>
-       <width>254</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>Futura Book</family>
-       <pointsize>10</pointsize>
-       <italic>false</italic>
-       <bold>false</bold>
-       <underline>false</underline>
-       <strikeout>false</strikeout>
-       <kerning>true</kerning>
-      </font>
      </property>
     </widget>
     <widget class="QLabel" name="label_3">
@@ -255,28 +192,7 @@
       </font>
      </property>
      <property name="text">
-      <string>Cancel</string>
-     </property>
-    </widget>
-    <widget class="QTextEdit" name="textEditDOB">
-     <property name="geometry">
-      <rect>
-       <x>40</x>
-       <y>230</y>
-       <width>254</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>Futura Book</family>
-       <pointsize>10</pointsize>
-       <italic>false</italic>
-       <bold>false</bold>
-       <underline>false</underline>
-       <strikeout>false</strikeout>
-       <kerning>true</kerning>
-      </font>
+      <string>Clear all</string>
      </property>
     </widget>
     <widget class="QLabel" name="label_5">
@@ -303,13 +219,53 @@
       <string>Accumuation Point:</string>
      </property>
     </widget>
+    <widget class="QLineEdit" name="lineEdit_NAME_ADD">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>50</y>
+       <width>251</width>
+       <height>31</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_NUMPHONE_ADD">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>110</y>
+       <width>251</width>
+       <height>31</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_DOB_ADD">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>170</y>
+       <width>251</width>
+       <height>31</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_POINT_ADD">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>230</y>
+       <width>251</width>
+       <height>31</height>
+      </rect>
+     </property>
+    </widget>
    </widget>
    <widget class="QGroupBox" name="groupBox_FIND_CUS">
     <property name="geometry">
      <rect>
-      <x>460</x>
+      <x>520</x>
       <y>20</y>
-      <width>441</width>
+      <width>471</width>
       <height>271</height>
      </rect>
     </property>
@@ -324,16 +280,6 @@
     <property name="title">
      <string>Find customer</string>
     </property>
-    <widget class="QTextEdit" name="textEditPhoneNumberDelete">
-     <property name="geometry">
-      <rect>
-       <x>40</x>
-       <y>110</y>
-       <width>251</width>
-       <height>31</height>
-      </rect>
-     </property>
-    </widget>
     <widget class="QLabel" name="label_4">
      <property name="geometry">
       <rect>
@@ -400,32 +346,12 @@
       <string>Date of Birth:</string>
      </property>
     </widget>
-    <widget class="QTextEdit" name="textEditPhoneNumberDelete_2">
-     <property name="geometry">
-      <rect>
-       <x>40</x>
-       <y>50</y>
-       <width>251</width>
-       <height>31</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QTextEdit" name="textEditPhoneNumberDelete_3">
-     <property name="geometry">
-      <rect>
-       <x>40</x>
-       <y>170</y>
-       <width>251</width>
-       <height>31</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="pushButtonDelete">
+    <widget class="QPushButton" name="pushButton_FIND">
      <property name="geometry">
       <rect>
        <x>310</x>
-       <y>50</y>
-       <width>121</width>
+       <y>130</y>
+       <width>151</width>
        <height>24</height>
       </rect>
      </property>
@@ -441,26 +367,80 @@
       <string>Find now!</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButtonDelete_2">
+    <widget class="QLineEdit" name="lineEdit_NAME_FIND">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>50</y>
+       <width>251</width>
+       <height>31</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_NUMPHONE_FIND">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>110</y>
+       <width>251</width>
+       <height>31</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_DOB_FIND">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>170</y>
+       <width>251</width>
+       <height>31</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBox">
+     <property name="geometry">
+      <rect>
+       <x>310</x>
+       <y>50</y>
+       <width>151</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <item>
+      <property name="text">
+       <string>by Customer's Name.</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>by Phone Number.</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>by Accumulations Point.</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QComboBox" name="comboBox_2">
      <property name="geometry">
       <rect>
        <x>310</x>
        <y>90</y>
-       <width>121</width>
+       <width>151</width>
        <height>24</height>
       </rect>
      </property>
-     <property name="font">
-      <font>
-       <family>Arial</family>
-       <pointsize>10</pointsize>
-       <bold>false</bold>
-       <underline>false</underline>
-      </font>
-     </property>
-     <property name="text">
-      <string>Find and delete!</string>
-     </property>
+     <item>
+      <property name="text">
+       <string>Accessing. </string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Deaccessing.</string>
+      </property>
+     </item>
     </widget>
    </widget>
    <widget class="QGroupBox" name="groupBox_VIEWTABLE">
@@ -468,7 +448,7 @@
      <rect>
       <x>20</x>
       <y>320</y>
-      <width>881</width>
+      <width>971</width>
       <height>311</height>
      </rect>
     </property>
@@ -498,7 +478,7 @@
       <rect>
        <x>40</x>
        <y>30</y>
-       <width>751</width>
+       <width>891</width>
        <height>251</height>
       </rect>
      </property>
@@ -557,7 +537,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1016</width>
+     <width>1128</width>
      <height>21</height>
     </rect>
    </property>
@@ -568,7 +548,15 @@
     <addaction name="actionImport_season"/>
     <addaction name="actionExport_season"/>
    </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>Help</string>
+    </property>
+    <addaction name="actionContact_us_now"/>
+    <addaction name="actionOpen_guidebook"/>
+   </widget>
    <addaction name="menuRefrence"/>
+   <addaction name="menuHelp"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionAdd">
@@ -598,6 +586,16 @@
   <action name="actionExport_season">
    <property name="text">
     <string>Export season</string>
+   </property>
+  </action>
+  <action name="actionContact_us_now">
+   <property name="text">
+    <string>Contact us now!</string>
+   </property>
+  </action>
+  <action name="actionOpen_guidebook">
+   <property name="text">
+    <string>Open guidebook.</string>
    </property>
   </action>
  </widget>
