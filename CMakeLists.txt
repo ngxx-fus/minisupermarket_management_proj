@@ -27,6 +27,12 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         _customers.h
         templateClass.h
         _time.h
+        _adding_error.h
+        _adding_error.cpp
+        _adding_error.ui
+        _added_customer_error.h _added_customer_error.cpp _added_customer_error.ui
+
+
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET CUSTOMER_MANAGEMENT APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
