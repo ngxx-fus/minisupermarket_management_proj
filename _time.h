@@ -103,7 +103,7 @@ public:
         QString _result;
 
         //DAY
-        _result += int_to_QString( this->_day, 4 );
+        _result += int_to_QString( this->_day, 2 );
 
         //MONTH
         _result.push_back(QChar('/'));
