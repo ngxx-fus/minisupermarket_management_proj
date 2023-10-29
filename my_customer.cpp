@@ -9,41 +9,34 @@ my_customer::my_customer(QWidget *parent)
     , ui(new Ui::my_customer)
 {
     ui->setupUi(this);
-    add_customer("Nguyen Thanh Phu", "10/08/2002", "0845939722", 100);
-    add_customer("Nguyen Hong Son", "10/08/2002", "0845234622", 190);
-    add_customer("Nguyen Minh Tuan", "10/08/2002", "0845235672", 200);
-    add_customer("Hoang Xuan Bach", "10/08/2002", "0376235672", 200);
     refresh_list_view();
+}
+
+void my_customer::set_layout_list_view(int const max_row, int const max_column){
+    ui->tableWidget->setRowCount(max_row);
+    ui->tableWidget->setColumnCount(max_column);
+    //setup column 0
+    ui->tableWidget->setColumnWidth(0,150);
+    //setup column 1
+    ui->tableWidget->setColumnWidth(1,130);
+    //setup column 2
+    ui->tableWidget->setColumnWidth(2,130);
+    //setup column 3
+    ui->tableWidget->setColumnWidth(3,150);
+    //setup column 4
+    ui->tableWidget->setColumnWidth(4,200);
+    //setup column 5
+    ui->tableWidget->setColumnWidth(5,150);
 }
 
 void my_customer::refresh_list_view(){
 
     int const max_column = 6,
         max_row = (qv_cus.size()<=100 ? qv_cus.size() : 100);
+    set_layout_list_view(max_row, max_column);
 
-    ui->tableWidget->setRowCount(max_row);
-    ui->tableWidget->setColumnCount(max_column);
 
-    //setup column 0
-    ui->tableWidget->setColumnWidth(0,150);
-
-    //setup column 1
-    ui->tableWidget->setColumnWidth(1,130);
-
-    //setup column 2
-    ui->tableWidget->setColumnWidth(2,130);
-
-    //setup column 3
-    ui->tableWidget->setColumnWidth(3,150);
-
-    //setup column 4
-    ui->tableWidget->setColumnWidth(4,200);
-
-    //setup column 5
-    ui->tableWidget->setColumnWidth(5,250);
-
-//    for(int r = 0; r < max_row; r++){
-    for(int r = max_row - 1; r >= 0; r--)
+    for(int r = max_row - 1; r >= (max_row<100?0:max_row-100); r--)
     {
         _customers cus = qv_cus.at(r);
         ui->tableWidget->setItem((max_row - 1)- r,0, new QTableWidgetItem(cus.getName()));
@@ -64,9 +57,11 @@ void my_customer::remove_by_phoneNumber(QString cus_phoneNumer){
     QVector<_customers>::iterator it = qv_cus.begin();
     //linear searching
     for(it = qv_cus.begin(); it != qv_cus.end(); it++){
-        if(it->getPhoneNumber() == cus_phoneNumer) break;
+        if(it->getPhoneNumber() == cus_phoneNumer) {
+            break;
+        }
     }
-    QVector<_customers>::const_iterator const_it = it;
+    QVector<_customers>::const_iterator const const_it = it;
     qv_cus.erase(const_it);
 }
 
@@ -101,9 +96,6 @@ void my_customer::on_pushButtonExportFile_clicked()
 
 void my_customer::on_pushButtonADD_clicked()
 {
-//    int current_row = ui->tableWidget->rowCount();
-//    ui->tableWidget->insertRow(current_row);
-
     add_customer(ui->textEditName->toPlainText(), ui->textEditDOB->toPlainText(),
                  ui->textEditPhoneNumber->toPlainText(), ui->textEditPoint->toPlainText().toInt());
     check_customer();

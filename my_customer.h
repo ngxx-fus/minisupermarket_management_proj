@@ -21,6 +21,7 @@ public:
         if( inp.size() == 0) inp = "unknown";
         return inp;
     }
+    void set_layout_list_view(int const max_row, int const max_column);
     void refresh_list_view();
     void remove_by_phoneNumber(QString cus_phoneNumber);
     void add_customer(QString cus_name, QString cus_dob, QString cus_phoneNumber, int cus_point);
@@ -31,7 +32,6 @@ public:
 
 private slots:
     void on_pushButtonExportFile_clicked();
-
 
     void on_pushButtonADD_clicked();
 
