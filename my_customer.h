@@ -19,11 +19,6 @@ class my_customer : public QMainWindow
 public:
     my_customer(QWidget *parent = nullptr);
 
-    inline QString add_UKNOWN(QString inp){
-        if( inp.size() == 0) inp = "unknown";
-        return inp;
-    }
-
     //if *inp* is empty, inp = "unknown" (for DOB)
     inline QString add_UKNOWN(QString inp){return (inp.size()==0 ? "unknown" : inp);}
     //return a QVector<_customers>::iterator to element that PhoneNumber = key_PhoneNumber
