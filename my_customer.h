@@ -17,6 +17,10 @@ class my_customer : public QMainWindow
 public:
     my_customer(QWidget *parent = nullptr);
 
+    inline QString add_UKNOWN(QString inp){
+        if( inp.size() == 0) inp = "unknown";
+        return inp;
+    }
     void refresh_list_view();
     void remove_by_phoneNumber(QString cus_phoneNumber);
     void add_customer(QString cus_name, QString cus_dob, QString cus_phoneNumber, int cus_point);

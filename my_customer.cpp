@@ -80,10 +80,6 @@ void my_customer::on_pushButtonExportFile_clicked()
     QString text;
     int current_row = ui->tableWidget->rowCount();
     QFile file("E:/demo_qt_write_file.txt");
-    //    if (!file.open(QFile::WriteOnly | QFile::Text))
-    //    {
-    //        QMessageBox::warning(this, "Message", "File can not open!!!");
-    //    }
     if (file.open(QIODevice::WriteOnly | QIODevice::ReadWrite))
     {
         QTextStream out(&file);
@@ -112,36 +108,12 @@ void my_customer::on_pushButtonADD_clicked()
                  ui->textEditPhoneNumber->toPlainText(), ui->textEditPoint->toPlainText().toInt());
     check_customer();
     refresh_list_view();
-
-    //    _customers cus = qv_cus.at(current_row);
-//    ui->tableWidget->setItem(current_row,0, new QTableWidgetItem(cus.getName()));
-//    ui->tableWidget->setItem(current_row,1, new QTableWidgetItem(cus.getPhoneNumber()));
-//    ui->tableWidget->setItem(current_row,2, new QTableWidgetItem(_time().int_to_QString(cus.getPoint())));
-//    ui->tableWidget->setItem(current_row,3, new QTableWidgetItem(cus.getLatestModification().get_date()));
-//    ui->tableWidget->setItem(current_row,4, new QTableWidgetItem(cus.getID()));
-
 }
 
 void my_customer::on_pushButtonDelete_clicked()
 {
     remove_by_phoneNumber(ui->textEditPhoneNumberDelete->toPlainText());
     refresh_list_view();
-
-//    int indexPhoneNumber;
-
-//    int current_row = ui->tableWidget->rowCount();
-
-//    for (int i = 0; i < current_row; i++)
-//    {
-//        QString text = ui->tableWidget->item(i, 1)->text();
-//        if(text == ui->textEditPhoneNumberDelete->toPlainText())
-//        {
-//            indexPhoneNumber = i;
-//            break;
-//        }
-//    }
-
-//    ui->tableWidget->removeRow(indexPhoneNumber);
 }
 
 void my_customer::check_customer()
