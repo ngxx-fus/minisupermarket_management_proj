@@ -72,24 +72,34 @@ void my_customer::refresh_customers_list(){
 QVector<_customers>::iterator my_customer::find_by_ID(QString key_ID){
     QVector<_customers>::iterator it;
     bool found_it = false;
+    ui->progressBar_FIND->show();
+    ui->progressBar_FIND->setRange(0, 100);
+    int count_ = 0, all_ = qv_cus.size();
     for( it = qv_cus.begin(); it != qv_cus.end(); it++){
+        ui->progressBar_FIND->setValue(++count_*100/all_);
         if(it->getID() ==key_ID) {
             found_it = true;
             break;
         }
     }
+    ui->progressBar_FIND->setValue(100);
     return found_it ? it : qv_cus.end();
 }
 
 QVector<_customers>::iterator my_customer::find_by_PhoneNumber(QString key_PhoneNumber){
     QVector<_customers>::iterator it;
     bool found_it = false;
+    ui->progressBar_FIND->show();
+    ui->progressBar_FIND->setRange(0, 100);
+    int count_ = 0, all_ = qv_cus.size();
     for( it = qv_cus.begin(); it != qv_cus.end(); it++){
+        ui->progressBar_FIND->setValue(++count_*100/all_);
         if(it->getPhoneNumber() == key_PhoneNumber) {
             found_it = true;
             break;
         }
     }
+    ui->progressBar_FIND->setValue(100);
     return found_it ? it : qv_cus.end();
 }
 
@@ -98,11 +108,16 @@ QVector< QVector<_customers>::iterator > my_customer::find_by_name(QString key_N
     QVector<_customers>::iterator it;
     QVector< QVector<_customers>::iterator > qv_it;
     bool found_it = false;
+    ui->progressBar_FIND->show();
+    ui->progressBar_FIND->setRange(0, 100);
+    int count_ = 0, all_ = qv_cus.size();
     for( it = qv_cus.begin(); it != qv_cus.end(); it++){
+        ui->progressBar_FIND->setValue(++count_*100/all_);
         if(it->getName() == key_Name) {
             qv_it.push_back(it);
         }
     }
+    ui->progressBar_FIND->setValue(100);
     return qv_it;
 }
 
@@ -239,5 +254,11 @@ void my_customer::on_pushButton_CLOSE_SEARCH_RES_clicked()
 {
     qv_search_result.clear();
     refresh_customers_list();
+}
+
+
+void my_customer::on_pushButton_FIND_clicked()
+{
+
 }
 

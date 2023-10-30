@@ -68,6 +68,8 @@ private slots:
 
     void on_pushButton_CLOSE_SEARCH_RES_clicked();
 
+    void on_pushButton_FIND_clicked();
+
 private:
     Ui::my_customer *ui;
 
