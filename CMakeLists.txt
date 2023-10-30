@@ -28,9 +28,10 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         templateClass.h
         _time.h
         _adding_error.h
-        _adding_error.cpp
+
         _adding_error.ui
-        _added_customer_error.h _added_customer_error.cpp _added_customer_error.ui
+        _added_customer_error.h  _added_customer_error.ui
+        _date_error.h  _date_error.ui
 
 
     )
