@@ -9,8 +9,11 @@ my_customer::my_customer(QWidget *parent)
     , ui(new Ui::my_customer)
 {
     ui->setupUi(this);
-    refresh_list_view();
+    ui->progressBar_FIND->hide();
+    refresh_customers_list();
 }
+
+
 
 void my_customer::set_layout_list_view(int const max_row, int const max_column){
     ui->tableWidget->setRowCount(max_row);
@@ -29,7 +32,7 @@ void my_customer::set_layout_list_view(int const max_row, int const max_column){
     ui->tableWidget->setColumnWidth(5,150);
 }
 
-void my_customer::refresh_list_view(){
+void my_customer::refresh_customers_list(){
 
     int const   max_column = 6,
                 max_row = (qv_cus.size()<=20 ? qv_cus.size() : 20);
@@ -101,10 +104,13 @@ void my_customer::remove_by_phoneNumber(QString cus_phoneNumer){
     qv_cus.erase(const_it);
 }
 
+
 my_customer::~my_customer()
 {
     delete ui;
 }
+
+//---------------------------------------- declaration of private slot ----------------------------------------------
 
 void my_customer::on_pushButtonExportFile_clicked()
 {
@@ -134,10 +140,22 @@ void my_customer::on_pushButtonExportFile_clicked()
 
 void my_customer::on_pushButtonADD_clicked()
 {
+
+    #define dd ui->spinBox_DAY_ADD->value()
+    #define mm ui->spinBox_MONTH_ADD->value()
+    #define yyyy ui->spinBox_YEAR_ADD->value()
     #define cus_numphone ui->lineEdit_NUMPHONE_ADD->text()
-    #define cus_dob      ui->lineEdit_DOB_ADD->text()
     #define cus_name     ui->lineEdit_NAME_ADD->text()
     #define cus_point    ui->lineEdit_POINT_ADD->text().toInt()
+
+    _time DOB;
+    if(DOB.set_DDMMYYYY(dd, mm, yyyy) == false){
+        _date_error _d;
+        _d.setModal(true);
+        _d.exec();
+        return;
+    }
+
     if( !cus_numphone.size() || !cus_name.size() )
     {
         _adding_error noti(this);
@@ -146,10 +164,12 @@ void my_customer::on_pushButtonADD_clicked()
         return;
     }
 
+    #define cus_DOB     (DOB.get_date()==QString("01/01/1901"))?QString("unknown"):DOB.get_date()
+
     if( this->find_by_PhoneNumber( cus_numphone ) == qv_cus.end() )
     {
-        qv_cus.push_back( _customers(cus_name, cus_dob, cus_numphone, cus_point) );
-        refresh_list_view();
+        qv_cus.push_back( _customers(cus_name, cus_DOB , cus_numphone, cus_point) );
+        refresh_customers_list();
         clear_all_text_in_add_box();
     }else{
         _added_customer_error err(this);
@@ -161,9 +181,18 @@ void my_customer::on_pushButtonADD_clicked()
 
 void my_customer::clear_all_text_in_add_box(){
     ui->lineEdit_NAME_ADD->clear();
-    ui->lineEdit_DOB_ADD->clear();
+    ui->spinBox_DAY_ADD->clear();
+    ui->spinBox_MONTH_ADD->clear();
+    ui->spinBox_YEAR_ADD->clear();
     ui->lineEdit_NUMPHONE_ADD->clear();
     ui->lineEdit_POINT_ADD->clear();
+}
+
+void my_customer::clear_all_text_in_find_box(){
+    ui->lineEdit_DOB_FIND->clear();
+    ui->lineEdit_NAME_FIND->clear();
+    ui->lineEdit_NUMPHONE_FIND->clear();
+    ui->progressBar_FIND->hide();
 }
 
 void my_customer::on_tableWidget_itemClicked(QTableWidgetItem *item)
@@ -174,12 +203,12 @@ void my_customer::on_tableWidget_itemClicked(QTableWidgetItem *item)
 void my_customer::on_pushButtonDelete_clicked()
 {
     remove_by_phoneNumber(ui->lineEdit_NUMPHONE_ADD->text());
-    refresh_list_view();
+    refresh_customers_list();
 }
 
 void my_customer::on_tableWidget_cellClicked(int row, int column)
 {
-    refresh_list_view();
+    refresh_customers_list();
 }
 
 void my_customer::on_pushButtonCancel_clicked()
