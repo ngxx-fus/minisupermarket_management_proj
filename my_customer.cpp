@@ -54,11 +54,11 @@ void my_customer::refresh_search_result_list(){
 void my_customer::refresh_customers_list(){
 
     int const   max_column = 6,
-                max_row = (qv_cus.size()<=20 ? qv_cus.size() : 20);
+        max_row = (qv_cus.size()<20)?qv_cus.size():20;
 
     set_layout_list_view(max_row, max_column);
 
-    for(int r = max_row - 1, ind = 0; r >= (max_row<20?0:max_row-20); r--, ind++)
+    for(int r = qv_cus.size() - 1, ind = 0; r >= (qv_cus.size()<max_row?0:qv_cus.size()-max_row); r--, ind++)
     {
         _customers cus = qv_cus.at(r);
         ui->tableWidget->setItem(ind,0, new QTableWidgetItem(cus.getName()));
@@ -166,9 +166,9 @@ void my_customer::on_pushButtonExportFile_clicked()
 
         for (int i = 0; i < current_row; i++)
         {
-            for (int j = 0; j < 4; j++)
+            for (int j = 0; j < 6; j++)
             {
-                ui->progressBar_FIND->setValue(i*100/(current_row*4));
+                ui->progressBar_FIND->setValue(int( i*100/(current_row*6)) );
                 text = ui->tableWidget->item(i, j)->text();
                 out << text;
                 out << "  ";

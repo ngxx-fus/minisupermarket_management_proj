@@ -137,22 +137,22 @@ public:
         return _result;
     }
     QString get_day(){
-        return int_to_QString(_day);
+        return int_to_QString(_day, 2);
     }
     QString get_month(){
-        return int_to_QString(_month);
+        return int_to_QString(_month, 2);
     }
     QString get_year(){
-        return int_to_QString(_year);
+        return int_to_QString(_year, 4);
     }
     QString get_hour(){
-        return int_to_QString(_hour);
+        return int_to_QString(_hour, 2);
     }
     QString get_minute(){
-        return int_to_QString(_minute);
+        return int_to_QString(_minute, 2);
     }
     QString get_second(){
-        return int_to_QString(_second);
+        return int_to_QString(_second, 2);
     }
 
     int get_day_int(){return _day;}
