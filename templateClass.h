@@ -53,7 +53,7 @@ public:
             res.push_back(QChar('.'));
         }
 
-        res += _t.int_to_QString((count_t = (++count_t*12*count_t)%100001));
+        res += _t.int_to_QString((count_t = (++count_t*95)%1001));
         if(sufix_.size()){
             res.push_back(QChar('.'));
             res += sufix_;

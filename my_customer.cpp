@@ -33,6 +33,7 @@ void my_customer::set_layout_list_view(int const max_row, int const max_column){
 }
 
 void my_customer::refresh_search_result_list(){
+
     int const   max_column = 6,
         max_row = qv_search_result.size();
 
@@ -40,13 +41,13 @@ void my_customer::refresh_search_result_list(){
 
     for(int r = 0, ind = 0; r < max_row; r++, ind++)
     {
-        _customers cus = qv_search_result.at(r);
-        ui->tableWidget->setItem(ind,0, new QTableWidgetItem(cus.getName()));
-        ui->tableWidget->setItem(ind,1, new QTableWidgetItem(cus.getDOB()));
-        ui->tableWidget->setItem(ind,2, new QTableWidgetItem(cus.getPhoneNumber()));
-        ui->tableWidget->setItem(ind,3, new QTableWidgetItem(_time().int_to_QString(cus.getPoint())));
-        ui->tableWidget->setItem(ind,4, new QTableWidgetItem(cus.getLatestModification().get_date()));
-        ui->tableWidget->setItem(ind,5, new QTableWidgetItem(cus.getID()));
+        auto cus = qv_search_result.at(r);
+        ui->tableWidget->setItem(ind,0, new QTableWidgetItem(cus->getName()));
+        ui->tableWidget->setItem(ind,1, new QTableWidgetItem(cus->getDOB()));
+        ui->tableWidget->setItem(ind,2, new QTableWidgetItem(cus->getPhoneNumber()));
+        ui->tableWidget->setItem(ind,3, new QTableWidgetItem(_time().int_to_QString(cus->getPoint())));
+        ui->tableWidget->setItem(ind,4, new QTableWidgetItem(cus->getLatestModification().get_date()));
+        ui->tableWidget->setItem(ind,5, new QTableWidgetItem(cus->getID()));
     }
 }
 
@@ -70,6 +71,7 @@ void my_customer::refresh_customers_list(){
 }
 
 QVector<_customers>::iterator my_customer::find_by_ID(QString key_ID){
+    if(!key_ID.size())return  qv_cus.end();
     QVector<_customers>::iterator it;
     bool found_it = false;
     ui->progressBar_FIND->show();
@@ -83,10 +85,12 @@ QVector<_customers>::iterator my_customer::find_by_ID(QString key_ID){
         }
     }
     ui->progressBar_FIND->setValue(100);
+    ui->progressBar_FIND->hide();
     return found_it ? it : qv_cus.end();
 }
 
 QVector<_customers>::iterator my_customer::find_by_PhoneNumber(QString key_PhoneNumber){
+    if(!key_PhoneNumber.size())return  qv_cus.end();
     QVector<_customers>::iterator it;
     bool found_it = false;
     ui->progressBar_FIND->show();
@@ -100,6 +104,7 @@ QVector<_customers>::iterator my_customer::find_by_PhoneNumber(QString key_Phone
         }
     }
     ui->progressBar_FIND->setValue(100);
+    ui->progressBar_FIND->hide();
     return found_it ? it : qv_cus.end();
 }
 
@@ -107,6 +112,7 @@ QVector< QVector<_customers>::iterator > my_customer::find_by_name(QString key_N
 {
     QVector<_customers>::iterator it;
     QVector< QVector<_customers>::iterator > qv_it;
+        if(!key_Name.size())return qv_it;
     bool found_it = false;
     ui->progressBar_FIND->show();
     ui->progressBar_FIND->setRange(0, 100);
@@ -118,11 +124,13 @@ QVector< QVector<_customers>::iterator > my_customer::find_by_name(QString key_N
         }
     }
     ui->progressBar_FIND->setValue(100);
+    ui->progressBar_FIND->hide();
     return qv_it;
 }
 
 void my_customer::add_customer(QString cus_name, QString cus_DOB, QString cus_phoneNumber, int cus_point){
     qv_cus.push_back(_customers(cus_name, cus_DOB, cus_phoneNumber, cus_point));
+    ui->progressBar_FIND->hide();
 }
 
 void my_customer::remove_by_phoneNumber(QString cus_phoneNumer){
@@ -147,6 +155,8 @@ my_customer::~my_customer()
 
 void my_customer::on_pushButtonExportFile_clicked()
 {
+    ui->progressBar_FIND->show();
+    ui->progressBar_FIND->setValue(0);
     QString text;
     int current_row = ui->tableWidget->rowCount();
     QFile file("demo_qt_write_file.txt");
@@ -158,6 +168,7 @@ void my_customer::on_pushButtonExportFile_clicked()
         {
             for (int j = 0; j < 4; j++)
             {
+                ui->progressBar_FIND->setValue(i*100/(current_row*4));
                 text = ui->tableWidget->item(i, j)->text();
                 out << text;
                 out << "  ";
@@ -166,6 +177,8 @@ void my_customer::on_pushButtonExportFile_clicked()
             out << "\n";
         }
     }
+    ui->progressBar_FIND->setValue(100);
+    ui->progressBar_FIND->hide();
     file.close();
 }
 
@@ -219,12 +232,15 @@ void my_customer::clear_all_text_in_add_box(){
     ui->spinBox_YEAR_ADD->clear();
     ui->lineEdit_NUMPHONE_ADD->clear();
     ui->lineEdit_POINT_ADD->clear();
+    ui->progressBar_FIND->setValue(0);
+    ui->progressBar_FIND->hide();
 }
 
 void my_customer::clear_all_text_in_find_box(){
     ui->lineEdit_DOB_FIND->clear();
     ui->lineEdit_NAME_FIND->clear();
     ui->lineEdit_NUMPHONE_FIND->clear();
+    ui->progressBar_FIND->setValue(0);
     ui->progressBar_FIND->hide();
 }
 
@@ -253,12 +269,26 @@ void my_customer::on_pushButtonCancel_clicked()
 void my_customer::on_pushButton_CLOSE_SEARCH_RES_clicked()
 {
     qv_search_result.clear();
+    clear_all_text_in_find_box();
     refresh_customers_list();
 }
 
 
 void my_customer::on_pushButton_FIND_clicked()
 {
-
+    int opt = ui->comboBox->currentIndex();
+    qv_search_result.clear();
+    switch( opt )
+    {
+    case 0:
+        qv_search_result = find_by_name( ui->lineEdit_NAME_FIND->text() );
+        refresh_search_result_list();
+        break;
+    case 1:
+        auto it = find_by_PhoneNumber( ui->lineEdit_NUMPHONE_FIND->text() );
+        if( it == qv_cus.end() ) break;
+        qv_search_result.push_back( it );
+        refresh_search_result_list();
+    };
 }
 

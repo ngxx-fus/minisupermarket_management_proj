@@ -17,7 +17,7 @@ class my_customer : public QMainWindow
 {
     Q_OBJECT
     QVector<_customers> qv_cus;
-    QVector<_customers> qv_search_result;
+    QVector< QVector<_customers>::iterator > qv_search_result;
 
 public:
     my_customer(QWidget *parent = nullptr);

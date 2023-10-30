@@ -249,16 +249,6 @@
       </rect>
      </property>
     </widget>
-    <widget class="QDateEdit" name="dateEdit">
-     <property name="geometry">
-      <rect>
-       <x>300</x>
-       <y>130</y>
-       <width>110</width>
-       <height>25</height>
-      </rect>
-     </property>
-    </widget>
     <widget class="QSpinBox" name="spinBox_DAY_ADD">
      <property name="geometry">
       <rect>
@@ -485,19 +475,6 @@
       </property>
      </item>
     </widget>
-    <widget class="QProgressBar" name="progressBar_FIND">
-     <property name="geometry">
-      <rect>
-       <x>40</x>
-       <y>220</y>
-       <width>251</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="value">
-      <number>24</number>
-     </property>
-    </widget>
     <widget class="QPushButton" name="pushButton_CLOSE_SEARCH_RES">
      <property name="geometry">
       <rect>
@@ -517,6 +494,19 @@
      </property>
      <property name="text">
       <string>Close search result</string>
+     </property>
+    </widget>
+    <widget class="QProgressBar" name="progressBar_FIND">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>225</y>
+       <width>411</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="value">
+      <number>24</number>
      </property>
     </widget>
    </widget>
