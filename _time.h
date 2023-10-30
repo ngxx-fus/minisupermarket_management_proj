@@ -86,15 +86,17 @@ public:
     }
 
     //the range of DDMMYYYY between 1901->2099
-    void set_DDMMYYYY(int DD, int MM, int YYYY){
-        if( _time(DD, MM, YYYY).check_DDMMYYYY() == false ) return;
+    bool set_DDMMYYYY(int DD, int MM, int YYYY){
+        if( _time(DD, MM, YYYY).check_DDMMYYYY() == false ) return false;
         _day = DD, _month = MM, _year = YYYY;
+        return true;
     }
 
     //
-    void set_HHMMSS(int HH, int MM, int SS){
-        if( _time( 1, 1, 1901, HH, MM, SS).check_HHMMSS() == false ) return;
+    bool set_HHMMSS(int HH, int MM, int SS){
+        if( _time( 1, 1, 1901, HH, MM, SS).check_HHMMSS() == false ) return false;
         _hour = HH, _minute = MM, _second = SS;
+        return true;
     }
 
 
