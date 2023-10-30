@@ -65,15 +65,15 @@ public:
         #define DD _day
         #define MM _month
         #define YYYY _year
-        if( DD < 1 || MM < 1 || YYYY < 1901 || YYYY > 2099 || MM > 12) return false;
+        if( DD < 1 || MM < 1 || YYYY < 1901 || YYYY > 2101 || MM > 12) return false;
         QVector<int> normal_year = {0, /*Jan*/ 31, /*Feb*/28, /*Mar*/31, /*Apr*/30, /*May*/31, /*Jun*/30,
                                     /*Jul*/31, /*Aug*/31, /*Sep*/30, /*Oct*/31, /*Nov*/30, /*Dec*/31};
 
         QVector<int> leap_year = {0, /*Jan*/ 31, /*Feb*/29, /*Mar*/31, /*Apr*/30, /*May*/31, /*Jun*/30,
                                   /*Jul*/31, /*Aug*/31, /*Sep*/30, /*Oct*/31, /*Nov*/30, /*Dec*/31};
 
-        if( (YYYY % 100 != 0)  && (YYYY % 4 == 0) )
-            return bool(leap_year.at(MM) >= DD);
+        if( ((YYYY % 100 != 0)  && (YYYY % 4 == 0)) || (YYYY % 400 == 0))
+        return bool(leap_year.at(MM) >= DD);
 
         return bool(normal_year.at(MM) >= DD);
     }
