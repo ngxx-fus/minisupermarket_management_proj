@@ -17,6 +17,7 @@ class my_customer : public QMainWindow
 {
     Q_OBJECT
     QVector<_customers> qv_cus;
+    QVector<_customers> qv_search_result;
 
 public:
     my_customer(QWidget *parent = nullptr);
@@ -33,6 +34,7 @@ public:
     void set_layout_list_view(int const max_row, int const max_column);
     //refresh list of customers
     void refresh_customers_list();
+    void refresh_search_result_list();
 
     void clear_all_text_in_add_box();
     void clear_all_text_in_find_box();
@@ -63,6 +65,8 @@ private slots:
     void on_pushButtonDelete_clicked();
 
     void on_pushButtonCancel_clicked();
+
+    void on_pushButton_CLOSE_SEARCH_RES_clicked();
 
 private:
     Ui::my_customer *ui;

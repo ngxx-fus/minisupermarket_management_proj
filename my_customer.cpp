@@ -32,6 +32,24 @@ void my_customer::set_layout_list_view(int const max_row, int const max_column){
     ui->tableWidget->setColumnWidth(5,150);
 }
 
+void my_customer::refresh_search_result_list(){
+    int const   max_column = 6,
+        max_row = qv_search_result.size();
+
+    set_layout_list_view(max_row, max_column);
+
+    for(int r = 0, ind = 0; r < max_row; r++, ind++)
+    {
+        _customers cus = qv_search_result.at(r);
+        ui->tableWidget->setItem(ind,0, new QTableWidgetItem(cus.getName()));
+        ui->tableWidget->setItem(ind,1, new QTableWidgetItem(cus.getDOB()));
+        ui->tableWidget->setItem(ind,2, new QTableWidgetItem(cus.getPhoneNumber()));
+        ui->tableWidget->setItem(ind,3, new QTableWidgetItem(_time().int_to_QString(cus.getPoint())));
+        ui->tableWidget->setItem(ind,4, new QTableWidgetItem(cus.getLatestModification().get_date()));
+        ui->tableWidget->setItem(ind,5, new QTableWidgetItem(cus.getID()));
+    }
+}
+
 void my_customer::refresh_customers_list(){
 
     int const   max_column = 6,
@@ -214,5 +232,12 @@ void my_customer::on_tableWidget_cellClicked(int row, int column)
 void my_customer::on_pushButtonCancel_clicked()
 {
     clear_all_text_in_add_box();
+}
+
+
+void my_customer::on_pushButton_CLOSE_SEARCH_RES_clicked()
+{
+    qv_search_result.clear();
+    refresh_customers_list();
 }
 
