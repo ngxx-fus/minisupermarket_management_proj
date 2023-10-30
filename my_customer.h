@@ -3,7 +3,9 @@
 
 #include "_added_customer_error.h"
 #include "_adding_error.h"
+#include "_date_error.h"
 #include "_customers.h"
+#include "_time.h"
 #include <QMainWindow>
 #include <algorithm>
 
@@ -19,11 +21,6 @@ class my_customer : public QMainWindow
 public:
     my_customer(QWidget *parent = nullptr);
 
-    inline QString add_UKNOWN(QString inp){
-        if( inp.size() == 0) inp = "unknown";
-        return inp;
-    }
-
     //if *inp* is empty, inp = "unknown" (for DOB)
     inline QString add_UKNOWN(QString inp){return (inp.size()==0 ? "unknown" : inp);}
     //return a QVector<_customers>::iterator to element that PhoneNumber = key_PhoneNumber
@@ -35,7 +32,7 @@ public:
     //set up layout of list of customers
     void set_layout_list_view(int const max_row, int const max_column);
     //refresh list of customers
-    void refresh_list_view();
+    void refresh_customers_list();
 
     void clear_all_text_in_add_box();
     void clear_all_text_in_find_box();
@@ -44,8 +41,10 @@ public:
     void remove_by_phoneNumber(QString cus_phoneNumber);
     //add a customer
     void add_customer(QString cus_name, QString cus_DOB, QString cus_phoneNumber, int cus_point);
+    //view
     void expand_list_of_customers();
     void shorten_list_of_customers();
+    //sort
     void sort_by_id();
     void sort_by_name();
     void sort_by_accumulation_point();
