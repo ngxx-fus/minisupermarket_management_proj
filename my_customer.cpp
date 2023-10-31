@@ -57,6 +57,7 @@ void my_customer::refresh_customers_list(){
     int const   max_column = 6,
         max_row = (qv_cus.size()<20)?qv_cus.size():20;
 
+    ui->tableWidget->clear();
     set_layout_list_view(max_row, max_column);
 
     for(int r = qv_cus.size() - 1, ind = 0; r >= (qv_cus.size()<max_row?0:qv_cus.size()-max_row); r--, ind++)
@@ -80,6 +81,7 @@ QVector<_customers>::iterator my_customer::find_by_ID(QString key_ID){
     int count_ = 0, all_ = qv_cus.size();
     for( it = qv_cus.begin(); it != qv_cus.end(); it++){
         ui->progressBar_FIND->setValue(++count_*100/all_);
+        std::this_thread::sleep_for( std::chrono::milliseconds(10) );
         if(it->getID() ==key_ID) {
             found_it = true;
             break;
@@ -99,6 +101,7 @@ QVector<_customers>::iterator my_customer::find_by_PhoneNumber(QString key_Phone
     int count_ = 0, all_ = qv_cus.size();
     for( it = qv_cus.begin(); it != qv_cus.end(); it++){
         ui->progressBar_FIND->setValue(++count_*100/all_);
+        std::this_thread::sleep_for( std::chrono::milliseconds(10) );
         if(it->getPhoneNumber() == key_PhoneNumber) {
             found_it = true;
             break;
@@ -120,6 +123,7 @@ QVector< QVector<_customers>::iterator > my_customer::find_by_name(QString key_N
     int count_ = 0, all_ = qv_cus.size();
     for( it = qv_cus.begin(); it != qv_cus.end(); it++){
         ui->progressBar_FIND->setValue(++count_*100/all_);
+        std::this_thread::sleep_for( std::chrono::milliseconds(10) );
         if(it->getName() == key_Name) {
             qv_it.push_back(it);
         }
@@ -146,6 +150,27 @@ void my_customer::remove_by_phoneNumber(QString cus_phoneNumer){
     qv_cus.erase(const_it);
 }
 
+////mode  = 0 for acsending else descending
+//void my_customer::sort_by_name(bool _mode = 0){
+//    //name -> sdt
+//    if( _mode == 0 ){
+//        auto cmp = [=](_customers a, _customers b){
+//            if( a.getName() == b.getName() ){
+//                return a.getPhoneNumber() > a.getPhoneNumber();
+//            }
+//            return a.getName() < b.getName();
+//        };
+//        sort(qv_cus.begin(), qv_cus.end(), cmp);
+//        return;
+//    }//else
+//    auto cmp = [](_customers a, _customers b){
+//        if( a.getName() == b.getName() ){
+//            return a.getPhoneNumber() < a.getPhoneNumber();
+//        }
+//        return a.getName() > b.getName();
+//    };
+//    sort(qv_cus.begin(), qv_cus.end(), cmp);// [a,b)
+//}
 
 my_customer::~my_customer()
 {
@@ -154,63 +179,9 @@ my_customer::~my_customer()
 
 //---------------------------------------- declaration of private slot ----------------------------------------------
 
-void my_customer::on_pushButtonExportFile_clicked()
-{
-    ui->progressBar_FIND->show();
-    ui->progressBar_FIND->setValue(0);
-    QString text;
-    int current_row = ui->tableWidget->rowCount();
-    QFile file("demo_qt_write_file.txt");
-    if (file.open(QIODevice::WriteOnly | QIODevice::ReadWrite))
-    {
-        QTextStream out(&file);
-
-        for (int i = 0; i < current_row; i++)
-        {
-            for (int j = 0; j < 6; j++)
-            {
-                ui->progressBar_FIND->setValue(int( i*100/(current_row*6)) );
-                if(j == 0)
-                {
-                    text = ui->tableWidget->item(i, j)->text();
-                    out << "Name: " << text << " | ";
-                }
-                else if (j == 1)
-                {
-                    text = ui->tableWidget->item(i, j)->text();
-                    out << "DOB: " << text << " | ";
-                }
-                else if (j == 2)
-                {
-                    text = ui->tableWidget->item(i, j)->text();
-                    out << "Phone: " << text << " | ";
-                }
-                else if (j == 3)
-                {
-                    text = ui->tableWidget->item(i, j)->text();
-                    out << "Point: " << text << " | ";
-                }
-                else if (j == 4)
-                {
-                    text = ui->tableWidget->item(i, j)->text();
-                    out << "Date: " << text << " | ";
-                }
-                else if (j == 5)
-                {
-                    text = ui->tableWidget->item(i, j)->text();
-                    out << "ID: " << text <<"\n";
-                }
-            }
-            out << "\n";
-        }
-    }
-    ui->progressBar_FIND->setValue(100);
-    ui->progressBar_FIND->hide();
-    file.close();
-}
-
 void my_customer::save_customers()
 {
+    ui->progressBar_FIND->setRange(0, 100);
     ui->progressBar_FIND->show();
     ui->progressBar_FIND->setValue(0);
     QString text;
@@ -225,6 +196,7 @@ void my_customer::save_customers()
             for (int j = 0; j < 6; j++)
             {
                 ui->progressBar_FIND->setValue(int( i*100/(current_row*6)) );
+                std::this_thread::sleep_for( std::chrono::milliseconds(10) );
                 if(j == 0)
                 {
                     text = ui->tableWidget->item(i, j)->text();
@@ -267,7 +239,11 @@ void my_customer::save_customers()
 void my_customer::load_customers()
 {
     QFile file("demo_qt_write_file.txt");
-    int curent_row = 0;
+    int current_row = 0;
+
+    ui->progressBar_FIND->setRange(0,100);
+    ui->progressBar_FIND->show();
+    ui->progressBar_FIND->setValue( 0 );
 
     if (file.open(QIODevice::ReadOnly  | QIODevice::Text))
     {
@@ -279,6 +255,7 @@ void my_customer::load_customers()
             QStringList tokens = line.split(" | ");
             if (tokens.size() == 6)
             {
+                ui->progressBar_FIND->setValue( (++current_row)<80?current_row:80  );
                 QString name = tokens[0].section("Name: ", 1, 1);
                 QString dob = tokens[1].section("DOB: ", 1, 1);
                 QString phone_number = tokens[2].section("Phone: ", 1, 1);
@@ -291,6 +268,8 @@ void my_customer::load_customers()
             }
         }
     }
+    ui->progressBar_FIND->setValue( 100 );
+    ui->progressBar_FIND->hide();
     file.close();
 }
 
@@ -298,9 +277,9 @@ void my_customer::load_customers()
 void my_customer::on_pushButtonADD_clicked()
 {
 
-    #define dd ui->spinBox_DAY_ADD->value()
-    #define mm ui->spinBox_MONTH_ADD->value()
-    #define yyyy ui->spinBox_YEAR_ADD->value()
+    int const dd = ui->spinBox_DAY_ADD->value();
+    int const mm = ui->spinBox_MONTH_ADD->value();
+    int const yyyy = ui->spinBox_YEAR_ADD->value();
     #define cus_numphone ui->lineEdit_NUMPHONE_ADD->text()
     #define cus_name     ui->lineEdit_NAME_ADD->text()
     #define cus_point    ui->lineEdit_POINT_ADD->text().toInt()
@@ -321,11 +300,11 @@ void my_customer::on_pushButtonADD_clicked()
         return;
     }
 
-    #define cus_DOB     (DOB.get_date()==QString("01/01/1901"))?QString("unknown"):DOB.get_date()
+    #define cus_DOB     DOB.get_date()
 
     if( this->find_by_PhoneNumber( cus_numphone ) == qv_cus.end() )
     {
-        qv_cus.push_back( _customers(cus_name, cus_DOB , cus_numphone, cus_point) );
+        qv_cus.push_back( _customers(cus_name, cus_DOB, cus_numphone, cus_point) );
         refresh_customers_list();
         clear_all_text_in_add_box();
     }else{
@@ -368,7 +347,7 @@ void my_customer::on_pushButtonDelete_clicked()
 
 void my_customer::on_tableWidget_cellClicked(int row, int column)
 {
-    refresh_customers_list();
+    //refresh_customers_list();
 }
 
 void my_customer::on_pushButtonCancel_clicked()
@@ -401,5 +380,63 @@ void my_customer::on_pushButton_FIND_clicked()
         qv_search_result.push_back( it );
         refresh_search_result_list();
     };
+}
+
+
+void my_customer::on_pushButtonExportFile__MOD_clicked()
+{
+    ui->progressBar_FIND->setRange(0,100);
+    ui->progressBar_FIND->show();
+    ui->progressBar_FIND->setValue(0);
+    QString text;
+    int current_row = ui->tableWidget->rowCount();
+    QFile file("demo_qt_write_file.txt");
+    if (file.open(QIODevice::WriteOnly | QIODevice::ReadWrite))
+    {
+        QTextStream out(&file);
+
+        for (int i = 0; i < current_row; i++)
+        {
+            for (int j = 0; j < 6; j++)
+            {
+                std::this_thread::sleep_for( std::chrono::milliseconds(10) );
+                ui->progressBar_FIND->setValue(int( i*100/(current_row*6)) );
+                if(j == 0)
+                {
+                    text = ui->tableWidget->item(i, j)->text();
+                    out << "Name: " << text << " | ";
+                }
+                else if (j == 1)
+                {
+                    text = ui->tableWidget->item(i, j)->text();
+                    out << "DOB: " << text << " | ";
+                }
+                else if (j == 2)
+                {
+                    text = ui->tableWidget->item(i, j)->text();
+                    out << "Phone: " << text << " | ";
+                }
+                else if (j == 3)
+                {
+                    text = ui->tableWidget->item(i, j)->text();
+                    out << "Point: " << text << " | ";
+                }
+                else if (j == 4)
+                {
+                    text = ui->tableWidget->item(i, j)->text();
+                    out << "Date: " << text << " | ";
+                }
+                else if (j == 5)
+                {
+                    text = ui->tableWidget->item(i, j)->text();
+                    out << "ID: " << text <<"\n";
+                }
+            }
+            out << "\n";
+        }
+    }
+    ui->progressBar_FIND->setValue(100);
+    ui->progressBar_FIND->hide();
+    file.close();
 }
 

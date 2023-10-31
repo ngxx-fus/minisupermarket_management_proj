@@ -6,6 +6,9 @@
 #include "_date_error.h"
 #include "_customers.h"
 #include "_time.h"
+#include <unistd.h>
+#include <chrono>
+#include <thread>
 #include <QMainWindow>
 #include <algorithm>
 
@@ -47,9 +50,12 @@ public:
     void expand_list_of_customers();
     void shorten_list_of_customers();
     //sort
-    void sort_by_id();
-    void sort_by_name();
-    void sort_by_accumulation_point();
+    //mode  = 0 for acsending else descending
+    void sort_by_id( bool _mode = 0 );
+    //mode  = 0 for acsending else descending
+    void sort_by_name( bool _mode = 0 );
+    //mode  = 0 for acsending else descending
+    void sort_by_accumulation_point( bool _mode = 0 );
 
     void save_customers();
     void load_customers();
@@ -72,6 +78,8 @@ private slots:
     void on_pushButton_CLOSE_SEARCH_RES_clicked();
 
     void on_pushButton_FIND_clicked();
+
+    void on_pushButtonExportFile__MOD_clicked();
 
 private:
     Ui::my_customer *ui;

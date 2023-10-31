@@ -88,14 +88,18 @@ public:
     //the range of DDMMYYYY between 1901->2099
     bool set_DDMMYYYY(int DD, int MM, int YYYY){
         if( _time(DD, MM, YYYY).check_DDMMYYYY() == false ) return false;
-        _day = DD, _month = MM, _year = YYYY;
+        this->_day = DD,
+        this->_month = MM,
+        this->_year = YYYY;
         return true;
     }
 
     //
     bool set_HHMMSS(int HH, int MM, int SS){
         if( _time( 1, 1, 1901, HH, MM, SS).check_HHMMSS() == false ) return false;
-        _hour = HH, _minute = MM, _second = SS;
+        this->_hour = HH,
+        this->_minute = MM,
+        this->_second = SS;
         return true;
     }
 
