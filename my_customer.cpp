@@ -10,6 +10,7 @@ my_customer::my_customer(QWidget *parent)
 {
     ui->setupUi(this);
     ui->progressBar_FIND->hide();
+    load_customers();
     refresh_customers_list();
 }
 
@@ -169,10 +170,36 @@ void my_customer::on_pushButtonExportFile_clicked()
             for (int j = 0; j < 6; j++)
             {
                 ui->progressBar_FIND->setValue(int( i*100/(current_row*6)) );
-                text = ui->tableWidget->item(i, j)->text();
-                out << text;
-                out << "  ";
-                file.flush();
+                if(j == 0)
+                {
+                    text = ui->tableWidget->item(i, j)->text();
+                    out << "Name: " << text << " | ";
+                }
+                else if (j == 1)
+                {
+                    text = ui->tableWidget->item(i, j)->text();
+                    out << "DOB: " << text << " | ";
+                }
+                else if (j == 2)
+                {
+                    text = ui->tableWidget->item(i, j)->text();
+                    out << "Phone: " << text << " | ";
+                }
+                else if (j == 3)
+                {
+                    text = ui->tableWidget->item(i, j)->text();
+                    out << "Point: " << text << " | ";
+                }
+                else if (j == 4)
+                {
+                    text = ui->tableWidget->item(i, j)->text();
+                    out << "Date: " << text << " | ";
+                }
+                else if (j == 5)
+                {
+                    text = ui->tableWidget->item(i, j)->text();
+                    out << "ID: " << text <<"\n";
+                }
             }
             out << "\n";
         }
@@ -182,6 +209,90 @@ void my_customer::on_pushButtonExportFile_clicked()
     file.close();
 }
 
+void my_customer::save_customers()
+{
+    ui->progressBar_FIND->show();
+    ui->progressBar_FIND->setValue(0);
+    QString text;
+    int current_row = ui->tableWidget->rowCount();
+    QFile file("demo_qt_write_file.txt");
+    if (file.open(QIODevice::WriteOnly | QIODevice::ReadWrite))
+    {
+        QTextStream out(&file);
+
+        for (int i = 0; i < current_row; i++)
+        {
+            for (int j = 0; j < 6; j++)
+            {
+                ui->progressBar_FIND->setValue(int( i*100/(current_row*6)) );
+                if(j == 0)
+                {
+                    text = ui->tableWidget->item(i, j)->text();
+                    out << "Name: " << text << " | ";
+                }
+                else if (j == 1)
+                {
+                    text = ui->tableWidget->item(i, j)->text();
+                    out << "DOB: " << text << " | ";
+                }
+                else if (j == 2)
+                {
+                    text = ui->tableWidget->item(i, j)->text();
+                    out << "Phone: " << text << " | ";
+                }
+                else if (j == 3)
+                {
+                    text = ui->tableWidget->item(i, j)->text();
+                    out << "Point: " << text << " | ";
+                }
+                else if (j == 4)
+                {
+                    text = ui->tableWidget->item(i, j)->text();
+                    out << "Date: " << text << " | ";
+                }
+                else if (j == 5)
+                {
+                    text = ui->tableWidget->item(i, j)->text();
+                    out << "ID: " << text <<"\n";
+                }
+            }
+            out << "\n";
+        }
+    }
+    ui->progressBar_FIND->setValue(100);
+    ui->progressBar_FIND->hide();
+    file.close();
+}
+
+void my_customer::load_customers()
+{
+    QFile file("demo_qt_write_file.txt");
+    int curent_row = 0;
+
+    if (file.open(QIODevice::ReadOnly  | QIODevice::Text))
+    {
+        QTextStream in(&file);
+
+        while (!in.atEnd())
+        {
+            QString line = in.readLine();
+            QStringList tokens = line.split(" | ");
+            if (tokens.size() == 6)
+            {
+                QString name = tokens[0].section("Name: ", 1, 1);
+                QString dob = tokens[1].section("DOB: ", 1, 1);
+                QString phone_number = tokens[2].section("Phone: ", 1, 1);
+                unsigned int point = tokens[3].section("Point: ", 1, 1).toUInt();
+                QString date = tokens[4].section("Date: ", 1, 1);
+                QString id = tokens[5].section("ID: ", 1, 1);
+
+                qv_cus.push_back(_customers(point, phone_number, dob, name, date, id));
+                refresh_customers_list();
+            }
+        }
+    }
+    file.close();
+}
 
 
 void my_customer::on_pushButtonADD_clicked()

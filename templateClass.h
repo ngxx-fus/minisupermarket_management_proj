@@ -20,6 +20,7 @@ private:
     QString path; // path to file
     QString DOB;
     _time   latestModification; //latest modification
+    QString Date;
 
 public:
 
@@ -61,6 +62,10 @@ public:
         return res;
     }
 
+    virtual void setDate(QString newDate){
+        this->Date = newDate;
+    }
+
     virtual void setDOB(QString newDOB){
         this->DOB = newDOB;
     }
@@ -74,7 +79,6 @@ public:
     {
         this->name = newName;
     }
-
 
     virtual QString getName() {
         return this->name;

@@ -51,6 +51,9 @@ public:
     void sort_by_name();
     void sort_by_accumulation_point();
 
+    void save_customers();
+    void load_customers();
+
     ~my_customer();
 
 private slots:
