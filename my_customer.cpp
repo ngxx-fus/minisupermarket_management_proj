@@ -8,9 +8,12 @@ my_customer::my_customer(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::my_customer)
 {
+    auto_save = true;//set-up trong file
     ui->setupUi(this);
     ui->progressBar_FIND->hide();
     load_customers();
+    ui->pushButton_RM_MOD->hide();
+    ui->pushButtonUpdateInfo->hide();
     refresh_customers_list();
 }
 
@@ -139,26 +142,21 @@ void my_customer::add_customer(QString cus_name, QString cus_DOB, QString cus_ph
 }
 
 void my_customer::remove_by_phoneNumber(QString cus_phoneNumer){
-    QVector<_customers>::iterator it = qv_cus.begin();
-    //linear searching
-    for(it = qv_cus.begin(); it != qv_cus.end(); it++){
-        if(it->getPhoneNumber() == cus_phoneNumer) {
-            break;
-        }
-    }
-    QVector<_customers>::const_iterator const const_it = it;
+    auto it = find_by_PhoneNumber(cus_phoneNumer);
+    if(it == qv_cus.end())return;
+    auto const const_it = it;
     qv_cus.erase(const_it);
 }
 
 void my_customer::remove_by_name(QString cus_name){
-    QVector<_customers>::iterator it = qv_cus.begin();
-    for(it = qv_cus.begin(); it != qv_cus.end(); it++){
-        if(it->getName() == cus_name) {
-            break;
-        }
-    }
-    QVector<_customers>::const_iterator const const_it = it;
-    qv_cus.erase(const_it);
+//    QVector<_customers>::iterator it = qv_cus.begin();
+//    for(it = qv_cus.begin(); it != qv_cus.end(); it++){
+//        if(it->getName() == cus_name) {
+//            break;
+//        }
+//    }
+//    QVector<_customers>::const_iterator const const_it = it;
+//    qv_cus.erase(const_it);
 }
 
 ////mode  = 0 for acsending else descending
@@ -333,6 +331,7 @@ void my_customer::clear_all_text_in_add_box(){
     ui->spinBox_YEAR_ADD->clear();
     ui->lineEdit_NUMPHONE_ADD->clear();
     ui->lineEdit_POINT_ADD->clear();
+
     ui->progressBar_FIND->setValue(0);
     ui->progressBar_FIND->hide();
 }
@@ -353,11 +352,11 @@ void my_customer::on_tableWidget_itemClicked(QTableWidgetItem *item)
     clear_all_text_in_add_box();
 }
 
-void my_customer::on_pushButtonDelete_clicked()
-{
-    remove_by_phoneNumber(ui->lineEdit_NUMPHONE_ADD->text());
-    refresh_customers_list();
-}
+//void my_customer::on_pushButtonDelete_clicked()
+//{
+//    remove_by_phoneNumber(ui->lineEdit_NUMPHONE_ADD->text());
+//    refresh_customers_list();
+//}
 
 void my_customer::on_tableWidget_cellClicked(int row, int column)
 {
@@ -374,6 +373,8 @@ void my_customer::on_pushButton_CLOSE_SEARCH_RES_clicked()
 {
     qv_search_result.clear();
     clear_all_text_in_find_box();
+    ui->pushButton_RM_MOD->hide();
+    ui->pushButtonUpdateInfo->hide();
     refresh_customers_list();
 }
 
@@ -397,88 +398,81 @@ void my_customer::on_pushButton_FIND_clicked()
 }
 
 
-void my_customer::on_pushButtonExportFile__MOD_clicked()
-{
-    ui->progressBar_FIND->setRange(0,100);
-    ui->progressBar_FIND->show();
-    ui->progressBar_FIND->setValue(0);
-    QString text;
-    int i = 0;
-    int current_row = ui->tableWidget->rowCount();
-    QFile file("demo_qt_write_file.txt");
-    if (file.open(QIODevice::WriteOnly | QIODevice::Text))
-    {
-        QTextStream out(&file);
-        QVector<_customers>::iterator it;
-        for(it = qv_cus.begin(); it != qv_cus.end(); it++)
-        {
-            for (int j = 0; j < 6; j++)
-            {
-                std::this_thread::sleep_for( std::chrono::milliseconds(10) );
-                ui->progressBar_FIND->setValue(int( i*100/(current_row*6)) );
-                if(j == 0)
-                {
-                    out << "Name: " << it->getName() << " | ";
-                }
-                else if (j == 1)
-                {
-                    out << "DOB: " << it->getDOB() << " | ";
-                }
-                else if (j == 2)
-                {
-                    out << "Phone: " << it->getPhoneNumber() << " | ";
-                }
-                else if (j == 3)
-                {
-                    out << "Point: " << it->getPoint() << " | ";
-                }
-                else if (j == 4)
-                {
-                    out << "Date: " << it->getDate() << " | ";
-                }
-                else if (j == 5)
-                {
-                    out << "ID: " << it->getID() <<"\n";
-                }
-            }
-            i++;
-            out << "\n";
-        }
-    }
-    ui->progressBar_FIND->setValue(100);
-    ui->progressBar_FIND->hide();
-    file.close();
-}
+//void my_customer::on_pushButtonExportFile__MOD_clicked()
+//{
+//    ui->progressBar_FIND->setRange(0,100);
+//    ui->progressBar_FIND->show();
+//    ui->progressBar_FIND->setValue(0);
+//    QString text;
+//    int i = 0;
+//    int current_row = ui->tableWidget->rowCount();
+//    QFile file("demo_qt_write_file.txt");
+//    if (file.open(QIODevice::WriteOnly | QIODevice::Text))
+//    {
+//        QTextStream out(&file);
+//        QVector<_customers>::iterator it;
+//        for(it = qv_cus.begin(); it != qv_cus.end(); it++)
+//        {
+//            for (int j = 0; j < 6; j++)
+//            {
+//                std::this_thread::sleep_for( std::chrono::milliseconds(10) );
+//                ui->progressBar_FIND->setValue(int( i*100/(current_row*6)) );
+//                if(j == 0)
+//                {
+//                    out << "Name: " << it->getName() << " | ";
+//                }
+//                else if (j == 1)
+//                {
+//                    out << "DOB: " << it->getDOB() << " | ";
+//                }
+//                else if (j == 2)
+//                {
+//                    out << "Phone: " << it->getPhoneNumber() << " | ";
+//                }
+//                else if (j == 3)
+//                {
+//                    out << "Point: " << it->getPoint() << " | ";
+//                }
+//                else if (j == 4)
+//                {
+//                    out << "Date: " << it->getDate() << " | ";
+//                }
+//                else if (j == 5)
+//                {
+//                    out << "ID: " << it->getID() <<"\n";
+//                }
+//            }
+//            i++;
+//            out << "\n";
+//        }
+//    }
+//    ui->progressBar_FIND->setValue(100);
+//    ui->progressBar_FIND->hide();
+//    file.close();
+//}
 
 
 void my_customer::on_pushButton_RM_MOD_clicked()
 {
-    int opt = ui->comboBox->currentIndex();
-    switch( opt )
-    {
-    case 0:
-        remove_by_name(ui->lineEdit_NAME_FIND->text());
-        break;
-    case 1:
-        remove_by_phoneNumber(ui->lineEdit_NUMPHONE_FIND->text());
-        break;
-    };
+    remove_by_phoneNumber(ui->lineEdit_NUMPHONE_FIND->text());
+    ui->pushButton_RM_MOD->hide();
+    ui->pushButtonUpdateInfo->hide();
     refresh_customers_list();
-
+    clear_all_text_in_find_box();
 }
 
 
-void my_customer::on_pushButtonClearAllcustomer_clicked()
-{
-    qv_cus.clear();
-    refresh_customers_list();
-}
+//void my_customer::on_pushButtonClearAllcustomer_clicked()
+//{
+//    qv_cus.clear();
+//    refresh_customers_list();
+//}
 
 
-void my_customer::on_tableWidget_itemDoubleClicked(QTableWidgetItem *item)
-{
+//void my_customer::on_tableWidget_itemDoubleClicked(QTableWidgetItem *item)
+//{
 
-}
+//}
 
 
 void my_customer::on_tableWidget_cellDoubleClicked(int row, int column)
@@ -490,6 +484,10 @@ void my_customer::on_tableWidget_cellDoubleClicked(int row, int column)
     ui->lineEdit_DOB_FIND->setText(ui->tableWidget->item(cur_row, 1)->text());
     ui->lineEdit_POINT_FIND->setText(ui->tableWidget->item(cur_row, 3)->text());
     ui->lineEdit_ID_FIND->setText(ui->tableWidget->item(cur_row, 5)->text());
+
+    //------------------------------
+    ui->pushButton_RM_MOD->show();
+    ui->pushButtonUpdateInfo->show();
 }
 
 
@@ -500,6 +498,7 @@ void my_customer::on_pushButtonUpdateInfo_clicked()
     QString phone_number = ui->lineEdit_NUMPHONE_FIND->text();
     int point = ui->lineEdit_POINT_FIND->text().toInt();
     QString id = ui->lineEdit_ID_FIND->text();
+    //ui->tableWidget->item()
 
     QVector<_customers>::iterator it = qv_cus.begin();
     for(it = qv_cus.begin(); it != qv_cus.end(); it++)
@@ -514,7 +513,21 @@ void my_customer::on_pushButtonUpdateInfo_clicked()
         }
     }
     refresh_customers_list();
-    save_customers();
+    if(auto_save) save_customers();
+    ui->pushButton_RM_MOD->hide();
+    ui->pushButtonUpdateInfo->hide();
+    clear_all_text_in_find_box();
+}
 
+void my_customer::on_actionFactory_reset_triggered()
+{
+    qv_cus.clear();
+    refresh_customers_list();
+}
+
+
+void my_customer::on_actionExport_season_triggered()
+{
+    save_customers();
 }
 

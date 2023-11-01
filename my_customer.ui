@@ -20,7 +20,7 @@
       <x>20</x>
       <y>20</y>
       <width>411</width>
-      <height>281</height>
+      <height>311</height>
      </rect>
     </property>
     <property name="font">
@@ -35,7 +35,7 @@
      </font>
     </property>
     <property name="title">
-     <string>Add customer</string>
+     <string>Add customer:</string>
     </property>
     <property name="flat">
      <bool>false</bool>
@@ -278,7 +278,7 @@
       <x>470</x>
       <y>20</y>
       <width>471</width>
-      <height>301</height>
+      <height>311</height>
      </rect>
     </property>
     <property name="font">
@@ -290,7 +290,7 @@
      </font>
     </property>
     <property name="title">
-     <string>Find customer</string>
+     <string>Find customer:</string>
     </property>
     <widget class="QLabel" name="label_4">
      <property name="geometry">
@@ -474,39 +474,13 @@
      <property name="geometry">
       <rect>
        <x>40</x>
-       <y>280</y>
+       <y>281</y>
        <width>411</width>
-       <height>21</height>
+       <height>20</height>
       </rect>
      </property>
      <property name="value">
       <number>24</number>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="pushButton_RM_MOD">
-     <property name="geometry">
-      <rect>
-       <x>310</x>
-       <y>140</y>
-       <width>151</width>
-       <height>24</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Remove customer.</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="pushButtonClearAllcustomer">
-     <property name="geometry">
-      <rect>
-       <x>310</x>
-       <y>170</y>
-       <width>151</width>
-       <height>24</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Clear all customer</string>
      </property>
     </widget>
     <widget class="QLabel" name="label_12">
@@ -541,19 +515,6 @@
        <width>251</width>
        <height>31</height>
       </rect>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="pushButtonUpdateInfo">
-     <property name="geometry">
-      <rect>
-       <x>309</x>
-       <y>210</y>
-       <width>151</width>
-       <height>24</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Update info</string>
      </property>
     </widget>
     <widget class="QLabel" name="label_13">
@@ -595,9 +556,9 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>320</y>
+      <y>340</y>
       <width>1191</width>
-      <height>311</height>
+      <height>451</height>
      </rect>
     </property>
     <property name="font">
@@ -619,7 +580,7 @@
      <bool>false</bool>
     </property>
     <property name="title">
-     <string>List of customers</string>
+     <string>List of customers:</string>
     </property>
     <widget class="QTableWidget" name="tableWidget">
      <property name="enabled">
@@ -629,8 +590,8 @@
       <rect>
        <x>40</x>
        <y>30</y>
-       <width>921</width>
-       <height>251</height>
+       <width>1141</width>
+       <height>311</height>
       </rect>
      </property>
      <property name="font">
@@ -685,135 +646,109 @@
       </property>
      </column>
     </widget>
-    <widget class="QGroupBox" name="groupBox_SORT">
-     <property name="geometry">
-      <rect>
-       <x>990</x>
-       <y>30</y>
-       <width>171</width>
-       <height>171</height>
-      </rect>
-     </property>
-     <property name="title">
-      <string>Sort table:</string>
-     </property>
-     <widget class="QComboBox" name="comboBox_OPTION_SORT">
-      <property name="geometry">
-       <rect>
-        <x>20</x>
-        <y>80</y>
-        <width>131</width>
-        <height>24</height>
-       </rect>
-      </property>
-      <item>
-       <property name="text">
-        <string>Ascending</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Descending</string>
-       </property>
-      </item>
-     </widget>
-     <widget class="QComboBox" name="comboBox_KEY__SORT">
-      <property name="geometry">
-       <rect>
-        <x>20</x>
-        <y>40</y>
-        <width>131</width>
-        <height>24</height>
-       </rect>
-      </property>
-      <item>
-       <property name="text">
-        <string>by Name</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>by Accumulation Point</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Month of Birth</string>
-       </property>
-      </item>
-     </widget>
-     <widget class="QPushButton" name="pushButton__SORT">
-      <property name="geometry">
-       <rect>
-        <x>20</x>
-        <y>120</y>
-        <width>131</width>
-        <height>24</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Sort now!</string>
-      </property>
-     </widget>
-    </widget>
    </widget>
-   <widget class="QGroupBox" name="groupBox_MOD">
+   <widget class="QGroupBox" name="groupBox_SORT">
     <property name="geometry">
      <rect>
-      <x>990</x>
-      <y>20</y>
-      <width>221</width>
-      <height>271</height>
+      <x>950</x>
+      <y>40</y>
+      <width>191</width>
+      <height>291</height>
      </rect>
     </property>
     <property name="title">
-     <string>Modification</string>
+     <string>Sort table:</string>
     </property>
-    <widget class="QPushButton" name="pushButtonImportFile_MOD">
+    <widget class="QComboBox" name="comboBox_OPTION_SORT">
      <property name="geometry">
       <rect>
-       <x>10</x>
-       <y>70</y>
-       <width>201</width>
+       <x>20</x>
+       <y>80</y>
+       <width>151</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <item>
+      <property name="text">
+       <string>Ascending</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Descending</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QComboBox" name="comboBox_KEY__SORT">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>40</y>
+       <width>151</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <item>
+      <property name="text">
+       <string>by Name</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>by Accumulation Point</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Month of Birth</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QPushButton" name="pushButton__SORT">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>120</y>
+       <width>151</width>
        <height>24</height>
       </rect>
      </property>
      <property name="text">
-      <string>Load seasion.</string>
+      <string>Sort now!</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButtonExportFile__MOD">
+    <widget class="QPushButton" name="pushButton_RM_MOD">
      <property name="geometry">
       <rect>
-       <x>10</x>
-       <y>30</y>
-       <width>201</width>
+       <x>20</x>
+       <y>200</y>
+       <width>151</width>
        <height>24</height>
       </rect>
      </property>
      <property name="text">
-      <string>Save seasion.</string>
+      <string>Remove customer.</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButtonEDIT_MOD">
+    <widget class="QPushButton" name="pushButtonUpdateInfo">
      <property name="geometry">
       <rect>
-       <x>10</x>
-       <y>110</y>
-       <width>201</width>
+       <x>20</x>
+       <y>240</y>
+       <width>151</width>
        <height>24</height>
       </rect>
      </property>
      <property name="text">
-      <string>Edit information.</string>
+      <string>Update info</string>
      </property>
     </widget>
     <widget class="QPushButton" name="pushButton_PURCHASE_MOD">
      <property name="geometry">
       <rect>
-       <x>10</x>
-       <y>150</y>
-       <width>201</width>
+       <x>20</x>
+       <y>160</y>
+       <width>151</width>
        <height>24</height>
       </rect>
      </property>
@@ -825,7 +760,7 @@
    <zorder>groupBox_VIEWTABLE</zorder>
    <zorder>groupBox_FIND_CUS</zorder>
    <zorder>groupBox_ADD_CUS</zorder>
-   <zorder>groupBox_MOD</zorder>
+   <zorder>groupBox_SORT</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -842,6 +777,8 @@
     </property>
     <addaction name="actionImport_season"/>
     <addaction name="actionExport_season"/>
+    <addaction name="actionSet_path"/>
+    <addaction name="actionAuto_save"/>
    </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="title">
@@ -849,6 +786,7 @@
     </property>
     <addaction name="actionContact_us_now"/>
     <addaction name="actionOpen_guidebook"/>
+    <addaction name="actionFactory_reset"/>
    </widget>
    <addaction name="menuRefrence"/>
    <addaction name="menuHelp"/>
@@ -891,6 +829,32 @@
   <action name="actionOpen_guidebook">
    <property name="text">
     <string>Open guidebook.</string>
+   </property>
+  </action>
+  <action name="factory_rest">
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Factory reset.</string>
+   </property>
+  </action>
+  <action name="actionFactory_reset">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Factory reset.</string>
+   </property>
+  </action>
+  <action name="actionSet_path">
+   <property name="text">
+    <string>Set path.</string>
+   </property>
+  </action>
+  <action name="actionAuto_save">
+   <property name="text">
+    <string>Auto save.</string>
    </property>
   </action>
  </widget>

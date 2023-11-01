@@ -14,6 +14,7 @@
 #include <thread>
 #include <QMainWindow>
 #include <algorithm>
+#include <QMenuBar>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class my_customer; }
@@ -24,6 +25,7 @@ class my_customer : public QMainWindow
     Q_OBJECT
     QVector<_customers> qv_cus;
     QVector< QVector<_customers>::iterator > qv_search_result;
+    bool auto_save;//
 
 public:
     my_customer(QWidget *parent = nullptr);
@@ -76,25 +78,24 @@ private slots:
 
     void on_tableWidget_itemClicked(QTableWidgetItem *item);
 
-    void on_pushButtonDelete_clicked();
-
     void on_pushButtonCancel_clicked();
 
     void on_pushButton_CLOSE_SEARCH_RES_clicked();
 
     void on_pushButton_FIND_clicked();
 
-    void on_pushButtonExportFile__MOD_clicked();
-
     void on_pushButton_RM_MOD_clicked();
-
-    void on_pushButtonClearAllcustomer_clicked();
 
     void on_tableWidget_itemDoubleClicked(QTableWidgetItem *item);
 
     void on_tableWidget_cellDoubleClicked(int row, int column);
 
     void on_pushButtonUpdateInfo_clicked();
+
+    void on_actionFactory_reset_triggered();
+
+
+    void on_actionExport_season_triggered();
 
 private:
     Ui::my_customer *ui;
