@@ -94,6 +94,8 @@ private slots:
 
     void on_tableWidget_cellDoubleClicked(int row, int column);
 
+    void on_pushButtonUpdateInfo_clicked();
+
 private:
     Ui::my_customer *ui;
 

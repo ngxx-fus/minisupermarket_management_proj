@@ -323,7 +323,7 @@ void my_customer::on_pushButtonADD_clicked()
 //        err.setModal(true);
 //        err.exec();
     }
-
+    save_customers();
 }
 
 void my_customer::clear_all_text_in_add_box(){
@@ -341,6 +341,9 @@ void my_customer::clear_all_text_in_find_box(){
     ui->lineEdit_DOB_FIND->clear();
     ui->lineEdit_NAME_FIND->clear();
     ui->lineEdit_NUMPHONE_FIND->clear();
+    ui->lineEdit_ID_FIND->clear();
+    ui->lineEdit_POINT_FIND->clear();
+
     ui->progressBar_FIND->setValue(0);
     ui->progressBar_FIND->hide();
 }
@@ -482,8 +485,36 @@ void my_customer::on_tableWidget_cellDoubleClicked(int row, int column)
 {
     int cur_row = row;
     QString day, month, year;
-    ui->lineEdit_NAME_ADD->setText(ui->tableWidget->item(cur_row, 0)->text());
-    ui->lineEdit_NUMPHONE_ADD->setText(ui->tableWidget->item(cur_row, 2)->text());
-    ui->lineEdit_POINT_ADD->setText(ui->tableWidget->item(cur_row, 3)->text());
+    ui->lineEdit_NAME_FIND->setText(ui->tableWidget->item(cur_row, 0)->text());
+    ui->lineEdit_NUMPHONE_FIND->setText(ui->tableWidget->item(cur_row, 2)->text());
+    ui->lineEdit_DOB_FIND->setText(ui->tableWidget->item(cur_row, 1)->text());
+    ui->lineEdit_POINT_FIND->setText(ui->tableWidget->item(cur_row, 3)->text());
+    ui->lineEdit_ID_FIND->setText(ui->tableWidget->item(cur_row, 5)->text());
+}
+
+
+void my_customer::on_pushButtonUpdateInfo_clicked()
+{
+    QString name = ui->lineEdit_NAME_FIND->text();
+    QString dob = ui->lineEdit_DOB_FIND->text();
+    QString phone_number = ui->lineEdit_NUMPHONE_FIND->text();
+    int point = ui->lineEdit_POINT_FIND->text().toInt();
+    QString id = ui->lineEdit_ID_FIND->text();
+
+    QVector<_customers>::iterator it = qv_cus.begin();
+    for(it = qv_cus.begin(); it != qv_cus.end(); it++)
+    {
+        if(it->getID() == id)
+        {
+            it->setName(name);
+            it->setDOB(dob);
+            it->setPhoneNumber(phone_number);
+            it->setPoint(point);
+            break;
+        }
+    }
+    refresh_customers_list();
+    save_customers();
+
 }
 
