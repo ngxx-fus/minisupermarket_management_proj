@@ -1,11 +1,20 @@
-#include "my_customer.h"
+#include "minisupermarketmanagement.h"
+
 
 #include <QApplication>
+#include <string>
+using namespace std;
+
+
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    my_customer w;
+    MiniSupermarKetmanagement w;
+
     w.show();
     return a.exec();
+
+
+
 }

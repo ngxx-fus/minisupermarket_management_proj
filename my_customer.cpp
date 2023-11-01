@@ -4,8 +4,8 @@
 
 
 
-my_customer::my_customer(QWidget *parent)
-    : QMainWindow(parent)
+my_customer::my_customer(QDialog::QWidget *parent)
+    : QDialog(parent)
     , ui(new Ui::my_customer)
 {
     ui->setupUi(this);
@@ -291,9 +291,9 @@ void my_customer::on_pushButtonADD_clicked()
     int const dd = ui->spinBox_DAY_ADD->value();
     int const mm = ui->spinBox_MONTH_ADD->value();
     int const yyyy = ui->spinBox_YEAR_ADD->value();
-    #define cus_numphone ui->lineEdit_NUMPHONE_ADD->text()
-    #define cus_name     ui->lineEdit_NAME_ADD->text()
-    #define cus_point    ui->lineEdit_POINT_ADD->text().toInt()
+    QString cus_numphone = ui->lineEdit_NUMPHONE_ADD->text();
+    QString cus_name = ui->lineEdit_NAME_ADD->text();
+    int cus_point = ui->lineEdit_POINT_ADD->text().toInt();
 
     _time DOB;
     if(DOB.set_DDMMYYYY(dd, mm, yyyy) == false){

@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.5)
 
-project(CUSTOMER_MANAGEMENT VERSION 0.1 LANGUAGES CXX)
+project(MiniSupermarKetmanagement VERSION 0.1 LANGUAGES CXX)
 
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
@@ -14,55 +14,63 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 
 set(PROJECT_SOURCES
         main.cpp
-        my_customer.cpp
-        my_customer.h
-        my_customer.ui
+        minisupermarketmanagement.cpp
+        minisupermarketmanagement.h
+        minisupermarketmanagement.ui
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
-    qt_add_executable(CUSTOMER_MANAGEMENT
+    qt_add_executable(MiniSupermarKetmanagement
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
+        template_class.h templateclass.cpp
+        commodities.h commodities.cpp
+        managerproduct.h managerproduct.cpp managerproduct.ui
+        managerproduct.ui minisupermarketmanagement.ui
+        managerproduct.ui minisupermarketmanagement.ui
+        _time.h
+        my_customer.cpp
+        my_customer.h
+        my_customer.ui
 
         _customers.h
-        templateClass.h
-        _time.h
-        _adding_error.h
+         templateClass.h
 
-        _adding_error.ui
-        _added_customer_error.h  _added_customer_error.ui
-        _date_error.h  _date_error.ui
-        edit_info.h edit_info.cpp edit_info.ui
+         _time.h
+         _adding_error.h
 
+         _adding_error.ui
+         _added_customer_error.h  _added_customer_error.ui
+         _date_error.h  _date_error.ui
 
     )
 # Define target properties for Android with Qt 6 as:
-#    set_property(TARGET CUSTOMER_MANAGEMENT APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
+#    set_property(TARGET MiniSupermarKetmanagement APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
 #                 ${CMAKE_CURRENT_SOURCE_DIR}/android)
 # For more information, see https://doc.qt.io/qt-6/qt-add-executable.html#target-creation
 else()
     if(ANDROID)
-        add_library(CUSTOMER_MANAGEMENT SHARED
+        add_library(MiniSupermarKetmanagement SHARED
             ${PROJECT_SOURCES}
         )
 # Define properties for Android with Qt 5 after find_package() calls as:
 #    set(ANDROID_PACKAGE_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/android")
     else()
-        add_executable(CUSTOMER_MANAGEMENT
+        add_executable(MiniSupermarKetmanagement
             ${PROJECT_SOURCES}
         )
     endif()
 endif()
 
-target_link_libraries(CUSTOMER_MANAGEMENT PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
+target_link_libraries(MiniSupermarKetmanagement PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
 # If you are developing for iOS or macOS you should consider setting an
 # explicit, fixed bundle identifier manually though.
 if(${QT_VERSION} VERSION_LESS 6.1.0)
-  set(BUNDLE_ID_OPTION MACOSX_BUNDLE_GUI_IDENTIFIER com.example.CUSTOMER_MANAGEMENT)
+  set(BUNDLE_ID_OPTION MACOSX_BUNDLE_GUI_IDENTIFIER com.example.MiniSupermarKetmanagement)
 endif()
-set_target_properties(CUSTOMER_MANAGEMENT PROPERTIES
+set_target_properties(MiniSupermarKetmanagement PROPERTIES
     ${BUNDLE_ID_OPTION}
     MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
     MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
@@ -71,12 +79,12 @@ set_target_properties(CUSTOMER_MANAGEMENT PROPERTIES
 )
 
 include(GNUInstallDirs)
-install(TARGETS CUSTOMER_MANAGEMENT
+install(TARGETS MiniSupermarKetmanagement
     BUNDLE DESTINATION .
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
 )
 
 if(QT_VERSION_MAJOR EQUAL 6)
-    qt_finalize_executable(CUSTOMER_MANAGEMENT)
+    qt_finalize_executable(MiniSupermarKetmanagement)
 endif()

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>my_customer</class>
- <widget class="QMainWindow" name="my_customer">
+ <widget class="QDialog" name="my_customer">
   <property name="geometry">
    <rect>
     <x>0</x>
