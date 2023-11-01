@@ -150,6 +150,17 @@ void my_customer::remove_by_phoneNumber(QString cus_phoneNumer){
     qv_cus.erase(const_it);
 }
 
+void my_customer::remove_by_name(QString cus_name){
+    QVector<_customers>::iterator it = qv_cus.begin();
+    for(it = qv_cus.begin(); it != qv_cus.end(); it++){
+        if(it->getName() == cus_name) {
+            break;
+        }
+    }
+    QVector<_customers>::const_iterator const const_it = it;
+    qv_cus.erase(const_it);
+}
+
 ////mode  = 0 for acsending else descending
 //void my_customer::sort_by_name(bool _mode = 0){
 //    //name -> sdt
@@ -172,12 +183,42 @@ void my_customer::remove_by_phoneNumber(QString cus_phoneNumer){
 //    sort(qv_cus.begin(), qv_cus.end(), cmp);// [a,b)
 //}
 
-my_customer::~my_customer()
+void my_customer::load_customers()
 {
-    delete ui;
-}
+    QFile file("demo_qt_write_file.txt");
+    int current_row = 0;
 
-//---------------------------------------- declaration of private slot ----------------------------------------------
+    ui->progressBar_FIND->setRange(0,100);
+    ui->progressBar_FIND->show();
+    ui->progressBar_FIND->setValue( 0 );
+
+    if (file.open(QIODevice::ReadOnly  | QIODevice::Text))
+    {
+        QTextStream in(&file);
+
+        while (!in.atEnd())
+        {
+            QString line = in.readLine();
+            QStringList tokens = line.split(" | ");
+            if (tokens.size() == 6)
+            {
+                ui->progressBar_FIND->setValue( (++current_row)<80?current_row:80  );
+                QString name = tokens[0].section("Name: ", 1, 1);
+                QString dob = tokens[1].section("DOB: ", 1, 1);
+                QString phone_number = tokens[2].section("Phone: ", 1, 1);
+                unsigned int point = tokens[3].section("Point: ", 1, 1).toUInt();
+                QString date = tokens[4].section("Date: ", 1, 1);
+                QString id = tokens[5].section("ID: ", 1, 1);
+
+                qv_cus.push_back(_customers(point, phone_number, dob, name, date, id));
+                refresh_customers_list();
+            }
+        }
+    }
+    ui->progressBar_FIND->setValue( 100 );
+    ui->progressBar_FIND->hide();
+    file.close();
+}
 
 void my_customer::save_customers()
 {
@@ -236,43 +277,13 @@ void my_customer::save_customers()
     file.close();
 }
 
-void my_customer::load_customers()
+
+my_customer::~my_customer()
 {
-    QFile file("demo_qt_write_file.txt");
-    int current_row = 0;
-
-    ui->progressBar_FIND->setRange(0,100);
-    ui->progressBar_FIND->show();
-    ui->progressBar_FIND->setValue( 0 );
-
-    if (file.open(QIODevice::ReadOnly  | QIODevice::Text))
-    {
-        QTextStream in(&file);
-
-        while (!in.atEnd())
-        {
-            QString line = in.readLine();
-            QStringList tokens = line.split(" | ");
-            if (tokens.size() == 6)
-            {
-                ui->progressBar_FIND->setValue( (++current_row)<80?current_row:80  );
-                QString name = tokens[0].section("Name: ", 1, 1);
-                QString dob = tokens[1].section("DOB: ", 1, 1);
-                QString phone_number = tokens[2].section("Phone: ", 1, 1);
-                unsigned int point = tokens[3].section("Point: ", 1, 1).toUInt();
-                QString date = tokens[4].section("Date: ", 1, 1);
-                QString id = tokens[5].section("ID: ", 1, 1);
-
-                qv_cus.push_back(_customers(point, phone_number, dob, name, date, id));
-                refresh_customers_list();
-            }
-        }
-    }
-    ui->progressBar_FIND->setValue( 100 );
-    ui->progressBar_FIND->hide();
-    file.close();
+    delete ui;
 }
 
+//---------------------------------------- declaration of private slot ----------------------------------------------
 
 void my_customer::on_pushButtonADD_clicked()
 {
@@ -389,13 +400,14 @@ void my_customer::on_pushButtonExportFile__MOD_clicked()
     ui->progressBar_FIND->show();
     ui->progressBar_FIND->setValue(0);
     QString text;
+    int i = 0;
     int current_row = ui->tableWidget->rowCount();
     QFile file("demo_qt_write_file.txt");
-    if (file.open(QIODevice::WriteOnly | QIODevice::ReadWrite))
+    if (file.open(QIODevice::WriteOnly | QIODevice::Text))
     {
         QTextStream out(&file);
-
-        for (int i = 0; i < current_row; i++)
+        QVector<_customers>::iterator it;
+        for(it = qv_cus.begin(); it != qv_cus.end(); it++)
         {
             for (int j = 0; j < 6; j++)
             {
@@ -403,40 +415,75 @@ void my_customer::on_pushButtonExportFile__MOD_clicked()
                 ui->progressBar_FIND->setValue(int( i*100/(current_row*6)) );
                 if(j == 0)
                 {
-                    text = ui->tableWidget->item(i, j)->text();
-                    out << "Name: " << text << " | ";
+                    out << "Name: " << it->getName() << " | ";
                 }
                 else if (j == 1)
                 {
-                    text = ui->tableWidget->item(i, j)->text();
-                    out << "DOB: " << text << " | ";
+                    out << "DOB: " << it->getDOB() << " | ";
                 }
                 else if (j == 2)
                 {
-                    text = ui->tableWidget->item(i, j)->text();
-                    out << "Phone: " << text << " | ";
+                    out << "Phone: " << it->getPhoneNumber() << " | ";
                 }
                 else if (j == 3)
                 {
-                    text = ui->tableWidget->item(i, j)->text();
-                    out << "Point: " << text << " | ";
+                    out << "Point: " << it->getPoint() << " | ";
                 }
                 else if (j == 4)
                 {
-                    text = ui->tableWidget->item(i, j)->text();
-                    out << "Date: " << text << " | ";
+                    out << "Date: " << it->getDate() << " | ";
                 }
                 else if (j == 5)
                 {
-                    text = ui->tableWidget->item(i, j)->text();
-                    out << "ID: " << text <<"\n";
+                    out << "ID: " << it->getID() <<"\n";
                 }
             }
+            i++;
             out << "\n";
         }
     }
     ui->progressBar_FIND->setValue(100);
     ui->progressBar_FIND->hide();
     file.close();
+}
+
+
+void my_customer::on_pushButton_RM_MOD_clicked()
+{
+    int opt = ui->comboBox->currentIndex();
+    switch( opt )
+    {
+    case 0:
+        remove_by_name(ui->lineEdit_NAME_FIND->text());
+        break;
+    case 1:
+        remove_by_phoneNumber(ui->lineEdit_NUMPHONE_FIND->text());
+        break;
+    };
+    refresh_customers_list();
+
+}
+
+
+void my_customer::on_pushButtonClearAllcustomer_clicked()
+{
+    qv_cus.clear();
+    refresh_customers_list();
+}
+
+
+void my_customer::on_tableWidget_itemDoubleClicked(QTableWidgetItem *item)
+{
+
+}
+
+
+void my_customer::on_tableWidget_cellDoubleClicked(int row, int column)
+{
+    int cur_row = row;
+    QString day, month, year;
+    ui->lineEdit_NAME_ADD->setText(ui->tableWidget->item(cur_row, 0)->text());
+    ui->lineEdit_NUMPHONE_ADD->setText(ui->tableWidget->item(cur_row, 2)->text());
+    ui->lineEdit_POINT_ADD->setText(ui->tableWidget->item(cur_row, 3)->text());
 }
 

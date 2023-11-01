@@ -44,6 +44,8 @@ public:
 
     //remove a customer by phone number
     void remove_by_phoneNumber(QString cus_phoneNumber);
+    void remove_by_name(QString cus_name);
+
     //add a customer
     void add_customer(QString cus_name, QString cus_DOB, QString cus_phoneNumber, int cus_point);
     //view
@@ -63,7 +65,7 @@ public:
     ~my_customer();
 
 private slots:
-    void on_pushButtonExportFile_clicked();
+//    void on_pushButtonExportFile_clicked();
 
     void on_pushButtonADD_clicked();
 
@@ -80,6 +82,14 @@ private slots:
     void on_pushButton_FIND_clicked();
 
     void on_pushButtonExportFile__MOD_clicked();
+
+    void on_pushButton_RM_MOD_clicked();
+
+    void on_pushButtonClearAllcustomer_clicked();
+
+    void on_tableWidget_itemDoubleClicked(QTableWidgetItem *item);
+
+    void on_tableWidget_cellDoubleClicked(int row, int column);
 
 private:
     Ui::my_customer *ui;

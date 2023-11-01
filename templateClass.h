@@ -66,6 +66,10 @@ public:
         this->Date = newDate;
     }
 
+    virtual QString getDate(){
+        return this->Date;
+    }
+
     virtual void setDOB(QString newDOB){
         this->DOB = newDOB;
     }

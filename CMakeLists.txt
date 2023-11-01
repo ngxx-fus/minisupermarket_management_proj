@@ -32,6 +32,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         _adding_error.ui
         _added_customer_error.h  _added_customer_error.ui
         _date_error.h  _date_error.ui
+        edit_info.h edit_info.cpp edit_info.ui
 
 
     )
