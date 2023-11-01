@@ -1,32 +1,32 @@
 #ifndef MY_CUSTOMER_H
 #define MY_CUSTOMER_H
 
-#include <QDialog>
-#include "_added_customer_error.h"
-#include "_adding_error.h"
-#include "_date_error.h"
+#include <QListWidgetItem>
+#include <QtGui>
+//#include <QtWidgets>
+#include <QTableWidget>
+#include <QMainWindow>
+
 #include "_customers.h"
 #include "_time.h"
 #include <unistd.h>
 #include <chrono>
 #include <thread>
-//#include <QMainWindow>
+#include <QMainWindow>
 #include <algorithm>
-#include <QtWidgets/qtwidgetsglobal.h>
-#include <QtWidgets/qwidget.h>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class my_customer; }
 QT_END_NAMESPACE
 
-class my_customer : public QDialog
+class my_customer : public QMainWindow
 {
     Q_OBJECT
     QVector<_customers> qv_cus;
     QVector< QVector<_customers>::iterator > qv_search_result;
 
 public:
-    my_customer(QDialog::QWidget *parent = nullptr);
+    my_customer(QWidget *parent = nullptr);
 
     //if *inp* is empty, inp = "unknown" (for DOB)
     inline QString add_UKNOWN(QString inp){return (inp.size()==0 ? "unknown" : inp);}

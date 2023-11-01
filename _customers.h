@@ -9,10 +9,9 @@ private:
     int point;
     QString phoneNumber;
 public:
-    _customers(){};
+    _customers(){}
 
     _customers(QString new_name = "none", QString new_dob = "none", QString new_phoneNumber = "none", int new_point = 0)
-    //: QListWidgetItem(new_phoneNumber) //to notice QListWidgetItem know what will be showed in LIST
     {
         setName(new_name);
         setDOB(new_dob);
@@ -23,7 +22,6 @@ public:
 
     _customers(int new_point = 0, QString new_phoneNumber = "none",  QString new_dob = "none",
                QString new_name = "none", QString newDate = "none", QString newID = "none")
-    //: QListWidgetItem(new_phoneNumber) //to notice QListWidgetItem know what will be showed in LIST
     {
         setName(new_name);
         setDOB(new_dob);

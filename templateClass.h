@@ -1,12 +1,6 @@
 #ifndef TEMPLATECLASS_H
 #define TEMPLATECLASS_H
 
-
-#include <QListWidgetItem>
-#include <QtGui>
-#include <QtWidgets>
-#include <QTableWidget>
-#include <QMainWindow>
 #include <math.h>
 #include "_time.h"
 
@@ -17,20 +11,16 @@ class templateClass
 private:
     QString name;
     QString ID;
-    QString path; // path to file
     QString DOB;
     _time   latestModification; //latest modification
     QString Date;
 
 public:
 
-    templateClass(QString name = "none",
-                  QString ID = "none",
-                  QString path = "none")
+    templateClass()
     {
         this->name = name;
         this->ID = ID;
-        this->path = path;
         latestModification.set_current_date_time();
     }
 
@@ -95,14 +85,6 @@ public:
 
     virtual QString getID() {
         return this->ID;
-    }
-
-    virtual void setPath(QString newPath) {
-        this->path = newPath;
-    }
-
-    virtual QString getPath() {
-        return this->path;
     }
 
     void updateLatestModification()

@@ -4,8 +4,8 @@
 
 
 
-my_customer::my_customer(QDialog::QWidget *parent)
-    : QDialog(parent)
+my_customer::my_customer(QWidget *parent)
+    : QMainWindow(parent)
     , ui(new Ui::my_customer)
 {
     ui->setupUi(this);
@@ -57,7 +57,7 @@ void my_customer::refresh_customers_list(){
     int const   max_column = 6,
         max_row = (qv_cus.size()<20)?qv_cus.size():20;
 
-    ui->tableWidget->clear();
+    //ui->tableWidget->clear();
     set_layout_list_view(max_row, max_column);
 
     for(int r = qv_cus.size() - 1, ind = 0; r >= (qv_cus.size()<max_row?0:qv_cus.size()-max_row); r--, ind++)
@@ -291,23 +291,23 @@ void my_customer::on_pushButtonADD_clicked()
     int const dd = ui->spinBox_DAY_ADD->value();
     int const mm = ui->spinBox_MONTH_ADD->value();
     int const yyyy = ui->spinBox_YEAR_ADD->value();
-    QString cus_numphone = ui->lineEdit_NUMPHONE_ADD->text();
-    QString cus_name = ui->lineEdit_NAME_ADD->text();
-    int cus_point = ui->lineEdit_POINT_ADD->text().toInt();
+    #define cus_numphone ui->lineEdit_NUMPHONE_ADD->text()
+    #define cus_name     ui->lineEdit_NAME_ADD->text()
+    #define cus_point    ui->lineEdit_POINT_ADD->text().toInt()
 
     _time DOB;
     if(DOB.set_DDMMYYYY(dd, mm, yyyy) == false){
-        _date_error _d;
-        _d.setModal(true);
-        _d.exec();
+//        _date_error _d;
+//        _d.setModal(true);
+//        _d.exec();
         return;
     }
 
     if( !cus_numphone.size() || !cus_name.size() )
     {
-        _adding_error noti(this);
-        noti.setModal(true);
-        noti.exec();
+//        _adding_error noti(this);
+//        noti.setModal(true);
+//        noti.exec();
         return;
     }
 
@@ -319,9 +319,9 @@ void my_customer::on_pushButtonADD_clicked()
         refresh_customers_list();
         clear_all_text_in_add_box();
     }else{
-        _added_customer_error err(this);
-        err.setModal(true);
-        err.exec();
+//        _added_customer_error err(this);
+//        err.setModal(true);
+//        err.exec();
     }
 
 }
