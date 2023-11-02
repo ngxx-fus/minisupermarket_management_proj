@@ -6,15 +6,15 @@
 //#include <QtWidgets>
 #include <QTableWidget>
 #include <QMainWindow>
-
-#include "_customers.h"
-#include "_time.h"
 #include <unistd.h>
 #include <chrono>
 #include <thread>
 #include <QMainWindow>
 #include <algorithm>
 #include <QMenuBar>
+
+#include "_customers.h"
+#include "_time.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class my_customer; }
@@ -49,7 +49,6 @@ public:
 
     //remove a customer by phone number
     void remove_by_phoneNumber(QString cus_phoneNumber);
-    void remove_by_name(QString cus_name);
 
     //add a customer
     void add_customer(QString cus_name, QString cus_DOB, QString cus_phoneNumber, int cus_point);
@@ -76,8 +75,6 @@ private slots:
 
     void on_tableWidget_cellClicked(int row, int column);
 
-    void on_tableWidget_itemClicked(QTableWidgetItem *item);
-
     void on_pushButtonCancel_clicked();
 
     void on_pushButton_CLOSE_SEARCH_RES_clicked();
@@ -86,14 +83,11 @@ private slots:
 
     void on_pushButton_RM_MOD_clicked();
 
-    void on_tableWidget_itemDoubleClicked(QTableWidgetItem *item);
-
     void on_tableWidget_cellDoubleClicked(int row, int column);
 
     void on_pushButtonUpdateInfo_clicked();
 
     void on_actionFactory_reset_triggered();
-
 
     void on_actionExport_season_triggered();
 
