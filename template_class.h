@@ -1,5 +1,6 @@
 #ifndef TEMPLATECLASS_H
 #define TEMPLATECLASS_H
+#include "_time.h"
 
 #include <QListWidgetItem>
 #include <QString>
@@ -9,22 +10,55 @@ class templateClass : public QListWidgetItem {
 private:
     QString name;
     QString ID;
-    QString Path;
-
+    QString path; // path to file
+    QString DOB;
+    _time   latestModification; //latest modification
+    QString Date;
 public:
-    templateClass(){}
 
-    templateClass(QString name,QString ID ): name(name), ID(ID) {}
+    templateClass(QString name = "none",
+                  QString ID = "none",
+                  QString path = "none")
+    {
+        this->name = name;
+        this->ID = ID;
+        this->path = path;
+        latestModification.set_current_date_time();
+    }
 
-    templateClass(QString defaultName, QString defaultID, QString defaultPath);
 
     ~templateClass(){}
 
-   void setName(QString newName) {
+    //format: YYYYMMDDHHMMSS - MM 1st is month,  MM 2nd is minute
+    QString generate_ID(QString text = ""){
+        static int count_t = 1;
+        if(count_t > 100001) count_t  = 0;
+        QString res;
+        _time _t;
+        _t.set_current_date_time();//set current time
+        res += _t.get_year() + _t.get_month() + _t.get_day();
+        res.push_back(QChar('.'));
+        res += _t.get_hour() + _t.get_minute() + _t.get_second();
+        res.push_back(QChar('.'));
+        res += _t.int_to_QString((count_t = (++count_t*123)%100001));
+        if(text.size()){
+            res.push_back(QChar('.'));
+            res += text;
+        }
+        return res;
+    }
+    virtual void setDate(QString newDate){
+        this->Date = newDate;
+    }
+
+    virtual QString getDate(){
+        return this->Date;
+    }
+    void setName(QString newName) {
         this->name = newName;
     }
 
-    QString getName() const   {
+    QString getName() const {
         return this->name;
 
     }
@@ -38,12 +72,30 @@ public:
     }
 
     virtual void setPath(QString newPath) {
-        Path = newPath;
+        path = newPath;
     }
 
     virtual QString getPath() {
-        return Path;
+        return path;
     }
+
+    virtual void setDOB(QString newDOB){
+        this->DOB = newDOB;
+    }
+
+    //date of birth
+    virtual QString getDOB(){
+        return this->DOB;
+    }
+    void updateLatestModification()
+    {
+        this->latestModification.set_current_date_time();
+    }
+
+    _time getLatestModification(){
+        return this->latestModification;
+    }
+
 };
 
 

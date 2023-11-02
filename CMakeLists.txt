@@ -23,14 +23,24 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(MiniSupermarKetmanagement
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
-        _customers.h templateclass.cpp
+        template_class.h templateclass.cpp
         commodities.h commodities.cpp
         managerproduct.h managerproduct.cpp managerproduct.ui
         managerproduct.ui minisupermarketmanagement.ui
         managerproduct.ui minisupermarketmanagement.ui
-
+        invoice.h invoice.cpp
+        InvoiceManagement.cpp InvoiceManagement.h InvoiceManagement.ui
+        my_customer.h my_customer.cpp my_customer.ui
         _time.h
 
+        _add_customer.h _add_customer.cpp _add_customer.ui
+
+        edit_info.h edit_info.cpp edit_info.ui
+        _customer_list.h _customer_list.cpp
+        _customers.h _customers.cpp
+        _added_customer_error.h _added_customer_error.cpp _added_customer_error.ui
+        _adding_error.h _adding_error.cpp _adding_error.ui
+        _date_error.h _date_error.cpp _date_error.ui
 
     )
 # Define target properties for Android with Qt 6 as:

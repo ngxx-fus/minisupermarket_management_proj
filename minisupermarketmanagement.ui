@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Manager Product</string>
+     <string>Manager Commodites</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_2">
@@ -37,7 +37,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Manager Product</string>
+     <string>Manager Custormer</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_3">
@@ -50,19 +50,9 @@
      </rect>
     </property>
     <property name="text">
-     <string>Manager Product</string>
+     <string>Bill</string>
     </property>
    </widget>
-  </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>600</width>
-     <height>21</height>
-    </rect>
-   </property>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>

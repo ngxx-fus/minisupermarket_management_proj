@@ -14,7 +14,7 @@ private:
     int _second, _minute, _hour;
 public:
 
-    QString int_to_QString(int num, int fill_zero = 0) const {
+    QString int_to_QString(int num, int fill_zero = 0){
         static QChar _convert_QChar[10] = {'0', '1', '2', '3','4','5','6','7','8','9'};
         QString res;
         while(num){
@@ -28,7 +28,7 @@ public:
     }
 
     //set date as the current
-    void set_current_date() const {
+    void set_current_date(){
         time_t theTime = time(NULL);
         struct tm *aTime = localtime(&theTime);
         _day = aTime->tm_mday;
@@ -37,7 +37,7 @@ public:
     }
 
     //set time as the current
-    void set_current_time() const {
+    void set_current_time(){
         time_t theTime = time(NULL);
         struct tm *aTime = localtime(&theTime);
         _hour = aTime->tm_hour;
@@ -46,13 +46,13 @@ public:
     }
 
     //set time and date as current
-    void set_current_date_time() const {
+    void set_current_date_time(){
         set_current_date();
         set_current_time();
     }
 
     _time(int _day = 1, int _month = 1, int _year = 1901,
-          int _hour = 0, int _minute = 0, int _second = 0) const {
+          int _hour = 0, int _minute = 0, int _second = 0){
         this->_day = _day;
         this->_month = _month;
         this->_year = _year;
@@ -61,10 +61,10 @@ public:
         this->_second = _second;
     }
 
-    bool check_DDMMYYYY() const {
-        #define DD _day
-        #define MM _month
-        #define YYYY _year
+    bool check_DDMMYYYY(){
+#define DD _day
+#define MM _month
+#define YYYY _year
         if( DD < 1 || MM < 1 || YYYY < 1901 || YYYY > 2101 || MM > 12) return false;
         QVector<int> normal_year = {0, /*Jan*/ 31, /*Feb*/28, /*Mar*/31, /*Apr*/30, /*May*/31, /*Jun*/30,
                                     /*Jul*/31, /*Aug*/31, /*Sep*/30, /*Oct*/31, /*Nov*/30, /*Dec*/31};
@@ -73,12 +73,12 @@ public:
                                   /*Jul*/31, /*Aug*/31, /*Sep*/30, /*Oct*/31, /*Nov*/30, /*Dec*/31};
 
         if( ((YYYY % 100 != 0)  && (YYYY % 4 == 0)) || (YYYY % 400 == 0))
-        return bool(leap_year.at(MM) >= DD);
+            return bool(leap_year.at(MM) >= DD);
 
         return bool(normal_year.at(MM) >= DD);
     }
 
-    bool check_HHMMSS() const {
+    bool check_HHMMSS(){
         int &HH = _hour, &MM = _minute, &SS = _second;
         if( HH < 0 || HH > 23 || MM < 0 || MM > 59 || SS < 0 || SS > 59)
             return false;
@@ -86,22 +86,26 @@ public:
     }
 
     //the range of DDMMYYYY between 1901->2099
-    bool set_DDMMYYYY(int DD, int MM, int YYYY) const {
+    bool set_DDMMYYYY(int DD, int MM, int YYYY){
         if( _time(DD, MM, YYYY).check_DDMMYYYY() == false ) return false;
-        _day = DD, _month = MM, _year = YYYY;
+        this->_day = DD,
+            this->_month = MM,
+            this->_year = YYYY;
         return true;
     }
 
     //
-    bool set_HHMMSS(int HH, int MM, int SS) const {
+    bool set_HHMMSS(int HH, int MM, int SS){
         if( _time( 1, 1, 1901, HH, MM, SS).check_HHMMSS() == false ) return false;
-        _hour = HH, _minute = MM, _second = SS;
+        this->_hour = HH,
+            this->_minute = MM,
+            this->_second = SS;
         return true;
     }
 
 
     //format: DD/MM/YYYY
-    QString get_date() const {
+    QString get_date(){
         QString _result;
 
         //DAY
@@ -120,7 +124,7 @@ public:
     }
 
     //format: HH:MM:SS
-    QString get_time() const {
+    QString get_time(){
         QString _result;
 
         //HOUR
@@ -136,33 +140,33 @@ public:
 
         return _result;
     }
-    QString get_day() const {
+    QString get_day(){
         return int_to_QString(_day, 2);
     }
-    QString get_month() const {
+    QString get_month(){
         return int_to_QString(_month, 2);
     }
-    QString get_year() const {
+    QString get_year(){
         return int_to_QString(_year, 4);
     }
-    QString get_hour() const {
+    QString get_hour(){
         return int_to_QString(_hour, 2);
     }
-    QString get_minute() const {
+    QString get_minute(){
         return int_to_QString(_minute, 2);
     }
-    QString get_second() const {
+    QString get_second(){
         return int_to_QString(_second, 2);
     }
 
-    int get_day_int() const {return _day;}
-    int get_month_int() const {return _day;}
-    int get_year_int() const {return _day;}
-    int get_hour_int() const {return _day;}
-    int get_minute_int() const {return _day;}
-    int get_second_int() const {return _day;}
+    int get_day_int(){return _day;}
+    int get_month_int(){return _day;}
+    int get_year_int(){return _day;}
+    int get_hour_int(){return _day;}
+    int get_minute_int(){return _day;}
+    int get_second_int(){return _day;}
 
-    _time operator = (_time o) const {
+    _time operator = (_time o){
         _day = o.get_day_int();
         _month = o.get_month_int();
         _year = o.get_year_int();
@@ -170,18 +174,6 @@ public:
         _minute = o.get_minute_int();
         _second = o.get_second_int();
         return o;
-    }
-    bool operator < (_time o) const {
-        if( this->get_date() == o.get_date() ){
-            return this->get_time() < o.get_time();
-        }
-        return this->get_date() < o.get_date();
-    }
-
-    bool operator > (_time o) const {
-        if(this->get_date() == o.get_date())
-            return this->get_time() > o.get_time();
-        return this->get_date() > o.get_date();
     }
 
     //the end of _time class!

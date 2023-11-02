@@ -14,7 +14,7 @@ class ManagerProduct : public QDialog
     Q_OBJECT
 
 public:
-     ManagerProduct(QWidget *parent, bool& hasReadFileFlag);
+     ManagerProduct(QWidget *parent);
     ~ManagerProduct();
 
 
@@ -29,6 +29,14 @@ private slots:
 
 
     void on_btnSearch_clicked();
+
+    void on_radioButton_clicked();
+
+    void on_radioButton_2_clicked();
+
+    void on_pushButton_2_clicked();
+
+    void on_pushButton_3_clicked();
 
 private:
     Ui::ManagerProduct *ui;

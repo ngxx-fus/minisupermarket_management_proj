@@ -24,29 +24,110 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QDialogButtonBox" name="buttonBox">
-   <property name="geometry">
-    <rect>
-     <x>810</x>
-     <y>660</y>
-     <width>171</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="orientation">
-    <enum>Qt::Horizontal</enum>
-   </property>
-   <property name="standardButtons">
-    <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
-   </property>
-  </widget>
+  <property name="styleSheet">
+   <string notr="true">QPushButton#pushButton {
+                   background-color: #0078A8; 
+                    color: white;
+                    border: 2px solid #0078A8; 
+                   border-radius: 5px; 
+                   padding: 5px 10px;
+                   font-weight: bolder;
+                   }
+QPushButton#pushButton_3 {
+                   background-color: #0078A8; 
+                    color: white;
+                    border: 2px solid #0078A8; 
+                   border-radius: 5px; 
+                   padding: 5px 10px;
+                  font-weight: bolder;
+                   }
+QPushButton#pushButton_2{
+                   background-color: #0078A8; 
+                    color: white;
+                    border: 2px solid #0078A8; 
+                   border-radius: 5px; 
+                   padding: 5px 10px;
+font-weight: bolder;
+                   }
+QPushButton#btnSearch{
+                   background-color: #0078A8; 
+                    color: white;
+                    border: 2px solid #0078A8; 
+                   border-radius: 5px; 
+                   padding: 5px 10px;
+font-weight: bolder;
+                   }
+QLineEdit#txtSearchID{
+background-color: #FFFFFF; /* Đặt màu nền là trắng */
+    border-radius: 5px; /* Bo góc */
+    padding: 5px; /* Đặt đệm */
+    color: #000000; /* Đặt màu văn bản là màu đen */
+}
+QLineEdit#txtID{
+background-color: #FFFFFF; /* Đặt màu nền là trắng */
+    border-radius: 5px; /* Bo góc */
+    padding: 5px; /* Đặt đệm */
+    color: #000000; /* Đặt màu văn bản là màu đen */
+}                 
+QLineEdit#txtName{
+
+background-color: #FFFFFF; /* Đặt màu nền là trắng */
+    border-radius: 5px; /* Bo góc */
+    padding: 5px; /* Đặt đệm */
+    color: #000000; /* Đặt màu văn bản là màu đen */
+}      
+QLineEdit#txtAmount{
+
+background-color: #FFFFFF; /* Đặt màu nền là trắng */
+    border-radius: 5px; /* Bo góc */
+    padding: 5px; /* Đặt đệm */
+    color: #000000; /* Đặt màu văn bản là màu đen */
+
+}      
+QLineEdit#txtPrice{
+
+background-color: #FFFFFF; /* Đặt màu nền là trắng */
+    border-radius: 5px; /* Bo góc */
+    padding: 5px; /* Đặt đệm */
+    color: #000000; /* Đặt màu văn bản là màu đen */
+}    
+QLineEdit#txtUpdateAmount{
+
+background-color: #FFFFFF; /* Đặt màu nền là trắng */
+    border-radius: 5px; /* Bo góc */
+    padding: 5px; /* Đặt đệm */
+    color: #000000; /* Đặt màu văn bản là màu đen */
+}    
+QLineEdit#txtSearch
+{
+
+background-color: #FFFFFF; /* Đặt màu nền là trắng */
+    border-radius: 5px; /* Bo góc */
+    padding: 5px; /* Đặt đệm */
+    color: #000000; /* Đặt màu văn bản là màu đen */
+}   
+QDialog#ManagerProduct
+{
+
+   background-color: #87CEFA; /* Đặt màu nền 8472FF là trắng */
+    color: #000000; /* Đặt màu văn bản là màu đen */
+}  
+QTableWidget#tableWidget
+{
+
+   background-color: #FFFFFF; /* Đặt màu nền là trắng */
+    border-radius: 10px; /* Bo góc */
+    padding: 5px; /* Đặt đệm */
+    color: #000000; /* Đặt màu văn bản là màu đen */
+}  </string>
+  </property>
   <widget class="QTableWidget" name="tableWidget">
    <property name="geometry">
     <rect>
      <x>20</x>
      <y>430</y>
      <width>961</width>
-     <height>221</height>
+     <height>241</height>
     </rect>
    </property>
    <property name="sizePolicy">
@@ -103,32 +184,23 @@
     <enum>Qt::PreventContextMenu</enum>
    </property>
    <property name="title">
-    <string>Add and Edit</string>
+    <string>Add Commodities</string>
    </property>
-   <widget class="QPushButton" name="btnrepair">
-    <property name="geometry">
-     <rect>
-      <x>400</x>
-      <y>340</y>
-      <width>121</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Edit Commodities </string>
-    </property>
-   </widget>
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>280</x>
+      <x>390</x>
       <y>340</y>
-      <width>111</width>
+      <width>131</width>
       <height>31</height>
      </rect>
     </property>
     <property name="text">
      <string>Add Commodities</string>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>../../../Users/hagia/Downloads/qtc++/add-folder.svg</normaloff>../../../Users/hagia/Downloads/qtc++/add-folder.svg</iconset>
     </property>
    </widget>
    <widget class="QLineEdit" name="txtID">
@@ -227,16 +299,6 @@
      <string>Amount of Commodities:</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="txtDate">
-    <property name="geometry">
-     <rect>
-      <x>200</x>
-      <y>190</y>
-      <width>321</width>
-      <height>31</height>
-     </rect>
-    </property>
-   </widget>
    <widget class="QLabel" name="label_7">
     <property name="geometry">
      <rect>
@@ -257,16 +319,6 @@
     </property>
     <property name="text">
      <string>Date of Commodities:</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="txtDateExp">
-    <property name="geometry">
-     <rect>
-      <x>200</x>
-      <y>240</y>
-      <width>321</width>
-      <height>31</height>
-     </rect>
     </property>
    </widget>
    <widget class="QLabel" name="label_8">
@@ -323,6 +375,144 @@
      </rect>
     </property>
    </widget>
+   <widget class="QComboBox" name="comboBox">
+    <property name="geometry">
+     <rect>
+      <x>360</x>
+      <y>190</y>
+      <width>51</width>
+      <height>21</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="comboBox_2">
+    <property name="geometry">
+     <rect>
+      <x>240</x>
+      <y>190</y>
+      <width>51</width>
+      <height>21</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="comboBox_3">
+    <property name="geometry">
+     <rect>
+      <x>470</x>
+      <y>190</y>
+      <width>51</width>
+      <height>21</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>200</x>
+      <y>190</y>
+      <width>31</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Date:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_10">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>190</y>
+      <width>41</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Month:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_11">
+    <property name="geometry">
+     <rect>
+      <x>440</x>
+      <y>190</y>
+      <width>31</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Year:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_23">
+    <property name="geometry">
+     <rect>
+      <x>440</x>
+      <y>250</y>
+      <width>31</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Year:</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="comboBox_8">
+    <property name="geometry">
+     <rect>
+      <x>240</x>
+      <y>250</y>
+      <width>51</width>
+      <height>21</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="comboBox_9">
+    <property name="geometry">
+     <rect>
+      <x>470</x>
+      <y>250</y>
+      <width>51</width>
+      <height>21</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_21">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>250</y>
+      <width>41</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Month:</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="comboBox_7">
+    <property name="geometry">
+     <rect>
+      <x>360</x>
+      <y>250</y>
+      <width>51</width>
+      <height>21</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_22">
+    <property name="geometry">
+     <rect>
+      <x>200</x>
+      <y>250</y>
+      <width>31</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Date:</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QGroupBox" name="groupBox_2">
    <property name="geometry">
@@ -353,6 +543,10 @@
     <property name="text">
      <string>Search</string>
     </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>../../../Users/hagia/Downloads/qtc++/loupe.png</normaloff>../../../Users/hagia/Downloads/qtc++/loupe.png</iconset>
+    </property>
    </widget>
    <widget class="QLineEdit" name="txtSearch">
     <property name="geometry">
@@ -376,6 +570,10 @@
     <property name="text">
      <string>Delete Commodities</string>
     </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>../../../Users/hagia/Downloads/qtc++/bin.png</normaloff>../../../Users/hagia/Downloads/qtc++/bin.png</iconset>
+    </property>
    </widget>
    <widget class="QLabel" name="label_2">
     <property name="geometry">
@@ -396,7 +594,7 @@
      </font>
     </property>
     <property name="text">
-     <string>Name of Commodities</string>
+     <string>ID of Commodities</string>
     </property>
    </widget>
   </widget>
@@ -450,54 +648,102 @@
      <string>Decreasing</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="btncomfirm">
+  </widget>
+  <widget class="QGroupBox" name="groupBox_4">
+   <property name="geometry">
+    <rect>
+     <x>570</x>
+     <y>40</y>
+     <width>411</width>
+     <height>131</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>Update Commodities</string>
+   </property>
+   <widget class="QLabel" name="label_12">
     <property name="geometry">
      <rect>
-      <x>320</x>
-      <y>70</y>
-      <width>80</width>
-      <height>24</height>
+      <x>10</x>
+      <y>30</y>
+      <width>141</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+      <italic>false</italic>
+      <bold>true</bold>
+      <underline>false</underline>
+      <strikeout>false</strikeout>
+     </font>
+    </property>
+    <property name="text">
+     <string>ID of Commodities:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_13">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>90</y>
+      <width>161</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+      <italic>false</italic>
+      <bold>true</bold>
+      <underline>false</underline>
+      <strikeout>false</strikeout>
+     </font>
+    </property>
+    <property name="text">
+     <string>Amount of Commodities:</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="txtUpdateAmount">
+    <property name="geometry">
+     <rect>
+      <x>170</x>
+      <y>30</y>
+      <width>211</width>
+      <height>31</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="txtSearchID">
+    <property name="geometry">
+     <rect>
+      <x>171</x>
+      <y>90</y>
+      <width>121</width>
+      <height>31</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_3">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>90</y>
+      <width>101</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="text">
-     <string>Comfirm</string>
+     <string>Update</string>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>../../../Users/hagia/Downloads/qtc++/check-mark.png</normaloff>../../../Users/hagia/Downloads/qtc++/check-mark.png</iconset>
     </property>
    </widget>
   </widget>
  </widget>
  <resources/>
- <connections>
-  <connection>
-   <sender>buttonBox</sender>
-   <signal>accepted()</signal>
-   <receiver>ManagerProduct</receiver>
-   <slot>accept()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>248</x>
-     <y>254</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>157</x>
-     <y>274</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>buttonBox</sender>
-   <signal>rejected()</signal>
-   <receiver>ManagerProduct</receiver>
-   <slot>reject()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>316</x>
-     <y>260</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>286</x>
-     <y>274</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>
