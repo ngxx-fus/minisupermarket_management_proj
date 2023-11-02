@@ -87,7 +87,6 @@ private slots:
 
     void on_pushButtonClearAllcustomer_clicked();
 
-    void on_tableWidget_itemClicked();
     void on_tableWidget_cellDoubleClicked(int row, int column);
 
 private:
