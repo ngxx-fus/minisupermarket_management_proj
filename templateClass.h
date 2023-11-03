@@ -6,6 +6,28 @@
 
 using namespace std ;
 
+inline QString string_standardizing(QString inp){
+    QString res;
+    bool flag = false;
+    for(QChar qc:inp){
+        if(qc == ' ') {//"   hdhdhe   ah      hshsh   "
+            if(flag  == false)
+                continue;
+            else {
+                flag = false;
+                res.push_back(' ');
+            }
+        }else{
+            if(flag  == false){
+                flag = true;
+                res.push_back(qc);
+            }else
+                res.push_back(qc);
+        }
+    }
+    return res;
+}
+
 class templateClass
 {
 private:
@@ -56,7 +78,7 @@ public:
         this->Date = newDate;
     }
 
-    virtual QString getDate(){
+    virtual QString getDate() const  {
         return this->Date;
     }
 
@@ -65,7 +87,7 @@ public:
     }
 
     //date of birth
-    virtual QString getDOB(){
+    virtual QString getDOB() const {
         return this->DOB;
     }
 
@@ -74,7 +96,7 @@ public:
         this->name = newName;
     }
 
-    virtual QString getName() {
+    virtual QString getName() const {
         return this->name;
 
     }

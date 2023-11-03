@@ -13,7 +13,8 @@ public:
 
     _customers(QString new_name = "none", QString new_dob = "none", QString new_phoneNumber = "none", int new_point = 0)
     {
-        setName(new_name);
+
+        setName(string_standardizing(new_name));
         setDOB(new_dob);
         setPhoneNumber(new_phoneNumber);
         setPoint(new_point);
@@ -23,7 +24,7 @@ public:
     _customers(int new_point = 0, QString new_phoneNumber = "none",  QString new_dob = "none",
                QString new_name = "none", QString newDate = "none", QString newID = "none")
     {
-        setName(new_name);
+        setName(string_standardizing(new_name));
         setDOB(new_dob);
         setPhoneNumber(new_phoneNumber);
         setPoint(new_point);
@@ -37,15 +38,15 @@ public:
     }
 
     void setPoint(int point){
-
+        this->updateLatestModification();
         this->point = point;
     }
 
-    QString getPhoneNumber(){
+    QString getPhoneNumber() const {
         return this->phoneNumber;
     }
 
-    int getPoint(){
+    int getPoint() const {
         return this->point;
     }
 
@@ -58,6 +59,14 @@ public:
           )
             return false;
         return true;
+    }
+
+    _customers operator = (_customers o){
+        this->getName() = o.getName(),
+        this->getID() = o.getID(),
+        this->getPhoneNumber() = o.getPhoneNumber(),
+        this->getDOB() = o.getDOB();
+        return o;
     }
 };
 

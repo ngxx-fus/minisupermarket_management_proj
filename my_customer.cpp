@@ -18,8 +18,6 @@ my_customer::my_customer(QWidget *parent)
     refresh_customers_list();
 }
 
-
-
 void my_customer::set_layout_list_view(int const max_row, int const max_column){
     ui->tableWidget->setRowCount(max_row);
     ui->tableWidget->setColumnCount(max_column);
@@ -119,9 +117,9 @@ QVector<_customers>::iterator my_customer::find_by_PhoneNumber(QString key_Phone
 QVector< QVector<_customers>::iterator > my_customer::find_by_name(QString key_Name)
 {
     QVector<_customers>::iterator it;
+    key_Name = string_standardizing(key_Name);
     QVector< QVector<_customers>::iterator > qv_it;
-        if(!key_Name.size())return qv_it;
-    bool found_it = false;
+    if(!key_Name.size())return qv_it;
     ui->progressBar_FIND->show();
     ui->progressBar_FIND->setRange(0, 100);
     int count_ = 0, all_ = qv_cus.size();
@@ -242,6 +240,8 @@ void my_customer::save_customers()
     ui->progressBar_FIND->hide();
     file.close();
 }
+
+
 
 
 my_customer::~my_customer()
@@ -418,5 +418,19 @@ void my_customer::on_actionFactory_reset_triggered()
 void my_customer::on_actionExport_season_triggered()
 {
     save_customers();
+}
+
+
+void my_customer::on_pushButton__SORT_clicked()
+{
+    switch( ui->comboBox_KEY__SORT->currentIndex() ){
+    case 0:
+        sort_by_name( ui->comboBox_OPTION_SORT->currentIndex() );
+        break;
+    case 1:
+        sort_by_accumulationPoint( ui->comboBox_OPTION_SORT->currentIndex() );
+        break;
+    };
+    refresh_customers_list();
 }
 

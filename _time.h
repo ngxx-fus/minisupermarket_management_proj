@@ -176,6 +176,23 @@ public:
         return o;
     }
 
+    bool operator < (_time o){
+        int pre_cmp = this->get_date().compare(o.get_date()) == 0;
+        if( pre_cmp == 0 ){
+            return this->get_time().compare(o.get_time()) < 0;
+        }
+        return pre_cmp < 0;
+    }
+
+    bool operator > (_time o){
+        int pre_cmp = this->get_date().compare(o.get_date());
+        if(  pre_cmp == 0 ){
+            return this->get_time().compare(o.get_time()) > 0;
+        }
+        return pre_cmp > 0;
+    }
+
+
     //the end of _time class!
 };
 

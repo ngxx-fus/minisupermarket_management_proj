@@ -3,7 +3,7 @@
 
 #include <QListWidgetItem>
 #include <QtGui>
-//#include <QtWidgets>
+#include <QtWidgets>
 #include <QTableWidget>
 #include <QMainWindow>
 #include <unistd.h>
@@ -26,6 +26,7 @@ class my_customer : public QMainWindow
     QVector<_customers> qv_cus;
     QVector< QVector<_customers>::iterator > qv_search_result;
     bool auto_save;//
+        QString DOB;
 
 public:
     my_customer(QWidget *parent = nullptr);
@@ -38,12 +39,12 @@ public:
     QVector<_customers>::iterator find_by_ID(QString key_ID);
     //return a vector of QVector<_customers>::iterator consist of all elements that have name = key_Name
     QVector< QVector<_customers>::iterator > find_by_name(QString key_Name);
+
     //set up layout of list of customers
     void set_layout_list_view(int const max_row, int const max_column);
     //refresh list of customers
     void refresh_customers_list();
     void refresh_search_result_list();
-
     void clear_all_text_in_add_box();
     void clear_all_text_in_find_box();
 
@@ -52,16 +53,46 @@ public:
 
     //add a customer
     void add_customer(QString cus_name, QString cus_DOB, QString cus_phoneNumber, int cus_point);
-    //view
-    void expand_list_of_customers();
-    void shorten_list_of_customers();
-    //sort
-    //mode  = 0 for acsending else descending
-    void sort_by_id( bool _mode = 0 );
-    //mode  = 0 for acsending else descending
-    void sort_by_name( bool _mode = 0 );
-    //mode  = 0 for acsending else descending
-    void sort_by_accumulation_point( bool _mode = 0 );
+
+    //_mode = 0 for ascending, _mode = 1 for descending
+    void sort_by_name(bool _mode = 0){
+        if( _mode == 0 )
+            sort( qv_cus.begin(), qv_cus.end(), [](_customers a, _customers b){
+                int pre_cmp = a.getName().compare(b.getName());
+                if( pre_cmp == 0   ){
+                    return a.getLatestModification() > b.getLatestModification();
+                }
+                return pre_cmp < 0;
+            });
+        else
+            sort( qv_cus.begin(), qv_cus.end(), [](_customers a, _customers b){
+                int pre_cmp = a.getName().compare(b.getName());
+                if( pre_cmp == 0 ){
+                    return a.getLatestModification() > b.getLatestModification();
+                }
+                return pre_cmp > 0;
+            });
+    }
+
+    //_mode = 0 for ascending, _mode = 1 for descending
+    void sort_by_accumulationPoint(bool _mode = 0){
+        if( _mode == 0 )
+            //ascending
+            sort( qv_cus.begin(), qv_cus.end(), [](_customers a, _customers b){
+                if( a.getPoint() == b.getPoint()   ){
+                    return a.getLatestModification() > b.getLatestModification();
+                }
+                return a.getName().compare(b.getName()) > 0;
+            });
+        else
+            //desceding
+            sort( qv_cus.begin(), qv_cus.end(), [](_customers a, _customers b){
+                if( a.getPoint() == b.getPoint()   ){
+                    return a.getLatestModification() > b.getLatestModification();
+                }
+                return a.getPoint() < b.getPoint();
+            });
+    }
 
     void save_customers();
     void load_customers();
@@ -69,7 +100,6 @@ public:
     ~my_customer();
 
 private slots:
-//    void on_pushButtonExportFile_clicked();
 
     void on_pushButtonADD_clicked();
 
@@ -90,6 +120,8 @@ private slots:
     void on_actionFactory_reset_triggered();
 
     void on_actionExport_season_triggered();
+
+    void on_pushButton__SORT_clicked();
 
 private:
     Ui::my_customer *ui;
