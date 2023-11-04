@@ -1,16 +1,16 @@
 {
-	"BUILD_DIR" : "C:/Users/tuan/Downloads/MiniSupermarKetmanagement/build-MiniSupermarKetmanagement-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/MiniSupermarKetmanagement_autogen",
-	"CMAKE_BINARY_DIR" : "C:/Users/tuan/Downloads/MiniSupermarKetmanagement/build-MiniSupermarKetmanagement-Desktop_Qt_6_6_0_MinGW_64_bit-Debug",
-	"CMAKE_CURRENT_BINARY_DIR" : "C:/Users/tuan/Downloads/MiniSupermarKetmanagement/build-MiniSupermarKetmanagement-Desktop_Qt_6_6_0_MinGW_64_bit-Debug",
-	"CMAKE_CURRENT_SOURCE_DIR" : "C:/Users/tuan/Downloads/MiniSupermarKetmanagement/MiniSupermarKetmanagement",
+	"BUILD_DIR" : "D:/oop-hehehe/MiniSupermarKetmanagement/build-MiniSupermarKetmanagement-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/MiniSupermarKetmanagement_autogen",
+	"CMAKE_BINARY_DIR" : "D:/oop-hehehe/MiniSupermarKetmanagement/build-MiniSupermarKetmanagement-Desktop_Qt_6_6_0_MinGW_64_bit-Debug",
+	"CMAKE_CURRENT_BINARY_DIR" : "D:/oop-hehehe/MiniSupermarKetmanagement/build-MiniSupermarKetmanagement-Desktop_Qt_6_6_0_MinGW_64_bit-Debug",
+	"CMAKE_CURRENT_SOURCE_DIR" : "D:/oop-hehehe/MiniSupermarKetmanagement/MiniSupermarKetmanagement",
 	"CMAKE_EXECUTABLE" : "C:/Qt/Tools/CMake_64/bin/cmake.exe",
 	"CMAKE_LIST_FILES" : 
 	[
-		"C:/Users/tuan/Downloads/MiniSupermarKetmanagement/MiniSupermarKetmanagement/CMakeLists.txt",
-		"C:/Users/tuan/Downloads/MiniSupermarKetmanagement/build-MiniSupermarKetmanagement-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/.qtc/package-manager/auto-setup.cmake",
+		"D:/oop-hehehe/MiniSupermarKetmanagement/MiniSupermarKetmanagement/CMakeLists.txt",
+		"D:/oop-hehehe/MiniSupermarKetmanagement/build-MiniSupermarKetmanagement-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/.qtc/package-manager/auto-setup.cmake",
 		"C:/Qt/Tools/CMake_64/share/cmake-3.24/Modules/CMakeDetermineSystem.cmake",
 		"C:/Qt/Tools/CMake_64/share/cmake-3.24/Modules/CMakeSystem.cmake.in",
-		"C:/Users/tuan/Downloads/MiniSupermarKetmanagement/build-MiniSupermarKetmanagement-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/CMakeFiles/3.24.2/CMakeSystem.cmake",
+		"D:/oop-hehehe/MiniSupermarKetmanagement/build-MiniSupermarKetmanagement-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/CMakeFiles/3.24.2/CMakeSystem.cmake",
 		"C:/Qt/Tools/CMake_64/share/cmake-3.24/Modules/CMakeNinjaFindMake.cmake",
 		"C:/Qt/Tools/CMake_64/share/cmake-3.24/Modules/CMakeSystemSpecificInitialize.cmake",
 		"C:/Qt/Tools/CMake_64/share/cmake-3.24/Modules/CMakeDetermineCXXCompiler.cmake",
@@ -60,7 +60,7 @@
 		"C:/Qt/Tools/CMake_64/share/cmake-3.24/Modules/CMakeFindBinUtils.cmake",
 		"C:/Qt/Tools/CMake_64/share/cmake-3.24/Modules/Compiler/GNU-FindBinUtils.cmake",
 		"C:/Qt/Tools/CMake_64/share/cmake-3.24/Modules/CMakeCXXCompiler.cmake.in",
-		"C:/Users/tuan/Downloads/MiniSupermarKetmanagement/build-MiniSupermarKetmanagement-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/CMakeFiles/3.24.2/CMakeCXXCompiler.cmake",
+		"D:/oop-hehehe/MiniSupermarKetmanagement/build-MiniSupermarKetmanagement-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/CMakeFiles/3.24.2/CMakeCXXCompiler.cmake",
 		"C:/Qt/Tools/CMake_64/share/cmake-3.24/Modules/CMakeSystemSpecificInformation.cmake",
 		"C:/Qt/Tools/CMake_64/share/cmake-3.24/Modules/CMakeGenericSystem.cmake",
 		"C:/Qt/Tools/CMake_64/share/cmake-3.24/Modules/CMakeInitializeConfigs.cmake",
@@ -75,7 +75,7 @@
 		"C:/Qt/Tools/CMake_64/share/cmake-3.24/Modules/Platform/Windows-GNU.cmake",
 		"C:/Qt/Tools/CMake_64/share/cmake-3.24/Modules/CMakeDetermineRCCompiler.cmake",
 		"C:/Qt/Tools/CMake_64/share/cmake-3.24/Modules/CMakeRCCompiler.cmake.in",
-		"C:/Users/tuan/Downloads/MiniSupermarKetmanagement/build-MiniSupermarKetmanagement-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/CMakeFiles/3.24.2/CMakeRCCompiler.cmake",
+		"D:/oop-hehehe/MiniSupermarKetmanagement/build-MiniSupermarKetmanagement-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/CMakeFiles/3.24.2/CMakeRCCompiler.cmake",
 		"C:/Qt/Tools/CMake_64/share/cmake-3.24/Modules/CMakeRCInformation.cmake",
 		"C:/Qt/Tools/CMake_64/share/cmake-3.24/Modules/Platform/Windows-windres.cmake",
 		"C:/Qt/Tools/CMake_64/share/cmake-3.24/Modules/CMakeTestRCCompiler.cmake",
@@ -91,7 +91,7 @@
 		"C:/Qt/Tools/CMake_64/share/cmake-3.24/Modules/CMakeDetermineCompileFeatures.cmake",
 		"C:/Qt/Tools/CMake_64/share/cmake-3.24/Modules/Internal/FeatureTesting.cmake",
 		"C:/Qt/Tools/CMake_64/share/cmake-3.24/Modules/CMakeCXXCompiler.cmake.in",
-		"C:/Users/tuan/Downloads/MiniSupermarKetmanagement/build-MiniSupermarKetmanagement-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/CMakeFiles/3.24.2/CMakeCXXCompiler.cmake",
+		"D:/oop-hehehe/MiniSupermarKetmanagement/build-MiniSupermarKetmanagement-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/CMakeFiles/3.24.2/CMakeCXXCompiler.cmake",
 		"C:/Qt/Tools/CMake_64/share/cmake-3.24/Modules/Platform/Windows-GNU-CXX-ABI.cmake",
 		"C:/Qt/6.6.0/mingw_64/lib/cmake/Qt6/Qt6ConfigVersion.cmake",
 		"C:/Qt/6.6.0/mingw_64/lib/cmake/Qt6/Qt6ConfigVersionImpl.cmake",
@@ -315,69 +315,69 @@
 		"C:/Qt/6.6.0/mingw_64/lib/cmake/Qt6Widgets/Qt6QWindowsVistaStylePluginAdditionalTargetInfo.cmake",
 		"C:/Qt/Tools/CMake_64/share/cmake-3.24/Modules/GNUInstallDirs.cmake"
 	],
-	"CMAKE_SOURCE_DIR" : "C:/Users/tuan/Downloads/MiniSupermarKetmanagement/MiniSupermarKetmanagement",
-	"DEP_FILE" : "C:/Users/tuan/Downloads/MiniSupermarKetmanagement/build-MiniSupermarKetmanagement-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/MiniSupermarKetmanagement_autogen/deps",
+	"CMAKE_SOURCE_DIR" : "D:/oop-hehehe/MiniSupermarKetmanagement/MiniSupermarKetmanagement",
+	"DEP_FILE" : "D:/oop-hehehe/MiniSupermarKetmanagement/build-MiniSupermarKetmanagement-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/MiniSupermarKetmanagement_autogen/deps",
 	"DEP_FILE_RULE_NAME" : "MiniSupermarKetmanagement_autogen/timestamp",
 	"HEADERS" : 
 	[
 		[
-			"C:/Users/tuan/Downloads/MiniSupermarKetmanagement/MiniSupermarKetmanagement/InvoiceManagement.h",
+			"D:/oop-hehehe/MiniSupermarKetmanagement/MiniSupermarKetmanagement/InvoiceManagement.h",
 			"MU",
 			"EWIEGA46WW/moc_InvoiceManagement.cpp",
 			null
 		],
 		[
-			"C:/Users/tuan/Downloads/MiniSupermarKetmanagement/MiniSupermarKetmanagement/_customers.h",
+			"D:/oop-hehehe/MiniSupermarKetmanagement/MiniSupermarKetmanagement/_customers.h",
 			"MU",
 			"EWIEGA46WW/moc__customers.cpp",
 			null
 		],
 		[
-			"C:/Users/tuan/Downloads/MiniSupermarKetmanagement/MiniSupermarKetmanagement/_time.h",
+			"D:/oop-hehehe/MiniSupermarKetmanagement/MiniSupermarKetmanagement/_time.h",
 			"MU",
 			"EWIEGA46WW/moc__time.cpp",
 			null
 		],
 		[
-			"C:/Users/tuan/Downloads/MiniSupermarKetmanagement/MiniSupermarKetmanagement/commodities.h",
+			"D:/oop-hehehe/MiniSupermarKetmanagement/MiniSupermarKetmanagement/commodities.h",
 			"MU",
 			"EWIEGA46WW/moc_commodities.cpp",
 			null
 		],
 		[
-			"C:/Users/tuan/Downloads/MiniSupermarKetmanagement/MiniSupermarKetmanagement/invoice.h",
+			"D:/oop-hehehe/MiniSupermarKetmanagement/MiniSupermarKetmanagement/invoice.h",
 			"MU",
 			"EWIEGA46WW/moc_invoice.cpp",
 			null
 		],
 		[
-			"C:/Users/tuan/Downloads/MiniSupermarKetmanagement/MiniSupermarKetmanagement/managerproduct.h",
+			"D:/oop-hehehe/MiniSupermarKetmanagement/MiniSupermarKetmanagement/managerproduct.h",
 			"MU",
 			"EWIEGA46WW/moc_managerproduct.cpp",
 			null
 		],
 		[
-			"C:/Users/tuan/Downloads/MiniSupermarKetmanagement/MiniSupermarKetmanagement/minisupermarketmanagement.h",
+			"D:/oop-hehehe/MiniSupermarKetmanagement/MiniSupermarKetmanagement/minisupermarketmanagement.h",
 			"MU",
 			"EWIEGA46WW/moc_minisupermarketmanagement.cpp",
 			null
 		],
 		[
-			"C:/Users/tuan/Downloads/MiniSupermarKetmanagement/MiniSupermarKetmanagement/my_customer.h",
+			"D:/oop-hehehe/MiniSupermarKetmanagement/MiniSupermarKetmanagement/my_customer.h",
 			"MU",
 			"EWIEGA46WW/moc_my_customer.cpp",
 			null
 		],
 		[
-			"C:/Users/tuan/Downloads/MiniSupermarKetmanagement/MiniSupermarKetmanagement/template_class.h",
+			"D:/oop-hehehe/MiniSupermarKetmanagement/MiniSupermarKetmanagement/template_class.h",
 			"MU",
 			"EWIEGA46WW/moc_template_class.cpp",
 			null
 		]
 	],
 	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
-	"INCLUDE_DIR" : "C:/Users/tuan/Downloads/MiniSupermarKetmanagement/build-MiniSupermarKetmanagement-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/MiniSupermarKetmanagement_autogen/include",
-	"MOC_COMPILATION_FILE" : "C:/Users/tuan/Downloads/MiniSupermarKetmanagement/build-MiniSupermarKetmanagement-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/MiniSupermarKetmanagement_autogen/mocs_compilation.cpp",
+	"INCLUDE_DIR" : "D:/oop-hehehe/MiniSupermarKetmanagement/build-MiniSupermarKetmanagement-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/MiniSupermarKetmanagement_autogen/include",
+	"MOC_COMPILATION_FILE" : "D:/oop-hehehe/MiniSupermarKetmanagement/build-MiniSupermarKetmanagement-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/MiniSupermarKetmanagement_autogen/mocs_compilation.cpp",
 	"MOC_DEFINITIONS" : 
 	[
 		"MINGW_HAS_SECURE_API=1",
@@ -431,61 +431,61 @@
 		"-c",
 		"C:/Qt/Tools/CMake_64/share/cmake-3.24/Modules/CMakeCXXCompilerABI.cpp"
 	],
-	"MOC_PREDEFS_FILE" : "C:/Users/tuan/Downloads/MiniSupermarKetmanagement/build-MiniSupermarKetmanagement-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/MiniSupermarKetmanagement_autogen/moc_predefs.h",
+	"MOC_PREDEFS_FILE" : "D:/oop-hehehe/MiniSupermarKetmanagement/build-MiniSupermarKetmanagement-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/MiniSupermarKetmanagement_autogen/moc_predefs.h",
 	"MOC_RELAXED_MODE" : false,
 	"MOC_SKIP" : [],
 	"MULTI_CONFIG" : false,
 	"PARALLEL" : 4,
-	"PARSE_CACHE_FILE" : "C:/Users/tuan/Downloads/MiniSupermarKetmanagement/build-MiniSupermarKetmanagement-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/CMakeFiles/MiniSupermarKetmanagement_autogen.dir/ParseCache.txt",
+	"PARSE_CACHE_FILE" : "D:/oop-hehehe/MiniSupermarKetmanagement/build-MiniSupermarKetmanagement-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/CMakeFiles/MiniSupermarKetmanagement_autogen.dir/ParseCache.txt",
 	"QT_MOC_EXECUTABLE" : "C:/Qt/6.6.0/mingw_64/./bin/moc.exe",
 	"QT_UIC_EXECUTABLE" : "C:/Qt/6.6.0/mingw_64/./bin/uic.exe",
 	"QT_VERSION_MAJOR" : 6,
 	"QT_VERSION_MINOR" : 6,
-	"SETTINGS_FILE" : "C:/Users/tuan/Downloads/MiniSupermarKetmanagement/build-MiniSupermarKetmanagement-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/CMakeFiles/MiniSupermarKetmanagement_autogen.dir/AutogenUsed.txt",
+	"SETTINGS_FILE" : "D:/oop-hehehe/MiniSupermarKetmanagement/build-MiniSupermarKetmanagement-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/CMakeFiles/MiniSupermarKetmanagement_autogen.dir/AutogenUsed.txt",
 	"SOURCES" : 
 	[
 		[
-			"C:/Users/tuan/Downloads/MiniSupermarKetmanagement/MiniSupermarKetmanagement/InvoiceManagement.cpp",
+			"D:/oop-hehehe/MiniSupermarKetmanagement/MiniSupermarKetmanagement/InvoiceManagement.cpp",
 			"MU",
 			null
 		],
 		[
-			"C:/Users/tuan/Downloads/MiniSupermarKetmanagement/MiniSupermarKetmanagement/_customers.cpp",
+			"D:/oop-hehehe/MiniSupermarKetmanagement/MiniSupermarKetmanagement/_customers.cpp",
 			"MU",
 			null
 		],
 		[
-			"C:/Users/tuan/Downloads/MiniSupermarKetmanagement/MiniSupermarKetmanagement/commodities.cpp",
+			"D:/oop-hehehe/MiniSupermarKetmanagement/MiniSupermarKetmanagement/commodities.cpp",
 			"MU",
 			null
 		],
 		[
-			"C:/Users/tuan/Downloads/MiniSupermarKetmanagement/MiniSupermarKetmanagement/invoice.cpp",
+			"D:/oop-hehehe/MiniSupermarKetmanagement/MiniSupermarKetmanagement/invoice.cpp",
 			"MU",
 			null
 		],
 		[
-			"C:/Users/tuan/Downloads/MiniSupermarKetmanagement/MiniSupermarKetmanagement/main.cpp",
+			"D:/oop-hehehe/MiniSupermarKetmanagement/MiniSupermarKetmanagement/main.cpp",
 			"MU",
 			null
 		],
 		[
-			"C:/Users/tuan/Downloads/MiniSupermarKetmanagement/MiniSupermarKetmanagement/managerproduct.cpp",
+			"D:/oop-hehehe/MiniSupermarKetmanagement/MiniSupermarKetmanagement/managerproduct.cpp",
 			"MU",
 			null
 		],
 		[
-			"C:/Users/tuan/Downloads/MiniSupermarKetmanagement/MiniSupermarKetmanagement/minisupermarketmanagement.cpp",
+			"D:/oop-hehehe/MiniSupermarKetmanagement/MiniSupermarKetmanagement/minisupermarketmanagement.cpp",
 			"MU",
 			null
 		],
 		[
-			"C:/Users/tuan/Downloads/MiniSupermarKetmanagement/MiniSupermarKetmanagement/my_customer.cpp",
+			"D:/oop-hehehe/MiniSupermarKetmanagement/MiniSupermarKetmanagement/my_customer.cpp",
 			"MU",
 			null
 		],
 		[
-			"C:/Users/tuan/Downloads/MiniSupermarKetmanagement/MiniSupermarKetmanagement/templateclass.cpp",
+			"D:/oop-hehehe/MiniSupermarKetmanagement/MiniSupermarKetmanagement/templateclass.cpp",
 			"MU",
 			null
 		]

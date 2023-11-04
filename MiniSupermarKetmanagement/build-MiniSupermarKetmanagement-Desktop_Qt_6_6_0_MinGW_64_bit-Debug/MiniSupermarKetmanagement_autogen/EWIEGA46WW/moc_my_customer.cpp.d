@@ -1,5 +1,5 @@
-C:/Users/tuan/Downloads/MiniSupermarKetmanagement/build-MiniSupermarKetmanagement-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/MiniSupermarKetmanagement_autogen/EWIEGA46WW/moc_my_customer.cpp: C:/Users/tuan/Downloads/MiniSupermarKetmanagement/MiniSupermarKetmanagement/my_customer.h \
-  C:/Users/tuan/Downloads/MiniSupermarKetmanagement/build-MiniSupermarKetmanagement-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/MiniSupermarKetmanagement_autogen/moc_predefs.h \
+D:/oop-hehehe/MiniSupermarKetmanagement/build-MiniSupermarKetmanagement-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/MiniSupermarKetmanagement_autogen/EWIEGA46WW/moc_my_customer.cpp: D:/oop-hehehe/MiniSupermarKetmanagement/MiniSupermarKetmanagement/my_customer.h \
+  D:/oop-hehehe/MiniSupermarKetmanagement/build-MiniSupermarKetmanagement-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/MiniSupermarKetmanagement_autogen/moc_predefs.h \
   C:/Qt/6.6.0/mingw_64/include/QtCore/QString \
   C:/Qt/6.6.0/mingw_64/include/QtCore/QVector \
   C:/Qt/6.6.0/mingw_64/include/QtCore/q20functional.h \
@@ -373,6 +373,6 @@ C:/Users/tuan/Downloads/MiniSupermarKetmanagement/build-MiniSupermarKetmanagemen
   C:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/unistd.h \
   C:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/vadefs.h \
   C:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/wchar.h \
-  C:/Users/tuan/Downloads/MiniSupermarKetmanagement/MiniSupermarKetmanagement/_customers.h \
-  C:/Users/tuan/Downloads/MiniSupermarKetmanagement/MiniSupermarKetmanagement/_time.h \
-  C:/Users/tuan/Downloads/MiniSupermarKetmanagement/MiniSupermarKetmanagement/template_class.h
+  D:/oop-hehehe/MiniSupermarKetmanagement/MiniSupermarKetmanagement/_customers.h \
+  D:/oop-hehehe/MiniSupermarKetmanagement/MiniSupermarKetmanagement/_time.h \
+  D:/oop-hehehe/MiniSupermarKetmanagement/MiniSupermarKetmanagement/template_class.h

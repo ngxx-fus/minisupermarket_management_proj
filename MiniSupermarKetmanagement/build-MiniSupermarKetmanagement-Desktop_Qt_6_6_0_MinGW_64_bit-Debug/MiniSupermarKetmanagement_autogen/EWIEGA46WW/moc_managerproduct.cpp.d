@@ -1,5 +1,5 @@
-C:/Users/tuan/Downloads/MiniSupermarKetmanagement/build-MiniSupermarKetmanagement-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/MiniSupermarKetmanagement_autogen/EWIEGA46WW/moc_managerproduct.cpp: C:/Users/tuan/Downloads/MiniSupermarKetmanagement/MiniSupermarKetmanagement/managerproduct.h \
-  C:/Users/tuan/Downloads/MiniSupermarKetmanagement/build-MiniSupermarKetmanagement-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/MiniSupermarKetmanagement_autogen/moc_predefs.h \
+D:/oop-hehehe/MiniSupermarKetmanagement/build-MiniSupermarKetmanagement-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/MiniSupermarKetmanagement_autogen/EWIEGA46WW/moc_managerproduct.cpp: D:/oop-hehehe/MiniSupermarKetmanagement/MiniSupermarKetmanagement/managerproduct.h \
+  D:/oop-hehehe/MiniSupermarKetmanagement/build-MiniSupermarKetmanagement-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/MiniSupermarKetmanagement_autogen/moc_predefs.h \
   C:/Qt/6.6.0/mingw_64/include/QtCore/q20functional.h \
   C:/Qt/6.6.0/mingw_64/include/QtCore/q20memory.h \
   C:/Qt/6.6.0/mingw_64/include/QtCore/q20type_traits.h \

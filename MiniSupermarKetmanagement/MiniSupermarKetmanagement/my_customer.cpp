@@ -196,13 +196,17 @@ void my_customer::save_customers()
     ui->progressBar_FIND->show();
     ui->progressBar_FIND->setValue(0);
     QString text;
+    //save date from qv_cus
+    //
     int current_row = ui->tableWidget->rowCount();
     QFile file("CustomerManagament_DATA");
     if (file.open(QIODevice::WriteOnly | QIODevice::ReadWrite))
     {
         QTextStream out(&file);
-
-        for (int i = 0; i < current_row; i++)
+        //load all data on file -> qv_cus -> the file is deleted :v
+        //1000, xoá hết row, w/o file deleted? -> take no effect :))
+        //qv_cus.size() == 0 is true -> take deleting file CustomerManagament_DATA
+        for (int i = 0; i < current_row; i++)//xoá hết =? current_row = 0 -> k chạy
         {
             for (int j = 0; j < 6; j++)
             {
@@ -368,6 +372,7 @@ void my_customer::on_pushButton_RM_MOD_clicked()
     ui->pushButtonUpdateInfo->hide();
     refresh_customers_list();
     clear_all_text_in_find_box();
+    save_customers();
 }
 
 void my_customer::on_tableWidget_cellDoubleClicked(int row, int column)
@@ -418,6 +423,7 @@ void my_customer::on_actionFactory_reset_triggered()
 {
     qv_cus.clear();
     refresh_customers_list();
+    save_customers();
 }
 
 
