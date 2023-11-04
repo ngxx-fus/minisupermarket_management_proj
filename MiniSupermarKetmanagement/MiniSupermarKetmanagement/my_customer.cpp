@@ -12,7 +12,7 @@ my_customer::my_customer(QDialog::QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::my_customer)
 {
-    auto_save = true;//set-up trong file
+    auto_save = false;//set-up trong file
     ui->setupUi(this);
     ui->progressBar_FIND->hide();
     load_customers();
@@ -295,7 +295,7 @@ void my_customer::on_pushButtonADD_clicked()
     }else{
         QMessageBox::information(this, "Error!", "The phone number has been added!");
     }
-    save_customers();
+    if(auto_save) save_customers();
 }
 
 void my_customer::clear_all_text_in_add_box(){
@@ -368,7 +368,7 @@ void my_customer::on_pushButton_RM_MOD_clicked()
     ui->pushButtonUpdateInfo->hide();
     refresh_customers_list();
     clear_all_text_in_find_box();
-    save_customers();
+    if(auto_save) save_customers();
 }
 
 void my_customer::on_tableWidget_cellDoubleClicked(int row, int column)
@@ -419,13 +419,13 @@ void my_customer::on_actionFactory_reset_triggered()
 {
     qv_cus.clear();
     refresh_customers_list();
-    save_customers();
+    if(auto_save) save_customers();
 }
 
 
 void my_customer::on_actionExport_season_triggered()
 {
-    save_customers();
+    if(auto_save) save_customers();
 }
 
 
@@ -440,5 +440,16 @@ void my_customer::on_pushButton__SORT_clicked()
 //        break;
 //    };
 //    refresh_customers_list();
+}
+
+
+void my_customer::on_actionAuto_save_triggered()
+{
+    if(auto_save == false)
+        QMessageBox::information(this,"Auto-save is enable!","Becarefully, Every action cann't undo!"),
+        auto_save = true;
+    else
+        QMessageBox::information(this,"Auto-save is disable!","Attention, Every action cann't be auto saved, you have to save manualy!"),
+            auto_save = false;
 }
 

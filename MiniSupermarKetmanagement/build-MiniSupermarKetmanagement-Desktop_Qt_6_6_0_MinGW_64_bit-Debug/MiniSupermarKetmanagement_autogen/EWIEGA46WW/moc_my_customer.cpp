@@ -52,11 +52,12 @@ static constexpr auto qt_meta_stringdata_CLASSmy_customerENDCLASS = QtMocHelpers
     "on_pushButtonUpdateInfo_clicked",
     "on_actionFactory_reset_triggered",
     "on_actionExport_season_triggered",
-    "on_pushButton__SORT_clicked"
+    "on_pushButton__SORT_clicked",
+    "on_actionAuto_save_triggered"
 );
 #else  // !QT_MOC_HAS_STRING_DATA
 struct qt_meta_stringdata_CLASSmy_customerENDCLASS_t {
-    uint offsetsAndSizes[30];
+    uint offsetsAndSizes[32];
     char stringdata0[12];
     char stringdata1[25];
     char stringdata2[1];
@@ -72,6 +73,7 @@ struct qt_meta_stringdata_CLASSmy_customerENDCLASS_t {
     char stringdata12[33];
     char stringdata13[33];
     char stringdata14[28];
+    char stringdata15[29];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(sizeof(qt_meta_stringdata_CLASSmy_customerENDCLASS_t::offsetsAndSizes) + ofs), len 
@@ -91,7 +93,8 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSmy_customerENDCLASS_t qt_meta_s
         QT_MOC_LITERAL(232, 31),  // "on_pushButtonUpdateInfo_clicked"
         QT_MOC_LITERAL(264, 32),  // "on_actionFactory_reset_triggered"
         QT_MOC_LITERAL(297, 32),  // "on_actionExport_season_triggered"
-        QT_MOC_LITERAL(330, 27)   // "on_pushButton__SORT_clicked"
+        QT_MOC_LITERAL(330, 27),  // "on_pushButton__SORT_clicked"
+        QT_MOC_LITERAL(358, 28)   // "on_actionAuto_save_triggered"
     },
     "my_customer",
     "on_pushButtonADD_clicked",
@@ -107,7 +110,8 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSmy_customerENDCLASS_t qt_meta_s
     "on_pushButtonUpdateInfo_clicked",
     "on_actionFactory_reset_triggered",
     "on_actionExport_season_triggered",
-    "on_pushButton__SORT_clicked"
+    "on_pushButton__SORT_clicked",
+    "on_actionAuto_save_triggered"
 };
 #undef QT_MOC_LITERAL
 #endif // !QT_MOC_HAS_STRING_DATA
@@ -119,7 +123,7 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSmy_customerENDCLASS[] = {
       12,       // revision
        0,       // classname
        0,    0, // classinfo
-      11,   14, // methods
+      12,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -127,17 +131,18 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSmy_customerENDCLASS[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    0,   80,    2, 0x08,    1 /* Private */,
-       3,    2,   81,    2, 0x08,    2 /* Private */,
-       6,    0,   86,    2, 0x08,    5 /* Private */,
-       7,    0,   87,    2, 0x08,    6 /* Private */,
-       8,    0,   88,    2, 0x08,    7 /* Private */,
-       9,    0,   89,    2, 0x08,    8 /* Private */,
-      10,    2,   90,    2, 0x08,    9 /* Private */,
-      11,    0,   95,    2, 0x08,   12 /* Private */,
-      12,    0,   96,    2, 0x08,   13 /* Private */,
-      13,    0,   97,    2, 0x08,   14 /* Private */,
-      14,    0,   98,    2, 0x08,   15 /* Private */,
+       1,    0,   86,    2, 0x08,    1 /* Private */,
+       3,    2,   87,    2, 0x08,    2 /* Private */,
+       6,    0,   92,    2, 0x08,    5 /* Private */,
+       7,    0,   93,    2, 0x08,    6 /* Private */,
+       8,    0,   94,    2, 0x08,    7 /* Private */,
+       9,    0,   95,    2, 0x08,    8 /* Private */,
+      10,    2,   96,    2, 0x08,    9 /* Private */,
+      11,    0,  101,    2, 0x08,   12 /* Private */,
+      12,    0,  102,    2, 0x08,   13 /* Private */,
+      13,    0,  103,    2, 0x08,   14 /* Private */,
+      14,    0,  104,    2, 0x08,   15 /* Private */,
+      15,    0,  105,    2, 0x08,   16 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
@@ -147,6 +152,7 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSmy_customerENDCLASS[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void, QMetaType::Int, QMetaType::Int,    4,    5,
+    QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -189,6 +195,8 @@ Q_CONSTINIT const QMetaObject my_customer::staticMetaObject = { {
         // method 'on_actionExport_season_triggered'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'on_pushButton__SORT_clicked'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'on_actionAuto_save_triggered'
         QtPrivate::TypeAndForceComplete<void, std::false_type>
     >,
     nullptr
@@ -211,6 +219,7 @@ void my_customer::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
         case 8: _t->on_actionFactory_reset_triggered(); break;
         case 9: _t->on_actionExport_season_triggered(); break;
         case 10: _t->on_pushButton__SORT_clicked(); break;
+        case 11: _t->on_actionAuto_save_triggered(); break;
         default: ;
         }
     }
@@ -235,13 +244,13 @@ int my_customer::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 11)
+        if (_id < 12)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 11;
+        _id -= 12;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 11)
+        if (_id < 12)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 11;
+        _id -= 12;
     }
     return _id;
 }

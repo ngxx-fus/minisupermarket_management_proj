@@ -117,6 +117,8 @@ private slots:
 
     void on_pushButton__SORT_clicked();
 
+    void on_actionAuto_save_triggered();
+
 private:
     Ui::my_customer *ui;
 

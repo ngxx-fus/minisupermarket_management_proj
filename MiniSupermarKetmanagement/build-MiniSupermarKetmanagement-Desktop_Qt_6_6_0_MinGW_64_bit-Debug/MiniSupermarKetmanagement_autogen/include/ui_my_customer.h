@@ -123,8 +123,10 @@ public:
         actionSet_path->setObjectName("actionSet_path");
         actionAuto_save = new QAction(my_customer);
         actionAuto_save->setObjectName("actionAuto_save");
+        actionAuto_save->setCheckable(true);
         centralwidget = new QWidget(my_customer);
         centralwidget->setObjectName("centralwidget");
+        centralwidget->setGeometry(QRect(0, 0, 1231, 811));
         groupBox_ADD_CUS = new QGroupBox(centralwidget);
         groupBox_ADD_CUS->setObjectName("groupBox_ADD_CUS");
         groupBox_ADD_CUS->setGeometry(QRect(20, 20, 411, 311));
@@ -341,6 +343,7 @@ public:
         menuHelp->setObjectName("menuHelp");
         statusbar = new QStatusBar(my_customer);
         statusbar->setObjectName("statusbar");
+        statusbar->setGeometry(QRect(0, 0, 3, 22));
 
         menubar->addAction(menuRefrence->menuAction());
         menubar->addAction(menuHelp->menuAction());
