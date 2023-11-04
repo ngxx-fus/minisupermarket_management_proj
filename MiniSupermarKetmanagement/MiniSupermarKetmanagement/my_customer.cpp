@@ -198,15 +198,17 @@ void my_customer::save_customers()
     QString text;
     //save date from qv_cus
     //
+    int i = 0;
     int current_row = ui->tableWidget->rowCount();
     QFile file("CustomerManagament_DATA");
-    if (file.open(QIODevice::WriteOnly | QIODevice::ReadWrite))
+    if (file.open(QIODevice::WriteOnly | QIODevice::Text))
     {
         QTextStream out(&file);
         //load all data on file -> qv_cus -> the file is deleted :v
         //1000, xoá hết row, w/o file deleted? -> take no effect :))
         //qv_cus.size() == 0 is true -> take deleting file CustomerManagament_DATA
-        for (int i = 0; i < current_row; i++)//xoá hết =? current_row = 0 -> k chạy
+        QVector<_customers>::iterator it;
+        for( it = qv_cus.begin(); it != qv_cus.end(); it++)
         {
             for (int j = 0; j < 6; j++)
             {
@@ -214,33 +216,27 @@ void my_customer::save_customers()
                 std::this_thread::sleep_for( std::chrono::milliseconds(10) );
                 if(j == 0)
                 {
-                    text = ui->tableWidget->item(i, j)->text();
-                    out << "Name: " << text << " | ";
+                    out << "Name: " << it->getName() << " | ";
                 }
                 else if (j == 1)
                 {
-                    text = ui->tableWidget->item(i, j)->text();
-                    out << "DOB: " << text << " | ";
+                    out << "DOB: " << it->getDOB() << " | ";
                 }
                 else if (j == 2)
                 {
-                    text = ui->tableWidget->item(i, j)->text();
-                    out << "Phone: " << text << " | ";
+                    out << "Phone: " << it->getPhoneNumber() << " | ";
                 }
                 else if (j == 3)
                 {
-                    text = ui->tableWidget->item(i, j)->text();
-                    out << "Point: " << text << " | ";
+                    out << "Point: " << it->getPoint() << " | ";
                 }
                 else if (j == 4)
                 {
-                    text = ui->tableWidget->item(i, j)->text();
-                    out << "Date: " << text << " | ";
+                    out << "Date: " << it->getDate() << " | ";
                 }
                 else if (j == 5)
                 {
-                    text = ui->tableWidget->item(i, j)->text();
-                    out << "ID: " << text <<"\n";
+                    out << "ID: " << it->getID() <<"\n";
                 }
             }
             out << "\n";
@@ -277,13 +273,13 @@ void my_customer::on_pushButtonADD_clicked()
         return;
     }
 
-    if( !cus_numphone.size() )
+    if(!cus_numphone.size() )
     {
         QMessageBox::information(this, "Error!", "\"Name\" is empty! ");
         return;
     }
 
-    if( !cus_name.size() )
+    if(!cus_name.size() )
     {
         QMessageBox::information(this, "Error!", "\"Phone number\" is empty! ");
         return;
