@@ -12,13 +12,25 @@ my_customer::my_customer(QDialog::QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::my_customer)
 {
-    auto_save = false;//set-up trong file
     ui->setupUi(this);
     ui->progressBar_FIND->hide();
+
+    load_config();
     load_customers();
+
     ui->pushButton_RM_MOD->hide();
     ui->pushButtonUpdateInfo->hide();
     refresh_customers_list();
+    //auto_save = false;//set-up trong file
+    //notice_auto_save(false);
+    if(auto_save == true) {
+        ui->Warning_auto_save->show();
+        ui->actionAuto_save->setChecked(true);
+    }
+    else {
+        ui->Warning_auto_save->hide();
+        ui->actionAuto_save->setChecked(false);
+    }
 }
 
 
@@ -153,8 +165,22 @@ void my_customer::remove_by_phoneNumber(QString cus_phoneNumer){
     qv_cus.erase(const_it);
 }
 
+void my_customer::load_config(){
+    //read config
+    QFile config_file("CustomerManagament_CONFIG");
+    if (config_file.open(QIODevice::ReadOnly  | QIODevice::Text)){
+        QTextStream config_in(&config_file);
+        QString line = config_in.readLine();
+        QStringList tokens = line.split("||");
+        auto text = tokens[0].section("auto_save:",1,1);
+        auto_save = bool(QString("true") ==  text);
+    }
+    config_file.close();
+}
+
 void my_customer::load_customers()
 {
+    //read data
     QFile file("CustomerManagament_DATA");
     int current_row = 0;
 
@@ -190,14 +216,22 @@ void my_customer::load_customers()
     file.close();
 }
 
+void my_customer::save_config(){
+    //write config
+    QFile config_file("CustomerManagament_CONFIG");
+    config_file.remove();
+    if (config_file.open(QIODevice::WriteOnly | QIODevice::Text)){
+        QTextStream config_out(&config_file);
+        config_out << "auto_save:" << ((auto_save)?("true"):("false")) << "||\n";
+    }
+    config_file.close();
+}
+
 void my_customer::save_customers()
 {
     ui->progressBar_FIND->setRange(0, 100);
     ui->progressBar_FIND->show();
     ui->progressBar_FIND->setValue(0);
-    QString text;
-    //save date from qv_cus
-    //
     int i = 0;
     int current_row = ui->tableWidget->rowCount();
     QFile file("CustomerManagament_DATA");
@@ -246,9 +280,6 @@ void my_customer::save_customers()
     ui->progressBar_FIND->hide();
     file.close();
 }
-
-
-
 
 my_customer::~my_customer()
 {
@@ -425,7 +456,8 @@ void my_customer::on_actionFactory_reset_triggered()
 
 void my_customer::on_actionExport_season_triggered()
 {
-    if(auto_save) save_customers();
+    save_customers();
+    save_config();
 }
 
 
@@ -442,14 +474,14 @@ void my_customer::on_pushButton__SORT_clicked()
 //    refresh_customers_list();
 }
 
-
 void my_customer::on_actionAuto_save_triggered()
 {
     if(auto_save == false)
-        QMessageBox::information(this,"Auto-save is enable!","Becarefully, Every action cann't undo!"),
-        auto_save = true;
+        notice_auto_save(auto_save = true),
+       ui->Warning_auto_save->show();
     else
-        QMessageBox::information(this,"Auto-save is disable!","Attention, Every action cann't be auto saved, you have to save manualy!"),
-            auto_save = false;
+        notice_auto_save(auto_save = false),
+        ui->Warning_auto_save->hide();
+    save_config();
 }
 

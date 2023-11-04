@@ -148,6 +148,7 @@ D:/oop-hehehe/MiniSupermarKetmanagement/build-MiniSupermarKetmanagement-Desktop_
   C:/Qt/6.6.0/mingw_64/include/QtGui/qwindowdefs_win.h \
   C:/Qt/6.6.0/mingw_64/include/QtWidgets/QDialog \
   C:/Qt/6.6.0/mingw_64/include/QtWidgets/QListWidgetItem \
+  C:/Qt/6.6.0/mingw_64/include/QtWidgets/QMessageBox \
   C:/Qt/6.6.0/mingw_64/include/QtWidgets/qabstractitemdelegate.h \
   C:/Qt/6.6.0/mingw_64/include/QtWidgets/qabstractitemview.h \
   C:/Qt/6.6.0/mingw_64/include/QtWidgets/qabstractscrollarea.h \
@@ -157,6 +158,7 @@ D:/oop-hehehe/MiniSupermarKetmanagement/build-MiniSupermarKetmanagement-Desktop_
   C:/Qt/6.6.0/mingw_64/include/QtWidgets/qframe.h \
   C:/Qt/6.6.0/mingw_64/include/QtWidgets/qlistview.h \
   C:/Qt/6.6.0/mingw_64/include/QtWidgets/qlistwidget.h \
+  C:/Qt/6.6.0/mingw_64/include/QtWidgets/qmessagebox.h \
   C:/Qt/6.6.0/mingw_64/include/QtWidgets/qrubberband.h \
   C:/Qt/6.6.0/mingw_64/include/QtWidgets/qsizepolicy.h \
   C:/Qt/6.6.0/mingw_64/include/QtWidgets/qslider.h \

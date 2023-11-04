@@ -85,6 +85,7 @@ public:
     QMenu *menuRefrence;
     QMenu *menuHelp;
     QStatusBar *statusbar;
+    QLabel *Warning_auto_save;
 
     void setupUi(QDialog *my_customer)
     {
@@ -124,9 +125,10 @@ public:
         actionAuto_save = new QAction(my_customer);
         actionAuto_save->setObjectName("actionAuto_save");
         actionAuto_save->setCheckable(true);
+        actionAuto_save->setChecked(false);
         centralwidget = new QWidget(my_customer);
         centralwidget->setObjectName("centralwidget");
-        centralwidget->setGeometry(QRect(0, 0, 1231, 811));
+        centralwidget->setGeometry(QRect(-10, 0, 1231, 821));
         groupBox_ADD_CUS = new QGroupBox(centralwidget);
         groupBox_ADD_CUS->setObjectName("groupBox_ADD_CUS");
         groupBox_ADD_CUS->setGeometry(QRect(20, 20, 411, 311));
@@ -270,7 +272,7 @@ public:
         lineEdit_ID_FIND->setGeometry(QRect(40, 240, 251, 31));
         groupBox_VIEWTABLE = new QGroupBox(centralwidget);
         groupBox_VIEWTABLE->setObjectName("groupBox_VIEWTABLE");
-        groupBox_VIEWTABLE->setGeometry(QRect(20, 340, 1191, 451));
+        groupBox_VIEWTABLE->setGeometry(QRect(20, 340, 1121, 451));
         QFont font2;
         font2.setFamilies({QString::fromUtf8("Arial")});
         font2.setPointSize(10);
@@ -298,7 +300,7 @@ public:
         tableWidget->setHorizontalHeaderItem(5, __qtablewidgetitem5);
         tableWidget->setObjectName("tableWidget");
         tableWidget->setEnabled(true);
-        tableWidget->setGeometry(QRect(40, 30, 1141, 311));
+        tableWidget->setGeometry(QRect(40, 30, 1061, 311));
         tableWidget->setFont(font2);
         tableWidget->viewport()->setProperty("cursor", QVariant(QCursor(Qt::IBeamCursor)));
         tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
@@ -344,6 +346,14 @@ public:
         statusbar = new QStatusBar(my_customer);
         statusbar->setObjectName("statusbar");
         statusbar->setGeometry(QRect(0, 0, 3, 22));
+        Warning_auto_save = new QLabel(my_customer);
+        Warning_auto_save->setObjectName("Warning_auto_save");
+        Warning_auto_save->setGeometry(QRect(1020, 0, 131, 21));
+        QFont font3;
+        font3.setPointSize(7);
+        font3.setItalic(false);
+        font3.setUnderline(false);
+        Warning_auto_save->setFont(font3);
 
         menubar->addAction(menuRefrence->menuAction());
         menubar->addAction(menuHelp->menuAction());
@@ -423,6 +433,7 @@ public:
         pushButton_PURCHASE_MOD->setText(QCoreApplication::translate("my_customer", "Load purchase history.", nullptr));
         menuRefrence->setTitle(QCoreApplication::translate("my_customer", "File", nullptr));
         menuHelp->setTitle(QCoreApplication::translate("my_customer", "Help", nullptr));
+        Warning_auto_save->setText(QCoreApplication::translate("my_customer", "#Warning: auto-save is on!", nullptr));
     } // retranslateUi
 
 };

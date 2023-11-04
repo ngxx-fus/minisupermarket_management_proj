@@ -16,10 +16,10 @@
   <widget class="QWidget" name="centralwidget" native="true">
    <property name="geometry">
     <rect>
-     <x>0</x>
+     <x>-10</x>
      <y>0</y>
      <width>1231</width>
-     <height>811</height>
+     <height>821</height>
     </rect>
    </property>
    <widget class="QGroupBox" name="groupBox_ADD_CUS">
@@ -577,7 +577,7 @@
      <rect>
       <x>20</x>
       <y>340</y>
-      <width>1191</width>
+      <width>1121</width>
       <height>451</height>
      </rect>
     </property>
@@ -610,7 +610,7 @@
       <rect>
        <x>40</x>
        <y>30</y>
-       <width>1141</width>
+       <width>1061</width>
        <height>311</height>
       </rect>
      </property>
@@ -821,6 +821,26 @@
     </rect>
    </property>
   </widget>
+  <widget class="QLabel" name="Warning_auto_save">
+   <property name="geometry">
+    <rect>
+     <x>1020</x>
+     <y>0</y>
+     <width>131</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>7</pointsize>
+     <italic>false</italic>
+     <underline>false</underline>
+    </font>
+   </property>
+   <property name="text">
+    <string>#Warning: auto-save is on!</string>
+   </property>
+  </widget>
   <action name="actionAdd">
    <property name="text">
     <string>Save season</string>
@@ -884,6 +904,9 @@
   <action name="actionAuto_save">
    <property name="checkable">
     <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>false</bool>
    </property>
    <property name="text">
     <string>Auto save.</string>

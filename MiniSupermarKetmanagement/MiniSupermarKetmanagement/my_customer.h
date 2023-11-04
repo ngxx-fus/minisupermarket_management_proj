@@ -10,6 +10,7 @@
 #include <algorithm>
 #include <QtWidgets/qtwidgetsglobal.h>
 #include <QtWidgets/qwidget.h>
+#include <QMessageBox>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class my_customer; }
@@ -88,6 +89,15 @@ public:
 //            });
 //    }
 
+    void notice_auto_save(bool enable = false){
+        if(enable == true)
+            QMessageBox::information(this,"Auto-save is enable!","Becarefully, Every action cann't undo!");
+        else
+            QMessageBox::information(this,"Auto-save is disable!","Attention, Every action cann't be auto saved, you have to save manualy!");
+    }
+
+    void save_config();
+    void load_config();
     void save_customers();
     void load_customers();
 
