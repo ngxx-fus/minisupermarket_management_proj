@@ -213,7 +213,7 @@ void ManagerProduct::on_btnSearch_clicked()
     ui->txtSearch->clear();
 }
 
-
+/*giảm theo số lượng sản phẩm*/
 void ManagerProduct::on_radioButton_clicked()
 {
     SortIncrease(commoditieslist);
@@ -221,7 +221,7 @@ void ManagerProduct::on_radioButton_clicked()
     populateTableWidget(tableWidget, commoditieslist);
 }
 
-
+/*tăng theo số lượng sản phẩm*/
 void ManagerProduct::on_radioButton_2_clicked()
 {
     SortDecrease(commoditieslist);
@@ -432,8 +432,7 @@ void ManagerProduct::on_tableWidget_cellActivated(int row, int column)
 /*Sắp xếp theo còn nhiều ngày gần hết hạn*/
 void ManagerProduct::on_radioButton_3_clicked()
 {
-    // int _S_threshold = 10;
-    sortDates(commoditieslist);
+    sortmoreDates(commoditieslist);
     QTableWidget *tableWidget = ui->tableWidget;  // Đảm bảo rằng "ui->tableWidget" là hợp lệ
     populateTableWidget(tableWidget, commoditieslist);
 
@@ -442,7 +441,7 @@ void ManagerProduct::on_radioButton_3_clicked()
 /*Sắp xếp theo còn i ngày gần hết hạn*/
 void ManagerProduct::on_radioButton_4_clicked()
 {
-    sortmoreDates(commoditieslist);
+    sortDates(commoditieslist);
     QTableWidget *tableWidget = ui->tableWidget;  // Đảm bảo rằng "ui->tableWidget" là hợp lệ
     populateTableWidget(tableWidget, commoditieslist);
 
@@ -453,5 +452,28 @@ void ManagerProduct::on_pushButton_4_clicked()
 {
     QTableWidget *tableWidget = ui->tableWidget;  // Đảm bảo rằng "ui->tableWidget" là hợp lệ
     populateTableWidget(tableWidget, commoditieslist);
+}
+
+
+void ManagerProduct::on_exp_clicked()
+{
+    bool checkexpdate;
+    QTableWidget *tableWidget = ui->tableWidget;  // Đảm bảo rằng "ui->tableWidget" là hợp lệ
+    populateTableWidget_expdate(tableWidget, commoditieslist, checkexpdate);
+    if(checkexpdate){
+        populateTableWidget(tableWidget, commoditieslist);
+    }
+
+
+}
+
+
+void ManagerProduct::on_pushButton_5_clicked()
+{
+    deteExpDate(commoditieslist);
+    QTableWidget *tableWidget = ui->tableWidget;  // Đảm bảo rằng "ui->tableWidget" là hợp lệ
+    populateTableWidget(tableWidget, commoditieslist);
+    saveCommoditiesToFile(fileName,commoditieslist);
+
 }
 

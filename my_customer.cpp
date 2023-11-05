@@ -294,9 +294,9 @@ void my_customer::on_pushButtonADD_clicked()
     int const dd = ui->spinBox_DAY_ADD->value();
     int const mm = ui->spinBox_MONTH_ADD->value();
     int const yyyy = ui->spinBox_YEAR_ADD->value();
-    QString cus_numphone = ui->lineEdit_NUMPHONE_ADD->text();
-    QString cus_name = ui->lineEdit_NAME_ADD->text();
-    int cus_point = ui->lineEdit_POINT_ADD->text().toInt();
+    #define cus_numphone ui->lineEdit_NUMPHONE_ADD->text()
+    #define cus_name     ui->lineEdit_NAME_ADD->text()
+    #define cus_point    ui->lineEdit_POINT_ADD->text().toInt()
 
     _time DOB;
     if(DOB.set_DDMMYYYY(dd, mm, yyyy) == false){
@@ -306,13 +306,13 @@ void my_customer::on_pushButtonADD_clicked()
 
     if(!cus_numphone.size() )
     {
-        QMessageBox::information(this, "Error!", "\"Phone number\" is empty! ");
+        QMessageBox::information(this, "Error!", "\"Name\" is empty! ");
         return;
     }
 
     if(!cus_name.size() )
     {
-        QMessageBox::information(this, "Error!", "\"Name of customer\" is empty! ");
+        QMessageBox::information(this, "Error!", "\"Phone number\" is empty! ");
         return;
     }
 
@@ -379,24 +379,14 @@ void my_customer::on_pushButton_CLOSE_SEARCH_RES_clicked()
 void my_customer::on_pushButton_FIND_clicked()
 {
     int opt = ui->comboBox->currentIndex();
-    QString cus_name = ui->lineEdit_NAME_FIND->text();
-    QString cus_numphone = ui->lineEdit_NAME_FIND->text();
     qv_search_result.clear();
     switch( opt )
     {
     case 0:
-        if( cus_name.size() < 1){
-            QMessageBox::information(this, "Can not find customer:", "Customer's name is empty!");
-            return;
-        }
-        qv_search_result =  find_by_name( cus_name );
+        qv_search_result = find_by_name( ui->lineEdit_NAME_FIND->text() );
         refresh_search_result_list();
         break;
     case 1:
-        if( cus_numphone.size() < 1){
-            QMessageBox::information(this, "Can not find customer:", "Customer's phone number is empty!");
-            return;
-        }
         auto it = find_by_PhoneNumber( ui->lineEdit_NUMPHONE_FIND->text() );
         if( it == qv_cus.end() ) break;
         qv_search_result.push_back( it );

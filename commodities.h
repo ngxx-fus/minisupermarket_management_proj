@@ -97,9 +97,8 @@ bool DateAnalysis(int day, int month, int year, int expday, int expmonth, int ex
 void parseDate(QString dateString, int &day, int &month, int &year);
 void EditCommodities(vector<Commodities>& addCommodities, QString newID, QString newName, unsigned int newAmount, QString newDate, QString newDateExp, double newPrice);
 bool CompareDate(int day ,int month, int year,int expday, int expmonth, int expyear);
-//void  sortDates(vector<Commodities>& commoditiesList, int daysThreshold);
-//void  sortmoreDates(vector<Commodities>& commoditiesList, int daysThreshold);
-void sortDates(vector<Commodities>& commoditiesList);
 void sortmoreDates(vector<Commodities>& commoditiesList);
-bool compareDates1(const QString& date1, const QString& date2);
+void sortDates(vector<Commodities>& commoditiesList);
+void populateTableWidget_expdate(QTableWidget* tableWidget, const vector<Commodities>& commoditieslist, bool &checkexpdate);
+void deteExpDate(std::vector<Commodities>& commoditiesList);
 #endif // COMMODITIES_H

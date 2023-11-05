@@ -1,5 +1,5 @@
 #include "commodities.h"
-
+/*Tìm kiếm ID sản phẩm*/
 int findCommodity(const vector<Commodities>& commoditieslist, const QString& searchID) {
     for (int i = 0; i < commoditieslist.size(); i++) {
         if (commoditieslist[i].getID() == searchID) {
@@ -9,6 +9,7 @@ int findCommodity(const vector<Commodities>& commoditieslist, const QString& sea
     return -1 ; // Trả về -1 nếu không tìm thấy sản phẩm
 }
 
+/*thêm sản phẩm*/
 void addcommodities(vector<Commodities>& addCommodities,QString defaultName, QString defaultID, unsigned int defaultAmountCommodities, QString defaultDateCommodities, QString defaultDateExpCommodities, double defaultPrice ) {
     Commodities newCommodities;
     newCommodities.setName(defaultName);
@@ -20,6 +21,7 @@ void addcommodities(vector<Commodities>& addCommodities,QString defaultName, QSt
     addCommodities.push_back(newCommodities);
 
 }
+/*Hàm chỉnh sửa phảm */
 void EditCommodities(vector<Commodities>& addCommodities, QString newID, QString newName, unsigned int newAmount, QString newDate, QString newDateExp, double newPrice) {
     int i = findCommodity(commoditieslist, newID);
     // Tìm thấy đối tượng cần chỉnh sửa dựa trên ID
@@ -151,7 +153,8 @@ bool  Checkbox(vector<Commodities>& commoditieslist,QString defaultName, QString
 
 
 
-void populateTableWidget(QTableWidget* tableWidget, const vector<Commodities>& commoditieslist) {
+
+void populateTableWidgetexp(QTableWidget* tableWidget, const vector<Commodities>& commoditieslist) {
     tableWidget->setRowCount(commoditieslist.size());
     tableWidget->setColumnCount(6);
     tableWidget->setHorizontalHeaderItem(0, new QTableWidgetItem("ID"));
@@ -167,6 +170,7 @@ void populateTableWidget(QTableWidget* tableWidget, const vector<Commodities>& c
     }
 
     for (int i = 0; i < commoditieslist.size(); i++) {
+
         QTableWidgetItem* idItem = new QTableWidgetItem(commoditieslist[i].getID());
         QTableWidgetItem* nameItem = new QTableWidgetItem(commoditieslist[i].getName());
 
@@ -177,6 +181,7 @@ void populateTableWidget(QTableWidget* tableWidget, const vector<Commodities>& c
         }
         QTableWidgetItem* dateItem = new QTableWidgetItem(commoditieslist[i].getDateCommodities());
         QTableWidgetItem* dateexpItem = new QTableWidgetItem(commoditieslist[i].getDateExpCommodities());
+
         QTableWidgetItem* priceItem = new QTableWidgetItem(QString::number(commoditieslist[i].getPrice()));
 
         tableWidget->setItem(i, 0, idItem);
@@ -188,7 +193,7 @@ void populateTableWidget(QTableWidget* tableWidget, const vector<Commodities>& c
     }
 }
 
-
+/*Tìm kiếm năm nhuận*/
 bool LeapYears(int year)
 {
     if (year % 400 == 0)
@@ -199,6 +204,8 @@ bool LeapYears(int year)
         else
             return false;
 }
+
+/*check ngày phù hợp*/
 bool DateAnalysis(int day, int month, int year, int expday, int expmonth, int expyear ) {
 
     if (((month == 1) || (month == 3) || (month == 5) || (month == 7) ||
@@ -250,7 +257,7 @@ bool DateAnalysis(int day, int month, int year, int expday, int expmonth, int ex
     }
 }
 
-
+/*Tách ngày*/
 void parseDate(QString dateString, int &day, int &month, int &year) {
     int firstSlashPos = dateString.indexOf("/");
     int secondSlashPos = dateString.indexOf("/", firstSlashPos + 1);
@@ -261,33 +268,8 @@ void parseDate(QString dateString, int &day, int &month, int &year) {
     }
 }
 
-bool isDateNearCurrentDate(const QString& date, const int daysThreshold) {
-    int day, month, year;
-    parseDate(date, day, month, year);
 
-    QDate currentDate = QDate::currentDate();
-    QDate givenDate(year, month, day);
-
-    return currentDate.daysTo(givenDate) <= daysThreshold;
-}
-
-//void  sortDates(vector<Commodities>& commoditiesList, int daysThreshold) {
-//    QDate currentDate = QDate::currentDate();
-
-//   sort(commoditiesList.begin(), commoditiesList.end(), [daysThreshold](const Commodities& a, const Commodities& b) {
-//        return isDateNearCurrentDate(a.getDateExpCommodities(), daysThreshold) >= isDateNearCurrentDate(b.getDateExpCommodities(), daysThreshold);
-//    });
-
-//    // Sau khi sắp xếp, bạn có thể in danh sách commoditiesList ở đây.
-//}
-//void  sortmoreDates(vector<Commodities>& commoditiesList, int daysThreshold) {
-//   QDate currentDate = QDate::currentDate();
-
-//   sort(commoditiesList.begin(), commoditiesList.end(), [daysThreshold](const Commodities& a, const Commodities& b) {
-//       return isDateNearCurrentDate(a.getDateExpCommodities(), daysThreshold) < isDateNearCurrentDate(b.getDateExpCommodities(), daysThreshold);
-//   });
-
-//}
+/*So sánh hạn sử dụng với thời gian hiện tại*/
 bool compareDates(const QString& date1, const QString& date2) {
     int day1, month1, year1;
     int day2, month2, year2;
@@ -302,26 +284,133 @@ bool compareDates(const QString& date1, const QString& date2) {
     return true; // Ngày 2 đứng trước ngày 1 hoặc cùng một ngày
 }
 
+/*Sắp xếp hạn sử dụng còn ít ngày là lên đầu*/
 void sortDates(vector<Commodities>& commoditiesList) {
     sort(commoditiesList.begin(), commoditiesList.end(), [](const Commodities& a, const Commodities& b) {
-        return compareDates(a.getDateExpCommodities(), b.getDateExpCommodities());
+        return !compareDates(a.getDateExpCommodities(), b.getDateExpCommodities());
     });
 }
-//bool compareDates1(const QString& date1, const QString& date2) {
-//    int day1, month1, year1;
-//    int day2, month2, year2;
+/*So Sánh ngày hiện tại*/
+int isDateNearCurrentDate(const QString& date ) {
+    int day, month, year;
+    parseDate(date, day, month, year);
 
-//    parseDate(date1, day1, month1, year1);
-//    parseDate(date2, day2, month2, year2);
+    QDateTime currentDateTime = QDateTime::currentDateTime();
+    QDateTime givenDateTime(QDate(year, month, day), QTime(0, 0, 0)); // Đặt thời gian là 00:00:00
+    if (currentDateTime <= givenDateTime){
+        return 1;
+    }
+    else return -1;
+}
+/*In bảng những sản phẩm hết hạn*/
+void populateTableWidget_expdate(QTableWidget* tableWidget2, const vector<Commodities>& commoditieslist,bool &checkexpdate) {
+    tableWidget2->setRowCount(0);
+    tableWidget2->setRowCount(commoditieslist.size());
+    tableWidget2->setColumnCount(6);
+    tableWidget2->setHorizontalHeaderItem(0, new QTableWidgetItem("ID"));
+    tableWidget2->setHorizontalHeaderItem(1, new QTableWidgetItem("Name"));
+    tableWidget2->setHorizontalHeaderItem(2, new QTableWidgetItem("Amount"));
+    tableWidget2->setHorizontalHeaderItem(3, new QTableWidgetItem("Purchase Date"));
+    tableWidget2->setHorizontalHeaderItem(4, new QTableWidgetItem("Expiration Date"));
+    tableWidget2->setHorizontalHeaderItem(5, new QTableWidgetItem("Price"));
 
-//    if (year1 < year2 || (year1 == year2 && month1 < month2) || (year1 == year2 && month1 == month2 && day1 < day2)) {
-//        return true; // Ngày 1 đứng trước ngày 2
-//    }
+    int columnWidth = 160;
+    for (int col = 0; col < tableWidget2->columnCount(); ++col) {
+        tableWidget2->setColumnWidth(col, columnWidth);
+    }
 
-//    return false; // Ngày 2 đứng trước ngày 1 hoặc cùng một ngày
-//}
+    int rowCount = 0; // Biến đếm hàng đã thêm
+
+    for (int i = 0; i < commoditieslist.size(); i++) {
+        if (isDateNearCurrentDate(commoditieslist[i].getDateExpCommodities()) == -1) {
+            QTableWidgetItem* idItem = new QTableWidgetItem(commoditieslist[i].getID());
+            QTableWidgetItem* nameItem = new QTableWidgetItem(commoditieslist[i].getName());
+            QTableWidgetItem* amountItem = new QTableWidgetItem(QString::number(commoditieslist[i].getAmountCommodities()));
+            QTableWidgetItem* dateItem = new QTableWidgetItem(commoditieslist[i].getDateCommodities());
+            QTableWidgetItem* dateexpItem = new QTableWidgetItem(commoditieslist[i].getDateExpCommodities());
+            QTableWidgetItem* priceItem = new QTableWidgetItem(QString::number(commoditieslist[i].getPrice()));
+
+            tableWidget2->setItem(rowCount, 0, idItem);
+            tableWidget2->setItem(rowCount, 1, nameItem);
+            tableWidget2->setItem(rowCount, 2, amountItem);
+            tableWidget2->setItem(rowCount, 3, dateItem);
+            tableWidget2->setItem(rowCount, 4, dateexpItem);
+            tableWidget2->setItem(rowCount, 5, priceItem);
+            rowCount++; // Tăng biến đếm hàng đã thêm
+
+            checkexpdate = false;
+        }
+        else {
+            checkexpdate = true;
+
+        }
+
+
+    }
+    if(checkexpdate)
+    {
+        QMessageBox messageBox;
+        messageBox.critical(0, "ERROR", "K có sản phảm hết hạn");
+        messageBox.setFixedSize(500, 200); // Tuỳ chỉnh kích thước của MessageBox
+
+    }
+    tableWidget2->setRowCount(rowCount);
+}
+/*In dánh bảng danh sách sản phẩm*/
+void populateTableWidget(QTableWidget* tableWidget, const vector<Commodities>& commoditieslist) {
+    tableWidget->setRowCount(commoditieslist.size());
+    tableWidget->setColumnCount(6);
+    tableWidget->setHorizontalHeaderItem(0, new QTableWidgetItem("ID"));
+    tableWidget->setHorizontalHeaderItem(1, new QTableWidgetItem("Name"));
+    tableWidget->setHorizontalHeaderItem(2, new QTableWidgetItem("Amount"));
+    tableWidget->setHorizontalHeaderItem(3, new QTableWidgetItem("Purchase Date"));
+    tableWidget->setHorizontalHeaderItem(4, new QTableWidgetItem("Expiration Date"));
+    tableWidget->setHorizontalHeaderItem(5, new QTableWidgetItem("Price"));
+
+    int columnWidth = 160;
+    for (int col = 0; col < tableWidget->columnCount(); ++col) {
+        tableWidget->setColumnWidth(col, columnWidth);
+    }
+
+    for (int i = 0; i < commoditieslist.size(); i++) {
+        //if(isDateNearCurrentDate(commoditieslist[i].getDateExpCommodities())== -1){
+        QTableWidgetItem* idItem = new QTableWidgetItem(commoditieslist[i].getID());
+        QTableWidgetItem* nameItem = new QTableWidgetItem(commoditieslist[i].getName());
+
+        QTableWidgetItem* amountItem = new QTableWidgetItem(QString::number(commoditieslist[i].getAmountCommodities()));
+        if (commoditieslist[i].getAmountCommodities() == 0) {
+            QBrush redBrush(QColor(255, 0, 0));  // Red color
+            amountItem->setForeground(redBrush);
+        }
+        QTableWidgetItem* dateItem = new QTableWidgetItem(commoditieslist[i].getDateCommodities());
+        QTableWidgetItem* dateexpItem = new QTableWidgetItem(commoditieslist[i].getDateExpCommodities());
+        if(isDateNearCurrentDate(commoditieslist[i].getDateExpCommodities())== -1){
+            QBrush redBrush(QColor(255, 0, 0));  // Red color
+            dateexpItem->setForeground(redBrush);
+        }
+        QTableWidgetItem* priceItem = new QTableWidgetItem(QString::number(commoditieslist[i].getPrice()));
+
+        tableWidget->setItem(i, 0, idItem);
+        tableWidget->setItem(i, 1, nameItem);
+        tableWidget->setItem(i, 2, amountItem);
+        tableWidget->setItem(i, 3, dateItem);
+        tableWidget->setItem(i, 4, dateexpItem);
+        tableWidget->setItem(i, 5, priceItem);
+    }
+}
+
+/*Xóa sảng phẩm hết hạn*/
+void deteExpDate(std::vector<Commodities>& commoditiesList) {
+    for (int i = commoditiesList.size() - 1; i >= 0; i--) {
+        if (isDateNearCurrentDate(commoditiesList[i].getDateExpCommodities()) == -1) {
+            commoditiesList.erase(commoditiesList.begin() + i);
+        }
+    }
+}
+
+/*Ngày còn nhiều hạn sử dụng lên trên*/
 void sortmoreDates(vector<Commodities>& commoditiesList) {
    sort(commoditiesList.begin(), commoditiesList.end(), [](const Commodities& a, const Commodities& b) {
-        return !compareDates(a.getDateExpCommodities(), b.getDateExpCommodities());
+        return compareDates(a.getDateExpCommodities(), b.getDateExpCommodities());
     });
 }

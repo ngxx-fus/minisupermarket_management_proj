@@ -6,211 +6,77 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1042</width>
+    <width>1000</width>
     <height>700</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Customer Management</string>
   </property>
-  <property name="styleSheet">
-   <string notr="true">
-    QDialog#my_customer
-    {
-    
-       background-color: #EEF2FF; /* Đặt màu nền 8472FF là trắng */
-        color: #ffffff; /* Đặt màu văn bản là màu đen */
-    }  
-
-
-    
-QPushButton#pushButton_RM_MOD {/*only red for extra be cafefully with any action!*/
-                   background-color: #E25E3E; 
-                    color: white;
-                    border: 2px solid #E25E3E; 
-                   border-radius: 5px; 
-                   padding: 5px 10px;
-                   font-weight: bolder;
-                   }
-QPushButton#pushButtonADD {
-                   background-color: #579BB1; 
-                    color: white;
-                    border: 2px solid #579BB1; 
-                   border-radius: 5px; 
-                   padding: 5px 10px;
-                   font-weight: bolder;
-                   }
-QPushButton#pushButtonCancel {
-                   background-color: #579BB1; 
-                    color: white;
-                    border: 2px solid #579BB1; 
-                   border-radius: 5px; 
-                   padding: 5px 10px;
-                  font-weight: bolder;
-                   }
-QPushButton#pushButton_CLOSE_SEARCH_RES{
-                   background-color: #579BB1; 
-                    color: white;
-                    border: 2px solid #579BB1; 
-                   border-radius: 5px; 
-                   padding: 5px 10px;
-font-weight: bolder;
-                   }
-QPushButton#pushButton_FIND{
-                   background-color: #579BB1; 
-                    color: white;
-                    border: 2px solid #579BB1; 
-                   border-radius: 5px; 
-                   padding: 5px 10px;
-font-weight: bolder;
-                   }
-QPushButton#pushButton__SORT{
-                   background-color: #579BB1; 
-                    color: white;
-                    border: 2px solid #579BB1; 
-                   border-radius: 5px; 
-                   padding: 5px 10px;
-font-weight: bolder;
-                   }
-QPushButton#pushButtonUpdateInfo{
-                   background-color: #579BB1; 
-                    color: white;
-                    border: 2px solid #579BB1; 
-                   border-radius: 5px; 
-                   padding: 5px 10px;
-font-weight: bolder;
-                   }
-QLineEdit#lineEdit_NAME_ADD{
-background-color: rgba(255, 255, 255, 0.8); /* Đặt màu nền là trắng */
-    border-radius: 5px; /* Bo góc */
-    padding: 5px; /* Đặt đệm */
-    color: #000000; /* Đặt màu văn bản là màu đen */
-}
-QLineEdit#lineEdit_NUMPHONE_ADD{
-background-color: rgba(255, 255, 255, 0.8); /* Đặt màu nền là trắng */
-    border-radius: 5px; /* Bo góc */
-    padding: 5px; /* Đặt đệm */
-    color: #000000; /* Đặt màu văn bản là màu đen */
-}                 
-QLineEdit#lineEdit_POINT_ADD{
-
-background-color: rgba(255, 255, 255, 0.8); /* Đặt màu nền là trắng */
-    border-radius: 5px; /* Bo góc */
-    padding: 5px; /* Đặt đệm */
-    color: #000000; /* Đặt màu văn bản là màu đen */
-}      
-QLineEdit#lineEdit_DOB_FIND{
-
-background-color: rgba(255, 255, 255, 0.8); /* Đặt màu nền là trắng */
-    border-radius: 5px; /* Bo góc */
-    padding: 5px; /* Đặt đệm */
-    color: #000000; /* Đặt màu văn bản là màu đen */
-
-}      
-QLineEdit#lineEdit_ID_FIND{
-
-background-color: rgba(255, 255, 255, 0.8); /* Đặt màu nền là trắng */
-    border-radius: 5px; /* Bo góc */
-    padding: 5px; /* Đặt đệm */
-    color: #000000; /* Đặt màu văn bản là màu đen */
-}    
-QLineEdit#lineEdit_NAME_FIND{
-
-background-color: rgba(255, 255, 255, 0.8); /* Đặt màu nền là trắng */
-    border-radius: 5px; /* Bo góc */
-    padding: 5px; /* Đặt đệm */
-    color: #000000; /* Đặt màu văn bản là màu đen */
-}    
-QLineEdit#lineEdit_NUMPHONE_FIND
-{
-
-background-color: rgba(255, 255, 255, 0.8); /* Đặt màu nền là trắng */
-    border-radius: 5px; /* Bo góc */
-    padding: 5px; /* Đặt đệm */
-    color: #000000; /* Đặt màu văn bản là màu đen */
-}   
-QLineEdit#lineEdit_POINT_FIND
-{
-
-background-color: rgba(255, 255, 255, 0.8); /* Đặt màu nền là trắng */
-    border-radius: 5px; /* Bo góc */
-    padding: 5px; /* Đặt đệm */
-    color: #000000; /* Đặt màu văn bản là màu đen */
-}   
-
-QTableWidget#tableWidget
-{
-
-   background-color: rgba(255, 255, 255, 0.8); /* Đặt màu nền là trắng */
-    border-radius: 10px; /* Bo góc */
-    padding: 5px; /* Đặt đệm */
-    color: #000000; /* Đặt màu văn bản là màu đen */
-}  </string>
-  </property>
   <widget class="QWidget" name="centralwidget" native="true">
    <property name="geometry">
     <rect>
      <x>-10</x>
      <y>9</y>
-     <width>1031</width>
+     <width>1000</width>
      <height>701</height>
     </rect>
    </property>
    <property name="styleSheet">
     <string notr="true">QPushButton#pushButton {
-                   background-color: #164863; 
+                   background-color: #0078A8; 
                     color: white;
-                    border: 2px solid #164863; 
+                    border: 2px solid #0078A8; 
                    border-radius: 5px; 
                    padding: 5px 10px;
                    font-weight: bolder;
                    }
 QPushButton#pushButton_3 {
-                   background-color: #164863; 
+                   background-color: #0078A8; 
                     color: white;
-                    border: 2px solid #164863; 
+                    border: 2px solid #0078A8; 
                    border-radius: 5px; 
                    padding: 5px 10px;
                   font-weight: bolder;
                    }
 QPushButton#pushButton_2{
-                   background-color: #579BB1; 
+                   background-color: #0078A8; 
                     color: white;
-                    border: 2px solid #579BB1; 
+                    border: 2px solid #0078A8; 
                    border-radius: 5px; 
                    padding: 5px 10px;
 font-weight: bolder;
                    }
 QPushButton#pushButtonUpdateInfo{
-                   background-color: #579BB1; 
+                   background-color: #0078A8; 
                     color: white;
-                    border: 2px solid #579BB1; 
+                    border: 2px solid #0078A8; 
                    border-radius: 5px; 
                    padding: 5px 10px;
 font-weight: bolder;
                    }
 QLineEdit#txtSearchID{
-background-color: rgba(255, 255, 255, 0.8); /* Đặt màu nền là trắng */
+background-color: #FFFFFF; /* Đặt màu nền là trắng */
     border-radius: 5px; /* Bo góc */
     padding: 5px; /* Đặt đệm */
     color: #000000; /* Đặt màu văn bản là màu đen */
 }
 QLineEdit#txtID{
-background-color: rgba(255, 255, 255, 0.8); /* Đặt màu nền là trắng */
+background-color: #FFFFFF; /* Đặt màu nền là trắng */
     border-radius: 5px; /* Bo góc */
     padding: 5px; /* Đặt đệm */
     color: #000000; /* Đặt màu văn bản là màu đen */
 }                 
 QLineEdit#txtName{
 
-background-color: rgba(255, 255, 255, 0.8); /* Đặt màu nền là trắng */
+background-color: #FFFFFF; /* Đặt màu nền là trắng */
     border-radius: 5px; /* Bo góc */
     padding: 5px; /* Đặt đệm */
     color: #000000; /* Đặt màu văn bản là màu đen */
 }      
 QLineEdit#txtAmount{
 
-background-color: rgba(255, 255, 255, 0.8); /* Đặt màu nền là trắng */
+background-color: #FFFFFF; /* Đặt màu nền là trắng */
     border-radius: 5px; /* Bo góc */
     padding: 5px; /* Đặt đệm */
     color: #000000; /* Đặt màu văn bản là màu đen */
@@ -218,14 +84,14 @@ background-color: rgba(255, 255, 255, 0.8); /* Đặt màu nền là trắng */
 }      
 QLineEdit#txtPrice{
 
-background-color: rgba(255, 255, 255, 0.8); /* Đặt màu nền là trắng */
+background-color: #FFFFFF; /* Đặt màu nền là trắng */
     border-radius: 5px; /* Bo góc */
     padding: 5px; /* Đặt đệm */
     color: #000000; /* Đặt màu văn bản là màu đen */
 }    
 QLineEdit#txtUpdateAmount{
 
-background-color: rgba(255, 255, 255, 0.8); /* Đặt màu nền là trắng */
+background-color: #FFFFFF; /* Đặt màu nền là trắng */
     border-radius: 5px; /* Bo góc */
     padding: 5px; /* Đặt đệm */
     color: #000000; /* Đặt màu văn bản là màu đen */
@@ -233,7 +99,7 @@ background-color: rgba(255, 255, 255, 0.8); /* Đặt màu nền là trắng */
 QLineEdit#txtSearch
 {
 
-background-color: rgba(255, 255, 255, 0.8); /* Đặt màu nền là trắng */
+background-color: #FFFFFF; /* Đặt màu nền là trắng */
     border-radius: 5px; /* Bo góc */
     padding: 5px; /* Đặt đệm */
     color: #000000; /* Đặt màu văn bản là màu đen */
@@ -246,7 +112,7 @@ QDialog#my_customer
 QTableWidget#tableWidget
 {
 
-   background-color: rgba(255, 255, 255, 0.8); /* Đặt màu nền là trắng */
+   background-color: #FFFFFF; /* Đặt màu nền là trắng */
     border-radius: 10px; /* Bo góc */
     padding: 5px; /* Đặt đệm */
     color: #000000; /* Đặt màu văn bản là màu đen */
@@ -378,131 +244,6 @@ QTableWidget#tableWidget
        <strikeout>false</strikeout>
        <kerning>true</kerning>
       </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">
-QPushButton#pushButton_RM_MOD {
-                   background-color: #ff0000; 
-                    color: white;
-                    border: 2px solid #66BFBF; 
-                   border-radius: 5px; 
-                   padding: 5px 10px;
-                   font-weight: bolder;
-                   }
-QPushButton#pushButtonADD {
-                   background-color: #579BB1; 
-                    color: white;
-                    border: 2px solid #579BB1; 
-                   border-radius: 5px; 
-                   padding: 5px 10px;
-                   font-weight: bolder;
-                   }
-QPushButton#pushButtonCancel {
-                   background-color: #579BB1; 
-                    color: white;
-                    border: 2px solid #579BB1; 
-                   border-radius: 5px; 
-                   padding: 5px 10px;
-                  font-weight: bolder;
-                   }
-QPushButton#pushButton_CLOSE_SEARCH_RES{
-                   background-color: #579BB1; 
-                    color: white;
-                    border: 2px solid #579BB1; 
-                   border-radius: 5px; 
-                   padding: 5px 10px;
-font-weight: bolder;
-                   }
-QPushButton#pushButton_FIND{
-                   background-color: #579BB1; 
-                    color: white;
-                    border: 2px solid #579BB1; 
-                   border-radius: 5px; 
-                   padding: 5px 10px;
-font-weight: bolder;
-                   }
-QPushButton#pushButton__SORT{
-                   background-color: #579BB1; 
-                    color: white;
-                    border: 2px solid #579BB1; 
-                   border-radius: 5px; 
-                   padding: 5px 10px;
-font-weight: bolder;
-                   }
-QPushButton#pushButtonUpdateInfo{
-                   background-color: #579BB1; 
-                    color: white;
-                    border: 2px solid #579BB1; 
-                   border-radius: 5px; 
-                   padding: 5px 10px;
-font-weight: bolder;
-                   }
-QLineEdit#lineEdit_NAME_ADD{
-background-color: rgba(255, 255, 255, 0.8); /* Đặt màu nền là trắng */
-    border-radius: 5px; /* Bo góc */
-    padding: 5px; /* Đặt đệm */
-    color: #000000; /* Đặt màu văn bản là màu đen */
-}
-QLineEdit#lineEdit_NUMPHONE_ADD{
-background-color: rgba(255, 255, 255, 0.8); /* Đặt màu nền là trắng */
-    border-radius: 5px; /* Bo góc */
-    padding: 5px; /* Đặt đệm */
-    color: #000000; /* Đặt màu văn bản là màu đen */
-}                 
-QLineEdit#lineEdit_POINT_ADD{
-
-background-color: rgba(255, 255, 255, 0.8); /* Đặt màu nền là trắng */
-    border-radius: 5px; /* Bo góc */
-    padding: 5px; /* Đặt đệm */
-    color: #000000; /* Đặt màu văn bản là màu đen */
-}      
-QLineEdit#lineEdit_DOB_FIND{
-
-background-color: rgba(255, 255, 255, 0.8); /* Đặt màu nền là trắng */
-    border-radius: 5px; /* Bo góc */
-    padding: 5px; /* Đặt đệm */
-    color: #000000; /* Đặt màu văn bản là màu đen */
-
-}      
-QLineEdit#lineEdit_ID_FIND{
-
-background-color: rgba(255, 255, 255, 0.8); /* Đặt màu nền là trắng */
-    border-radius: 5px; /* Bo góc */
-    padding: 5px; /* Đặt đệm */
-    color: #000000; /* Đặt màu văn bản là màu đen */
-}    
-QLineEdit#lineEdit_NAME_FIND{
-
-background-color: rgba(255, 255, 255, 0.8); /* Đặt màu nền là trắng */
-    border-radius: 5px; /* Bo góc */
-    padding: 5px; /* Đặt đệm */
-    color: #000000; /* Đặt màu văn bản là màu đen */
-}    
-QLineEdit#lineEdit_NUMPHONE_FIND
-{
-
-background-color: rgba(255, 255, 255, 0.8); /* Đặt màu nền là trắng */
-    border-radius: 5px; /* Bo góc */
-    padding: 5px; /* Đặt đệm */
-    color: #000000; /* Đặt màu văn bản là màu đen */
-}   
-QLineEdit#lineEdit_POINT_FIND
-{
-
-background-color: rgba(255, 255, 255, 0.8); /* Đặt màu nền là trắng */
-    border-radius: 5px; /* Bo góc */
-    padding: 5px; /* Đặt đệm */
-    color: #000000; /* Đặt màu văn bản là màu đen */
-}   
-
-QTableWidget#tableWidget
-{
-
-   background-color: rgba(255, 255, 255, 0.8); /* Đặt màu nền là trắng */
-    border-radius: 10px; /* Bo góc */
-    padding: 5px; /* Đặt đệm */
-    color: #000000; /* Đặt màu văn bản là màu đen */
-}  </string>
      </property>
      <property name="text">
       <string>Add</string>
@@ -948,131 +689,6 @@ QTableWidget#tableWidget
        <height>24</height>
       </rect>
      </property>
-     <property name="styleSheet">
-      <string notr="true">
-QPushButton#pushButton_RM_MOD {
-                   background-color: #ff0000; 
-                    color: white;
-                    border: 2px solid #66BFBF; 
-                   border-radius: 5px; 
-                   padding: 5px 10px;
-                   font-weight: bolder;
-                   }
-QPushButton#pushButtonADD {
-                   background-color: #579BB1; 
-                    color: white;
-                    border: 2px solid #579BB1; 
-                   border-radius: 5px; 
-                   padding: 5px 10px;
-                   font-weight: bolder;
-                   }
-QPushButton#pushButtonCancel {
-                   background-color: #579BB1; 
-                    color: white;
-                    border: 2px solid #579BB1; 
-                   border-radius: 5px; 
-                   padding: 5px 10px;
-                  font-weight: bolder;
-                   }
-QPushButton#pushButton_CLOSE_SEARCH_RES{
-                   background-color: #579BB1; 
-                    color: white;
-                    border: 2px solid #579BB1; 
-                   border-radius: 5px; 
-                   padding: 5px 10px;
-font-weight: bolder;
-                   }
-QPushButton#pushButton_FIND{
-                   background-color: #579BB1; 
-                    color: white;
-                    border: 2px solid #579BB1; 
-                   border-radius: 5px; 
-                   padding: 5px 10px;
-font-weight: bolder;
-                   }
-QPushButton#pushButton__SORT{
-                   background-color: #579BB1; 
-                    color: white;
-                    border: 2px solid #579BB1; 
-                   border-radius: 5px; 
-                   padding: 5px 10px;
-font-weight: bolder;
-                   }
-QPushButton#pushButtonUpdateInfo{
-                   background-color: #579BB1; 
-                    color: white;
-                    border: 2px solid #579BB1; 
-                   border-radius: 5px; 
-                   padding: 5px 10px;
-font-weight: bolder;
-                   }
-QLineEdit#lineEdit_NAME_ADD{
-background-color: rgba(255, 255, 255, 0.8); /* Đặt màu nền là trắng */
-    border-radius: 5px; /* Bo góc */
-    padding: 5px; /* Đặt đệm */
-    color: #000000; /* Đặt màu văn bản là màu đen */
-}
-QLineEdit#lineEdit_NUMPHONE_ADD{
-background-color: rgba(255, 255, 255, 0.8); /* Đặt màu nền là trắng */
-    border-radius: 5px; /* Bo góc */
-    padding: 5px; /* Đặt đệm */
-    color: #000000; /* Đặt màu văn bản là màu đen */
-}                 
-QLineEdit#lineEdit_POINT_ADD{
-
-background-color: rgba(255, 255, 255, 0.8); /* Đặt màu nền là trắng */
-    border-radius: 5px; /* Bo góc */
-    padding: 5px; /* Đặt đệm */
-    color: #000000; /* Đặt màu văn bản là màu đen */
-}      
-QLineEdit#lineEdit_DOB_FIND{
-
-background-color: rgba(255, 255, 255, 0.8); /* Đặt màu nền là trắng */
-    border-radius: 5px; /* Bo góc */
-    padding: 5px; /* Đặt đệm */
-    color: #000000; /* Đặt màu văn bản là màu đen */
-
-}      
-QLineEdit#lineEdit_ID_FIND{
-
-background-color: rgba(255, 255, 255, 0.8); /* Đặt màu nền là trắng */
-    border-radius: 5px; /* Bo góc */
-    padding: 5px; /* Đặt đệm */
-    color: #000000; /* Đặt màu văn bản là màu đen */
-}    
-QLineEdit#lineEdit_NAME_FIND{
-
-background-color: rgba(255, 255, 255, 0.8); /* Đặt màu nền là trắng */
-    border-radius: 5px; /* Bo góc */
-    padding: 5px; /* Đặt đệm */
-    color: #000000; /* Đặt màu văn bản là màu đen */
-}    
-QLineEdit#lineEdit_NUMPHONE_FIND
-{
-
-background-color: rgba(255, 255, 255, 0.8); /* Đặt màu nền là trắng */
-    border-radius: 5px; /* Bo góc */
-    padding: 5px; /* Đặt đệm */
-    color: #000000; /* Đặt màu văn bản là màu đen */
-}   
-QLineEdit#lineEdit_POINT_FIND
-{
-
-background-color: rgba(255, 255, 255, 0.8); /* Đặt màu nền là trắng */
-    border-radius: 5px; /* Bo góc */
-    padding: 5px; /* Đặt đệm */
-    color: #000000; /* Đặt màu văn bản là màu đen */
-}   
-
-QTableWidget#tableWidget
-{
-
-   background-color: rgba(255, 255, 255, 0.8); /* Đặt màu nền là trắng */
-    border-radius: 10px; /* Bo góc */
-    padding: 5px; /* Đặt đệm */
-    color: #000000; /* Đặt màu văn bản là màu đen */
-}  </string>
-     </property>
      <property name="text">
       <string>Update info</string>
      </property>
@@ -1083,7 +699,7 @@ QTableWidget#tableWidget
      <rect>
       <x>20</x>
       <y>350</y>
-      <width>991</width>
+      <width>981</width>
       <height>411</height>
      </rect>
     </property>
@@ -1114,9 +730,9 @@ QTableWidget#tableWidget
      </property>
      <property name="geometry">
       <rect>
-       <x>40</x>
+       <x>60</x>
        <y>40</y>
-       <width>931</width>
+       <width>901</width>
        <height>291</height>
       </rect>
      </property>
@@ -1178,7 +794,7 @@ QTableWidget#tableWidget
      <rect>
       <x>820</x>
       <y>20</y>
-      <width>191</width>
+      <width>181</width>
       <height>321</height>
      </rect>
     </property>
@@ -1254,7 +870,7 @@ QTableWidget#tableWidget
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1042</width>
+     <width>1286</width>
      <height>21</height>
     </rect>
    </property>
@@ -1291,7 +907,7 @@ QTableWidget#tableWidget
   <widget class="QLabel" name="Warning_auto_save">
    <property name="geometry">
     <rect>
-     <x>810</x>
+     <x>1020</x>
      <y>0</y>
      <width>131</width>
      <height>21</height>

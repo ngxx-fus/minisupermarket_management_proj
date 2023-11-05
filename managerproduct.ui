@@ -150,7 +150,7 @@ QTableWidget#tableWidget
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>430</y>
+     <y>450</y>
      <width>961</width>
      <height>241</height>
     </rect>
@@ -205,7 +205,7 @@ QTableWidget#tableWidget
      <x>20</x>
      <y>40</y>
      <width>531</width>
-     <height>381</height>
+     <height>391</height>
     </rect>
    </property>
    <property name="contextMenuPolicy">
@@ -580,9 +580,9 @@ QTableWidget#tableWidget
    <property name="geometry">
     <rect>
      <x>570</x>
-     <y>290</y>
+     <y>320</y>
      <width>411</width>
-     <height>131</height>
+     <height>111</height>
     </rect>
    </property>
    <property name="font">
@@ -597,7 +597,7 @@ QTableWidget#tableWidget
     <property name="geometry">
      <rect>
       <x>300</x>
-      <y>90</y>
+      <y>70</y>
       <width>101</width>
       <height>31</height>
      </rect>
@@ -614,7 +614,7 @@ QTableWidget#tableWidget
     <property name="geometry">
      <rect>
       <x>160</x>
-      <y>40</y>
+      <y>30</y>
       <width>241</width>
       <height>31</height>
      </rect>
@@ -624,7 +624,7 @@ QTableWidget#tableWidget
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>40</y>
+      <y>30</y>
       <width>141</width>
       <height>31</height>
      </rect>
@@ -646,7 +646,7 @@ QTableWidget#tableWidget
     <property name="geometry">
      <rect>
       <x>160</x>
-      <y>90</y>
+      <y>70</y>
       <width>111</width>
       <height>31</height>
      </rect>
@@ -664,9 +664,9 @@ QTableWidget#tableWidget
    <property name="geometry">
     <rect>
      <x>570</x>
-     <y>180</y>
+     <y>150</y>
      <width>411</width>
-     <height>101</height>
+     <height>91</height>
     </rect>
    </property>
    <property name="title">
@@ -755,7 +755,7 @@ QTableWidget#tableWidget
      <x>570</x>
      <y>40</y>
      <width>411</width>
-     <height>131</height>
+     <height>111</height>
     </rect>
    </property>
    <property name="title">
@@ -787,7 +787,7 @@ QTableWidget#tableWidget
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>90</y>
+      <y>70</y>
       <width>161</width>
       <height>31</height>
      </rect>
@@ -819,7 +819,7 @@ QTableWidget#tableWidget
     <property name="geometry">
      <rect>
       <x>171</x>
-      <y>90</y>
+      <y>70</y>
       <width>121</width>
       <height>31</height>
      </rect>
@@ -829,7 +829,7 @@ QTableWidget#tableWidget
     <property name="geometry">
      <rect>
       <x>300</x>
-      <y>90</y>
+      <y>70</y>
       <width>81</width>
       <height>31</height>
      </rect>
@@ -840,6 +840,51 @@ QTableWidget#tableWidget
     <property name="icon">
      <iconset>
       <normaloff>../../../Users/hagia/Downloads/qtc++/check-mark.png</normaloff>../../../Users/hagia/Downloads/qtc++/check-mark.png</iconset>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="groupBox_5">
+   <property name="geometry">
+    <rect>
+     <x>570</x>
+     <y>250</y>
+     <width>411</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>Delete Expried Commodities</string>
+   </property>
+   <widget class="QRadioButton" name="exp">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>30</y>
+      <width>161</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Expried Commodities</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_5">
+    <property name="geometry">
+     <rect>
+      <x>239</x>
+      <y>30</y>
+      <width>131</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Delete all exp</string>
     </property>
    </widget>
   </widget>
