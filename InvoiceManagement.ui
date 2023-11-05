@@ -1,0 +1,511 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>InvoiceManagement</class>
+ <widget class="QDialog" name="InvoiceManagement">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1000</width>
+    <height>700</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Invoices</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QPushButton#Btn_Chose_Customer{
+                   background-color: #0078A8; 
+                    color: white;
+                    border: 2px solid #0078A8; 
+                   border-radius: 5px; 
+                   padding: 5px 10px;
+                   font-weight: bolder;
+                   }
+QPushButton#Btn_AddItem{
+                   background-color: #0078A8; 
+                    color: white;
+                    border: 2px solid #0078A8; 
+                   border-radius: 5px; 
+                   padding: 5px 10px;
+                   font-weight: bolder;
+                   }
+QPushButton#Btn_Print{
+                   background-color: #0078A8; 
+                    color: white;
+                    border: 2px solid #0078A8; 
+                   border-radius: 5px; 
+                   padding: 5px 10px;
+                   font-weight: bolder;
+                   }
+QPushButton#Btn_Refresh{
+                   background-color: #0078A8; 
+                    color: white;
+                    border: 2px solid #0078A8; 
+                   border-radius: 5px; 
+                   padding: 5px 10px;
+                   font-weight: bolder;
+                   }
+QLineEdit#TxtBox_PhoneNumber{
+background-color: #FFFFFF; /* Đặt màu nền là trắng */
+    border-radius: 5px; /* Bo góc */
+    padding: 5px; /* Đặt đệm */
+    color: #000000; /* Đặt màu văn bản là màu đen */
+}
+QLineEdit#TxtBox_CustomerID{
+background-color: #FFFFFF; /* Đặt màu nền là trắng */
+    border-radius: 5px; /* Bo góc */
+    padding: 5px; /* Đặt đệm */
+    color: #000000; /* Đặt màu văn bản là màu đen */
+}
+QLineEdit#TxtBox_CustomerName{
+background-color: #FFFFFF; /* Đặt màu nền là trắng */
+    border-radius: 5px; /* Bo góc */
+    padding: 5px; /* Đặt đệm */
+    color: #000000; /* Đặt màu văn bản là màu đen */
+}
+QLineEdit#TxtBox_ProductID{
+background-color: #FFFFFF; /* Đặt màu nền là trắng */
+    border-radius: 5px; /* Bo góc */
+    padding: 5px; /* Đặt đệm */
+    color: #000000; /* Đặt màu văn bản là màu đen */
+}
+QLineEdit#TxtBox_ProductName{
+background-color: #FFFFFF; /* Đặt màu nền là trắng */
+    border-radius: 5px; /* Bo góc */
+    padding: 5px; /* Đặt đệm */
+    color: #000000; /* Đặt màu văn bản là màu đen */
+}
+QLineEdit#TxtBox_Amount{
+background-color: #FFFFFF; /* Đặt màu nền là trắng */
+    border-radius: 5px; /* Bo góc */
+    padding: 5px; /* Đặt đệm */
+    color: #000000; /* Đặt màu văn bản là màu đen */
+}
+QLineEdit#TxtBox_Total{
+background-color: #FFFFFF; /* Đặt màu nền là trắng */
+    border-radius: 5px; /* Bo góc */
+    padding: 5px; /* Đặt đệm */
+    color: #000000; /* Đặt màu văn bản là màu đen */
+}
+QDialog#InvoiceManagement
+{
+
+   background-color: #87CEFA; /* Đặt màu nền 8472FF là trắng */
+    color: #000000; /* Đặt màu văn bản là màu đen */
+}  
+QTableWidget#tableWidgetItem{
+
+   background-color: #FFFFFF; /* Đặt màu nền là trắng */
+    border-radius: 10px; /* Bo góc */
+    padding: 5px; /* Đặt đệm */
+    color: #000000; /* Đặt màu văn bản là màu đen */
+}  </string>
+  </property>
+  <widget class="QPushButton" name="Btn_Print">
+   <property name="geometry">
+    <rect>
+     <x>870</x>
+     <y>640</y>
+     <width>101</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Print Invoice</string>
+   </property>
+  </widget>
+  <widget class="QGroupBox" name="GrpBoxCustomer">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>60</y>
+     <width>471</width>
+     <height>231</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+     <bold>false</bold>
+     <strikeout>false</strikeout>
+    </font>
+   </property>
+   <property name="title">
+    <string>Customer Information</string>
+   </property>
+   <widget class="QLineEdit" name="TxtBox_PhoneNumber">
+    <property name="geometry">
+     <rect>
+      <x>200</x>
+      <y>140</y>
+      <width>250</width>
+      <height>31</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Label_PhoneNumber">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>145</y>
+      <width>181</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+      <bold>true</bold>
+      <strikeout>false</strikeout>
+     </font>
+    </property>
+    <property name="text">
+     <string>Customer of Phone Number:</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="TxtBox_CustomerName">
+    <property name="geometry">
+     <rect>
+      <x>200</x>
+      <y>90</y>
+      <width>250</width>
+      <height>31</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Label_CustomerName">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>95</y>
+      <width>151</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+      <bold>true</bold>
+      <strikeout>false</strikeout>
+     </font>
+    </property>
+    <property name="text">
+     <string>Customer of Name:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Label_CustomerID">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>45</y>
+      <width>121</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+      <bold>true</bold>
+      <strikeout>false</strikeout>
+     </font>
+    </property>
+    <property name="text">
+     <string>Customer of ID:</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="TxtBox_CustomerID">
+    <property name="geometry">
+     <rect>
+      <x>200</x>
+      <y>40</y>
+      <width>250</width>
+      <height>31</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="comboBox_Customer">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>180</y>
+      <width>141</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <item>
+     <property name="text">
+      <string>Member Customer</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>New Customer</string>
+     </property>
+    </item>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="GrpBoxProduct">
+   <property name="geometry">
+    <rect>
+     <x>540</x>
+     <y>60</y>
+     <width>441</width>
+     <height>231</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="title">
+    <string>Product</string>
+   </property>
+   <widget class="QLineEdit" name="TxtBox_ProductID">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>40</y>
+      <width>250</width>
+      <height>31</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Label_ProductID">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>50</y>
+      <width>121</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>ID of Commodities:</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="TxtBox_ProductName">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>90</y>
+      <width>250</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="readOnly">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Label_ProdectName">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>95</y>
+      <width>151</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Name of Commodities:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Label_Amount">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>145</y>
+      <width>161</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Amount of Commodities:</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="TxtBox_Amount">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>140</y>
+      <width>250</width>
+      <height>31</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="Btn_AddItem">
+    <property name="geometry">
+     <rect>
+      <x>340</x>
+      <y>180</y>
+      <width>81</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Add</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="Btn_Refresh">
+    <property name="geometry">
+     <rect>
+      <x>240</x>
+      <y>180</y>
+      <width>81</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Refresh</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QTableWidget" name="tableWidgetItem">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>310</y>
+     <width>961</width>
+     <height>311</height>
+    </rect>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>16777215</width>
+     <height>16777215</height>
+    </size>
+   </property>
+   <property name="font">
+    <font>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="showGrid">
+    <bool>true</bool>
+   </property>
+   <property name="sortingEnabled">
+    <bool>true</bool>
+   </property>
+   <column>
+    <property name="text">
+     <string>Product ID</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Product Name</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Amount</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Price</string>
+    </property>
+   </column>
+  </widget>
+  <widget class="QLabel" name="Label_Total">
+   <property name="geometry">
+    <rect>
+     <x>650</x>
+     <y>650</y>
+     <width>41</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>13</pointsize>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>Total</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="TxtBox_Total">
+   <property name="geometry">
+    <rect>
+     <x>710</x>
+     <y>640</y>
+     <width>141</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="layoutDirection">
+    <enum>Qt::LeftToRight</enum>
+   </property>
+   <property name="text">
+    <string>0</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+   </property>
+   <property name="readOnly">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>440</x>
+     <y>-10</y>
+     <width>221</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="sizeIncrement">
+    <size>
+     <width>0</width>
+     <height>0</height>
+    </size>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>20</pointsize>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Plain</enum>
+   </property>
+   <property name="lineWidth">
+    <number>-6</number>
+   </property>
+   <property name="text">
+    <string>Manager Invoice</string>
+   </property>
+   <property name="textFormat">
+    <enum>Qt::PlainText</enum>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
