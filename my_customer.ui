@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1000</width>
+    <width>1042</width>
     <height>700</height>
    </rect>
   </property>
@@ -18,7 +18,7 @@
     <rect>
      <x>-10</x>
      <y>9</y>
-     <width>1000</width>
+     <width>1031</width>
      <height>701</height>
     </rect>
    </property>
@@ -699,7 +699,7 @@ QTableWidget#tableWidget
      <rect>
       <x>20</x>
       <y>350</y>
-      <width>981</width>
+      <width>991</width>
       <height>411</height>
      </rect>
     </property>
@@ -730,9 +730,9 @@ QTableWidget#tableWidget
      </property>
      <property name="geometry">
       <rect>
-       <x>60</x>
+       <x>40</x>
        <y>40</y>
-       <width>901</width>
+       <width>931</width>
        <height>291</height>
       </rect>
      </property>
@@ -794,7 +794,7 @@ QTableWidget#tableWidget
      <rect>
       <x>820</x>
       <y>20</y>
-      <width>181</width>
+      <width>191</width>
       <height>321</height>
      </rect>
     </property>
@@ -907,7 +907,7 @@ QTableWidget#tableWidget
   <widget class="QLabel" name="Warning_auto_save">
    <property name="geometry">
     <rect>
-     <x>1020</x>
+     <x>810</x>
      <y>0</y>
      <width>131</width>
      <height>21</height>
