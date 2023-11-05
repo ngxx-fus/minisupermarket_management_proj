@@ -306,13 +306,13 @@ void my_customer::on_pushButtonADD_clicked()
 
     if(!cus_numphone.size() )
     {
-        QMessageBox::information(this, "Error!", "\"Name\" is empty! ");
+        QMessageBox::information(this, "Error!", "\"Phone number\" is empty! ");
         return;
     }
 
     if(!cus_name.size() )
     {
-        QMessageBox::information(this, "Error!", "\"Phone number\" is empty! ");
+        QMessageBox::information(this, "Error!", "\"name\" is empty! ");
         return;
     }
 
