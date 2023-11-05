@@ -312,7 +312,7 @@ void my_customer::on_pushButtonADD_clicked()
 
     if(!cus_name.size() )
     {
-        QMessageBox::information(this, "Error!", "\"name\" is empty! ");
+        QMessageBox::information(this, "Error!", "\"Name of customer\" is empty! ");
         return;
     }
 
