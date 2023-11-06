@@ -56,11 +56,13 @@ void my_customer::refresh_search_result_list(){
     for(int r = 0, ind = 0; r < max_row; r++, ind++)
     {
         auto cus = qv_search_result.at(r);
+        QString latestMod = cus->getLatestModification().get_date() +
+                            " " + cus->getLatestModification().get_time();
         ui->tableWidget->setItem(ind,0, new QTableWidgetItem(cus->getName()));
         ui->tableWidget->setItem(ind,1, new QTableWidgetItem(cus->getDOB()));
         ui->tableWidget->setItem(ind,2, new QTableWidgetItem(cus->getPhoneNumber()));
         ui->tableWidget->setItem(ind,3, new QTableWidgetItem(_time().int_to_QString(cus->getPoint())));
-        ui->tableWidget->setItem(ind,4, new QTableWidgetItem(cus->getLatestModification().get_date()));
+        ui->tableWidget->setItem(ind,4, new QTableWidgetItem( latestMod ));
         ui->tableWidget->setItem(ind,5, new QTableWidgetItem(cus->getID()));
     }
 }
@@ -76,11 +78,13 @@ void my_customer::refresh_customers_list(int default_row){
     for(int r = qv_cus.size() - 1, ind = 0; r >= (qv_cus.size()<max_row?0:qv_cus.size()-max_row); r--, ind++)
     {
         _customers cus = qv_cus.at(r);
+        QString latestMod = cus.getLatestModification().get_date() +
+                            " " + cus.getLatestModification().get_time();
         ui->tableWidget->setItem(ind,0, new QTableWidgetItem(cus.getName()));
         ui->tableWidget->setItem(ind,1, new QTableWidgetItem(cus.getDOB()));
         ui->tableWidget->setItem(ind,2, new QTableWidgetItem(cus.getPhoneNumber()));
         ui->tableWidget->setItem(ind,3, new QTableWidgetItem(_time().int_to_QString(cus.getPoint())));
-        ui->tableWidget->setItem(ind,4, new QTableWidgetItem(cus.getLatestModification().get_date()));
+        ui->tableWidget->setItem(ind,4, new QTableWidgetItem(latestMod));
         ui->tableWidget->setItem(ind,5, new QTableWidgetItem(cus.getID()));
     }
 }
@@ -197,6 +201,8 @@ void my_customer::load_customers()
                 QString id = tokens[5].section("ID: ", 1, 1);
 
                 qv_cus.push_back(_customers(point, phone_number, dob, name, date, id));
+                _time t; t.set_date_time_from_ID(id);
+                qv_cus.back().setLatestModification(t);
                 refresh_customers_list(def_row);
             }
         }
@@ -316,12 +322,12 @@ void my_customer::sort_by_ModificationTime(bool _mode){
     if( _mode == 1 )
         //ascending
         sort( qv_cus.begin(), qv_cus.end(), [](_customers a, _customers b){
-            return a.getLatestModification() > b.getLatestModification();
+            return bool(a.getLatestModification() > b.getLatestModification());
         });
     else
         //desceding
         sort( qv_cus.begin(), qv_cus.end(), [](_customers a, _customers b){
-            return a.getLatestModification() > b.getLatestModification();
+            return bool(a.getLatestModification() < b.getLatestModification());
         });
 }
 
