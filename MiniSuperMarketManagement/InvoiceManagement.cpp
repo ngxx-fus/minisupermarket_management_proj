@@ -19,7 +19,7 @@ InvoiceManagement::InvoiceManagement(QWidget *parent) : QDialog(parent),
     ui->tableWidgetItem->setColumnWidth(2, 256);
     ui->tableWidgetItem->setColumnWidth(3, 256);
 
-    QFile file("demo_qt_write_file.txt");
+    QFile file("CustomerManagament_DATA");
     if (file.open(QIODevice::ReadOnly  | QIODevice::Text))
     {
         QTextStream in(&file);
@@ -196,7 +196,7 @@ void InvoiceManagement::on_Btn_Print_clicked()
 
 
         //
-        QFile file("demo_qt_write_file.txt");
+        QFile file("CustomerManagament_DATA");
 
         if (file.open(QIODevice::WriteOnly | QIODevice::Text))
         {
