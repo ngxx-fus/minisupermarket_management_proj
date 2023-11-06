@@ -1226,7 +1226,12 @@ QTableWidget#tableWidget
      </item>
      <item>
       <property name="text">
-       <string>Month of Birth</string>
+       <string>by Month of Birth</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>by Modification</string>
       </property>
      </item>
     </widget>
@@ -1241,6 +1246,32 @@ QTableWidget#tableWidget
      </property>
      <property name="text">
       <string>Sort now!</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton__LOAD_MORE">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>170</y>
+       <width>151</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Expand table view.</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton__LOAD_LESS">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>210</y>
+       <width>151</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Shorten table view.</string>
      </property>
     </widget>
    </widget>
