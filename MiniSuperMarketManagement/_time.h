@@ -50,6 +50,20 @@ public:
         set_current_time();
     }
 
+    void set_date_time_from_ID(QString ID){
+        auto QC2I = [](QChar QC){
+            return QString(QC).toInt();
+        };
+
+        _year = QC2I(ID[0])*1000 + QC2I(ID[1])*100 + QC2I(ID[2])*10 + QC2I(ID[3]);
+        _month = QC2I(ID[4])*10 + QC2I(ID[5]);
+        _day = QC2I(ID[6])*10 + QC2I(ID[7]);
+
+        _hour = QC2I(ID[9])*10 + QC2I(ID[10]);
+        _minute = QC2I(ID[11])*10 + QC2I(ID[12]);
+        _second = QC2I(ID[13])*10 + QC2I(ID[14]);
+    }
+
     _time(int _day = 1, int _month = 1, int _year = 1901,
           int _hour = 0, int _minute = 0, int _second = 0){
         this->_day = _day;
@@ -159,16 +173,16 @@ public:
     }
 
     int get_day_int(){return _day;}
-    int get_month_int(){return _day;}
-    int get_year_int(){return _day;}
-    int get_hour_int(){return _day;}
-    int get_minute_int(){return _day;}
-    int get_second_int(){return _day;}
+    int get_month_int(){return _month;}
+    int get_year_int(){return _year;}
+    int get_hour_int(){return _hour;}
+    int get_minute_int(){return _minute;}
+    int get_second_int(){return _second;}
 
     _time operator = (_time o){
         this->set_DDMMYYYY(o.get_day_int(), o.get_month_int(), o.get_year_int());
         this->set_HHMMSS(o.get_hour_int(), o.get_minute_int(), o.get_second_int());
-        return o;
+        return *this;
     }
 
     bool operator < (_time o){
