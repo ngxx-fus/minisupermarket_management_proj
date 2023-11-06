@@ -1,12 +1,5 @@
 #include "my_customer.h"
 #include "ui_my_customer.h"
-#include <QString>
-#include <QTextStream>
-#include <QFile>
-#include <iostream>
-#include <fstream>
-#include <QMessageBox>
-
 
 my_customer::my_customer(QDialog::QWidget *parent)
     : QDialog(parent)
@@ -20,7 +13,9 @@ my_customer::my_customer(QDialog::QWidget *parent)
 
     ui->pushButton_RM_MOD->hide();
     ui->pushButtonUpdateInfo->hide();
-    refresh_customers_list();
+
+    def_row = 20;
+    refresh_customers_list(def_row);
     //auto_save = false;//set-up trong file
     //notice_auto_save(false);
     if(auto_save == true) {
@@ -70,10 +65,10 @@ void my_customer::refresh_search_result_list(){
     }
 }
 
-void my_customer::refresh_customers_list(){
+void my_customer::refresh_customers_list(int default_row){
 
     int const   max_column = 6,
-        max_row = (qv_cus.size()<20)?qv_cus.size():20;
+        max_row = (qv_cus.size()<default_row)?qv_cus.size():default_row;
 
     //ui->tableWidget->clear();
     set_layout_list_view(max_row, max_column);
@@ -127,7 +122,7 @@ QVector<_customers>::iterator my_customer::find_by_PhoneNumber(QString key_Phone
     }
     ui->progressBar_FIND->setValue(100);
     ui->progressBar_FIND->hide();
-    return found_it ? it : qv_cus.end();
+    return (found_it ? it : qv_cus.end());
 }
 
 QVector< QVector<_customers>::iterator > my_customer::find_by_name(QString key_Name)
@@ -158,13 +153,6 @@ void my_customer::add_customer(QString cus_name, QString cus_DOB, QString cus_ph
     ui->progressBar_FIND->hide();
 }
 
-void my_customer::remove_by_phoneNumber(QString cus_phoneNumer){
-    auto it = find_by_PhoneNumber(cus_phoneNumer);
-    if(it == qv_cus.end())return;
-    auto const const_it = it;
-    qv_cus.erase(const_it);
-}
-
 void my_customer::load_config(){
     //read config
     QFile config_file("CustomerManagament_CONFIG");
@@ -174,6 +162,8 @@ void my_customer::load_config(){
         QStringList tokens = line.split("||");
         auto text = tokens[0].section("auto_save:",1,1);
         auto_save = bool(QString("true") ==  text);
+    }else{
+        auto_save = false;
     }
     config_file.close();
 }
@@ -207,7 +197,7 @@ void my_customer::load_customers()
                 QString id = tokens[5].section("ID: ", 1, 1);
 
                 qv_cus.push_back(_customers(point, phone_number, dob, name, date, id));
-                refresh_customers_list();
+                refresh_customers_list(def_row);
             }
         }
     }
@@ -281,6 +271,61 @@ void my_customer::save_customers()
     file.close();
 }
 
+//_mode = 0 for ascending, _mode = 1 for descending
+void my_customer::sort_by_name(bool _mode){
+    if( _mode == 1 )
+        sort( qv_cus.begin(), qv_cus.end(), [](_customers a, _customers b){
+            int pre_cmp = a.getName().compare(b.getName());
+            if( pre_cmp == 0   ){
+                return a.getLatestModification() > b.getLatestModification();
+            }
+            return pre_cmp < 0;
+        });
+    else
+        sort( qv_cus.begin(), qv_cus.end(), [](_customers a, _customers b){
+            int pre_cmp = a.getName().compare(b.getName());
+            if( pre_cmp == 0 ){
+                return a.getLatestModification() > b.getLatestModification();
+            }
+            return pre_cmp > 0;
+        });
+}
+
+//_mode = 0 for ascending, _mode = 1 for descending
+void my_customer::sort_by_accumulationPoint(bool _mode){
+    if( _mode == 1 )
+        //ascending
+        sort( qv_cus.begin(), qv_cus.end(), [](_customers a, _customers b){
+            if( a.getPoint() == b.getPoint()   ){
+                return bool(a.getLatestModification() > b.getLatestModification());
+            }
+            return bool( a.getPoint() > b.getPoint() );
+        });
+    else
+        //desceding
+        sort( qv_cus.begin(), qv_cus.end(), [](_customers a, _customers b){
+            if( a.getPoint() == b.getPoint()   ){
+                return a.getLatestModification() < b.getLatestModification();
+            }
+            return a.getPoint() < b.getPoint();
+        });
+}
+
+//_mode = 0 for ascending, _mode = 1 for descending
+void my_customer::sort_by_ModificationTime(bool _mode){
+    if( _mode == 1 )
+        //ascending
+        sort( qv_cus.begin(), qv_cus.end(), [](_customers a, _customers b){
+            return a.getLatestModification() > b.getLatestModification();
+        });
+    else
+        //desceding
+        sort( qv_cus.begin(), qv_cus.end(), [](_customers a, _customers b){
+            return a.getLatestModification() > b.getLatestModification();
+        });
+}
+
+
 my_customer::~my_customer()
 {
     delete ui;
@@ -323,7 +368,7 @@ void my_customer::on_pushButtonADD_clicked()
     if( this->find_by_PhoneNumber( cus_numphone ) == qv_cus.end() )
     {
         qv_cus.push_back( _customers(cus_name, cus_DOB, cus_numphone, cus_point) );
-        refresh_customers_list();
+        refresh_customers_list(def_row);
         clear_all_text_in_add_box();
     }else{
         QMessageBox::information(this, "Error!", "The phone number has been added!");
@@ -357,7 +402,7 @@ void my_customer::clear_all_text_in_find_box(){
 
 void my_customer::on_tableWidget_cellClicked(int row, int column)
 {
-    //refresh_customers_list();
+    //>refresh_customers_list(def_row);
 }
 
 void my_customer::on_pushButtonCancel_clicked()
@@ -372,7 +417,7 @@ void my_customer::on_pushButton_CLOSE_SEARCH_RES_clicked()
     clear_all_text_in_find_box();
     ui->pushButton_RM_MOD->hide();
     ui->pushButtonUpdateInfo->hide();
-    refresh_customers_list();
+    refresh_customers_list(def_row);
 }
 
 
@@ -406,10 +451,11 @@ void my_customer::on_pushButton_FIND_clicked()
 
 void my_customer::on_pushButton_RM_MOD_clicked()
 {
-    remove_by_phoneNumber(ui->lineEdit_NUMPHONE_FIND->text());
+    QString phone_number = ui->lineEdit_NUMPHONE_FIND->text();
+    qv_cus.erase( find_by_PhoneNumber(phone_number) );
     ui->pushButton_RM_MOD->hide();
     ui->pushButtonUpdateInfo->hide();
-    refresh_customers_list();
+    refresh_customers_list(def_row);
     clear_all_text_in_find_box();
     if(auto_save) save_customers();
 }
@@ -452,7 +498,7 @@ void my_customer::on_pushButtonUpdateInfo_clicked()
             break;
         }
     }
-    refresh_customers_list();
+    refresh_customers_list(def_row);
     if(auto_save) save_customers();
     ui->pushButton_RM_MOD->hide();
     ui->pushButtonUpdateInfo->hide();
@@ -462,7 +508,7 @@ void my_customer::on_pushButtonUpdateInfo_clicked()
 void my_customer::on_actionFactory_reset_triggered()
 {
     qv_cus.clear();
-    refresh_customers_list();
+    refresh_customers_list(def_row);
     if(auto_save) save_customers();
 }
 
@@ -483,8 +529,10 @@ void my_customer::on_pushButton__SORT_clicked()
     case 1:
         sort_by_accumulationPoint( ui->comboBox_OPTION_SORT->currentIndex() );
         break;
+    case 3:
+        sort_by_ModificationTime(ui->comboBox_OPTION_SORT->currentIndex() );
     };
-    refresh_customers_list();
+    refresh_customers_list(def_row);
 }
 
 void my_customer::on_actionAuto_save_triggered()
@@ -496,5 +544,20 @@ void my_customer::on_actionAuto_save_triggered()
         notice_auto_save(auto_save = false),
         ui->Warning_auto_save->hide();
     save_config();
+}
+
+
+void my_customer::on_pushButton__LOAD_MORE_clicked()
+{
+    def_row += 20;
+    refresh_customers_list(def_row);
+    if(def_row>20000) def_row = 20;
+}
+
+
+void my_customer::on_pushButton__LOAD_LESS_clicked()
+{
+    def_row = (def_row > 20)?(def_row-20):20;
+    refresh_customers_list(def_row);
 }
 
