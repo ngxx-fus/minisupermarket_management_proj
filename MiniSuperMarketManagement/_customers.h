@@ -66,7 +66,6 @@ public:
     }
 
     void setPoint(int point){
-        this->updateLatestModification();
         this->point = point;
     }
 
@@ -90,10 +89,13 @@ public:
     }
 
     _customers operator = (_customers o){
-        this->getName() = o.getName(),
-            this->getID() = o.getID(),
-            this->getPhoneNumber() = o.getPhoneNumber(),
-            this->getDOB() = o.getDOB();
+        this->setName( o.getName() ),
+            this->setID( o.getID() ),
+            this->setPhoneNumber( o.getPhoneNumber() ),
+            this->setDOB( o.getDOB() ),
+            this->setPoint( o.getPoint()),
+            this->setLatestModification( o.getLatestModification() );
+            ;
         return o;
     }
 };
