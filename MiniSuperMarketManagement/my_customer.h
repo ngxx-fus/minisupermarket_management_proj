@@ -11,6 +11,13 @@
 #include <QtWidgets/qtwidgetsglobal.h>
 #include <QtWidgets/qwidget.h>
 #include <QMessageBox>
+#include <QString>
+#include <QTextStream>
+#include <QFile>
+#include <iostream>
+#include <fstream>
+#include <QMessageBox>
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class my_customer; }
@@ -22,7 +29,7 @@ class my_customer : public QDialog
     QVector<_customers> qv_cus;
     QVector< QVector<_customers>::iterator > qv_search_result;
     bool auto_save;//
-    QString DOB;
+    int def_row;
 public:
     my_customer(QWidget *parent = nullptr);
 
@@ -38,56 +45,22 @@ public:
     //set up layout of list of customers
     void set_layout_list_view(int const max_row, int const max_column);
     //refresh list of customers
-    void refresh_customers_list();
+    void refresh_customers_list(int default_row);
     void refresh_search_result_list();
     void clear_all_text_in_add_box();
     void clear_all_text_in_find_box();
-
-    //remove a customer by phone number
-    void remove_by_phoneNumber(QString cus_phoneNumber);
 
     //add a customer
     void add_customer(QString cus_name, QString cus_DOB, QString cus_phoneNumber, int cus_point);
 
     //_mode = 0 for ascending, _mode = 1 for descending
-    void sort_by_name(bool _mode = 0){
-        if( _mode == 0 )
-            sort( qv_cus.begin(), qv_cus.end(), [](_customers a, _customers b){
-                int pre_cmp = a.getName().compare(b.getName());
-                if( pre_cmp == 0   ){
-                    return a.getLatestModification() > b.getLatestModification();
-                }
-                return pre_cmp < 0;
-            });
-        else
-            sort( qv_cus.begin(), qv_cus.end(), [](_customers a, _customers b){
-                int pre_cmp = a.getName().compare(b.getName());
-                if( pre_cmp == 0 ){
-                    return a.getLatestModification() > b.getLatestModification();
-                }
-                return pre_cmp > 0;
-            });
-    }
+    void sort_by_name(bool _mode );
 
     //_mode = 0 for ascending, _mode = 1 for descending
-    void sort_by_accumulationPoint(bool _mode = 0){
-        if( _mode == 0 )
-            //ascending
-            sort( qv_cus.begin(), qv_cus.end(), [](_customers a, _customers b){
-                if( a.getPoint() == b.getPoint()   ){
-                    return a.getLatestModification() > b.getLatestModification();
-                }
-                return a.getName().compare(b.getName()) > 0;
-            });
-        else
-            //desceding
-            sort( qv_cus.begin(), qv_cus.end(), [](_customers a, _customers b){
-                if( a.getPoint() == b.getPoint()   ){
-                    return a.getLatestModification() > b.getLatestModification();
-                }
-                return a.getPoint() < b.getPoint();
-            });
-    }
+    void sort_by_accumulationPoint(bool _mode );
+
+    //_mode = 0 for ascending, _mode = 1 for descending
+    void sort_by_ModificationTime(bool _mode );
 
     void notice_auto_save(bool enable = false){
         if(enable == true)
@@ -128,6 +101,10 @@ private slots:
     void on_pushButton__SORT_clicked();
 
     void on_actionAuto_save_triggered();
+
+    void on_pushButton__LOAD_MORE_clicked();
+
+    void on_pushButton__LOAD_LESS_clicked();
 
 private:
     Ui::my_customer *ui;
