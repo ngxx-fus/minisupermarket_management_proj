@@ -173,6 +173,15 @@ QPushButton#pushButton_3 {
                    padding: 5px 10px;
                   font-weight: bolder;
                    }
+
+QPushButton#pushButton__LOAD_MORE {
+                   background-color: #164863; 
+                    color: white;
+                    border: 2px solid #164863; 
+                   border-radius: 5px; 
+                   padding: 5px 10px;
+                  font-weight: bolder;
+                   }
 QPushButton#pushButton_2{
                    background-color: #579BB1; 
                     color: white;
@@ -1257,6 +1266,16 @@ QTableWidget#tableWidget
        <height>24</height>
       </rect>
      </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton#pushButton__LOAD_MORE {
+                   background-color: #579BB1; 
+                    color: white;
+                    border: 2px solid #579BB1; 
+                   border-radius: 5px; 
+                   padding: 5px 10px;
+                   font-weight: bolder;
+                   }</string>
+     </property>
      <property name="text">
       <string>Expand table view.</string>
      </property>
@@ -1269,6 +1288,16 @@ QTableWidget#tableWidget
        <width>151</width>
        <height>24</height>
       </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton#pushButton__LOAD_LESS {
+                   background-color: #579BB1; 
+                    color: white;
+                    border: 2px solid #579BB1; 
+                   border-radius: 5px; 
+                   padding: 5px 10px;
+                   font-weight: bolder;
+                   }</string>
      </property>
      <property name="text">
       <string>Shorten table view.</string>
