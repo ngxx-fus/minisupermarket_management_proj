@@ -83,12 +83,16 @@ public:
     }
 
     //date of birth
-    virtual QString getDOB(){
+    virtual QString getDOB() const {
         return this->DOB;
     }
     void updateLatestModification()
     {
         this->latestModification.set_current_date_time();
+    }
+
+    void setLatestModification(_time t){
+        this->latestModification = t;
     }
 
     _time getLatestModification(){
