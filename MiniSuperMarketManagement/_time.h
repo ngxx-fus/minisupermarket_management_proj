@@ -15,7 +15,7 @@ private:
 public:
 
     QString int_to_QString(int num, int fill_zero = 0){
-        static QChar _convert_QChar[10] = {'0', '1', '2', '3','4','5','6','7','8','9'};
+        QChar _convert_QChar[10] = {'0', '1', '2', '3','4','5','6','7','8','9'};
         QString res;
         while(num){
             res.push_back( _convert_QChar[num%10] );
@@ -26,7 +26,6 @@ public:
         reverse(res.begin(), res.end());
         return res;
     }
-
     //set date as the current
     void set_current_date(){
         time_t theTime = time(NULL);
@@ -62,9 +61,9 @@ public:
     }
 
     bool check_DDMMYYYY(){
-#define DD _day
-#define MM _month
-#define YYYY _year
+        int &DD = _day;
+        int &MM = _month;
+        int &YYYY = _year;
         if( DD < 1 || MM < 1 || YYYY < 1901 || YYYY > 2101 || MM > 12) return false;
         QVector<int> normal_year = {0, /*Jan*/ 31, /*Feb*/28, /*Mar*/31, /*Apr*/30, /*May*/31, /*Jun*/30,
                                     /*Jul*/31, /*Aug*/31, /*Sep*/30, /*Oct*/31, /*Nov*/30, /*Dec*/31};
@@ -167,36 +166,28 @@ public:
     int get_second_int(){return _day;}
 
     _time operator = (_time o){
-        _day = o.get_day_int();
-        _month = o.get_month_int();
-        _year = o.get_year_int();
-        _hour = o.get_hour_int();
-        _minute = o.get_minute_int();
-        _second = o.get_second_int();
+        this->set_DDMMYYYY(o.get_day_int(), o.get_month_int(), o.get_year_int());
+        this->set_HHMMSS(o.get_hour_int(), o.get_minute_int(), o.get_second_int());
         return o;
     }
 
     bool operator < (_time o){
-        QString this__time = this->get_date() + QString("/") + this->get_time();
-        QString that__time = o.get_date()+ QString("/") + o.get_time();
-        if(this__time.size() == that__time.size()){
-            for(int pos = this__time.size() - 1; pos >= 0; pos--){
-                if(this__time.at(pos) < that__time.at(pos)) return true;
-            }
-            return false;
-        }
+        if(this->get_year_int() < o.get_year_int()) return true;
+        if(this->get_month_int() < o.get_month_int()) return true;
+        if(this->get_day_int() < o.get_day_int()) return true;
+        if(this->get_hour_int() < o.get_hour_int()) return true;
+        if(this->get_minute_int() < o.get_minute_int()) return true;
+        if(this->get_second_int() < o.get_second_int()) return true;
         return false;
     }
 
     bool operator > (_time o){
-        QString this__time = this->get_date() + QString("/") + this->get_time();
-        QString that__time = o.get_date()+ QString("/") + o.get_time();
-        if(this__time.size() == that__time.size()){
-            for(int pos = this__time.size() - 1; pos >= 0; pos--){
-                if(this__time.at(pos) > that__time.at(pos)) return true;
-            }
-            return false;
-        }
+        if(this->get_year_int() > o.get_year_int()) return true;
+        if(this->get_month_int() > o.get_month_int()) return true;
+        if(this->get_day_int() > o.get_day_int()) return true;
+        if(this->get_hour_int() > o.get_hour_int()) return true;
+        if(this->get_minute_int() > o.get_minute_int()) return true;
+        if(this->get_second_int() > o.get_second_int()) return true;
         return false;
     }
 
