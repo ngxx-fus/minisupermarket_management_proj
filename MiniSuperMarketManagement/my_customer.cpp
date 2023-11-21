@@ -28,6 +28,47 @@ my_customer::my_customer(QDialog::QWidget *parent)
     }
 }
 
+void my_customer::computeLPSArray(QString& pat, int M, QVector<int>& lps)
+{
+    int len = 0;
+
+    lps[0] = 0; // lps[0] is always 0
+    int i = 1;
+    while (i < M) {
+        if (pat[i] == pat[len]) {
+            len++; lps[i] = len; i++;
+        }
+        else
+            if (len != 0)
+                len = lps[len - 1];
+            else
+                lps[i] = 0,
+                    i++;
+    }
+}
+
+bool my_customer::KMPSearch(QString pat, QString txt)
+{
+    int M = pat.size();
+    int N = txt.size();
+    QVector<int> lps(M, 0);
+    computeLPSArray(pat, M, lps);
+
+    int i = 0;
+    int j = 0;
+    while ((N - i) >= (M - j)) {
+        if (pat[j] == txt[i])
+            j++; i++;
+        if (j == M)return true;//            j = lps[j - 1];
+        else if (i < N && pat[j] != txt[i])
+            if (j != 0)
+                j = lps[j - 1];
+            else
+                i = i + 1;
+    }
+    return false;
+}
+
 
 void my_customer::set_layout_list_view(int const max_row, int const max_column){
     ui->tableWidget->setRowCount(max_row);
@@ -98,7 +139,7 @@ QVector<_customers>::iterator my_customer::find_by_ID(QString key_ID){
     int count_ = 0, all_ = qv_cus.size();
     for( it = qv_cus.begin(); it != qv_cus.end(); it++){
         ui->progressBar_FIND->setValue(++count_*100/all_);
-        std::this_thread::sleep_for( std::chrono::milliseconds(10) );
+//        std::this_thread::sleep_for( std::chrono::milliseconds(10) );
         if(it->getID() ==key_ID) {
             found_it = true;
             break;
@@ -118,7 +159,7 @@ QVector<_customers>::iterator my_customer::find_by_PhoneNumber(QString key_Phone
     int count_ = 0, all_ = qv_cus.size();
     for( it = qv_cus.begin(); it != qv_cus.end(); it++){
         ui->progressBar_FIND->setValue(++count_*100/all_);
-        std::this_thread::sleep_for( std::chrono::milliseconds(10) );
+//        std::this_thread::sleep_for( std::chrono::milliseconds(10) );
         if(it->getPhoneNumber() == key_PhoneNumber) {
             found_it = true;
             break;
@@ -142,8 +183,8 @@ QVector< QVector<_customers>::iterator > my_customer::find_by_name(QString key_N
     int count_ = 0, all_ = qv_cus.size();
     for( it = qv_cus.begin(); it != qv_cus.end(); it++){
         ui->progressBar_FIND->setValue(++count_*100/all_);
-        std::this_thread::sleep_for( std::chrono::milliseconds(10) );
-        if(it->getName() == key_Name) {
+//        std::this_thread::sleep_for( std::chrono::milliseconds(10) );
+        if( KMPSearch(key_Name, it->getName()) ) {
             qv_it.push_back(it);
         }
     }
@@ -243,7 +284,7 @@ void my_customer::save_customers()
             for (int j = 0; j < 6; j++)
             {
                 ui->progressBar_FIND->setValue(int( i*100/(current_row*6)) );
-                std::this_thread::sleep_for( std::chrono::milliseconds(10) );
+//                std::this_thread::sleep_for( std::chrono::milliseconds(10) );
                 if(j == 0)
                 {
                     out << "Name: " << it->getName() << " | ";

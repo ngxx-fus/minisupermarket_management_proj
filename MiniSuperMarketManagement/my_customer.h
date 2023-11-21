@@ -33,6 +33,9 @@ class my_customer : public QDialog
 public:
     my_customer(QWidget *parent = nullptr);
 
+    void computeLPSArray(QString& pat, int M, QVector<int>& lps);
+    bool KMPSearch(QString pat, QString txt);
+
     //if *inp* is empty, inp = "unknown" (for DOB)
     inline QString add_UKNOWN(QString inp){return (inp.size()==0 ? "unknown" : inp);}
     //return a QVector<_customers>::iterator to element that PhoneNumber = key_PhoneNumber
