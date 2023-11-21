@@ -81,6 +81,14 @@ QPushButton#btnCloseSearch{
                    padding: 5px 10px;
 font-weight: bolder;
                    }
+QPushButton#pushButton_5{
+                   background-color: #0078A8; 
+                    color: white;
+                    border: 2px solid #0078A8; 
+                   border-radius: 5px; 
+                   padding: 5px 10px;
+font-weight: bolder;
+                   }
 QLineEdit#txtSearchID{
 background-color: #FFFFFF; /* Đặt màu nền là trắng */
     border-radius: 5px; /* Bo góc */
@@ -224,7 +232,7 @@ QTableWidget#tableWidget
      </rect>
     </property>
     <property name="text">
-     <string>Add</string>
+     <string>  Add</string>
     </property>
     <property name="icon">
      <iconset>
@@ -551,28 +559,17 @@ QTableWidget#tableWidget
      </rect>
     </property>
     <property name="text">
-     <string>Edit </string>
+     <string>  Edit </string>
     </property>
     <property name="icon">
      <iconset>
-      <normaloff>../../../Users/hagia/Downloads/qtc++/add-folder.svg</normaloff>../../../Users/hagia/Downloads/qtc++/add-folder.svg</iconset>
+      <normaloff>../../../Users/hagia/Downloads/qtc++/modification.png</normaloff>../../../Users/hagia/Downloads/qtc++/modification.png</iconset>
     </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_2">
-    <property name="geometry">
-     <rect>
-      <x>200</x>
-      <y>340</y>
-      <width>81</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Delete</string>
-    </property>
-    <property name="icon">
-     <iconset>
-      <normaloff>../../../Users/hagia/Downloads/qtc++/bin.png</normaloff>../../../Users/hagia/Downloads/qtc++/bin.png</iconset>
+    <property name="iconSize">
+     <size>
+      <width>20</width>
+      <height>20</height>
+     </size>
     </property>
    </widget>
   </widget>
@@ -596,9 +593,9 @@ QTableWidget#tableWidget
    <widget class="QPushButton" name="btnSearch">
     <property name="geometry">
      <rect>
-      <x>300</x>
+      <x>290</x>
       <y>70</y>
-      <width>101</width>
+      <width>111</width>
       <height>31</height>
      </rect>
     </property>
@@ -645,7 +642,7 @@ QTableWidget#tableWidget
    <widget class="QPushButton" name="pushButton_4">
     <property name="geometry">
      <rect>
-      <x>160</x>
+      <x>10</x>
       <y>70</y>
       <width>111</width>
       <height>31</height>
@@ -655,10 +652,28 @@ QTableWidget#tableWidget
      <string>Close Search</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="pushButton_2">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>70</y>
+      <width>121</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>  Delete</string>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>../../../Users/hagia/Downloads/qtc++/bin.png</normaloff>../../../Users/hagia/Downloads/qtc++/bin.png</iconset>
+    </property>
+   </widget>
    <zorder>pushButton_4</zorder>
    <zorder>btnSearch</zorder>
    <zorder>txtSearch</zorder>
    <zorder>label_2</zorder>
+   <zorder>pushButton_2</zorder>
   </widget>
   <widget class="QGroupBox" name="groupBox_3">
    <property name="geometry">
@@ -877,14 +892,18 @@ QTableWidget#tableWidget
    <widget class="QPushButton" name="pushButton_5">
     <property name="geometry">
      <rect>
-      <x>239</x>
+      <x>260</x>
       <y>30</y>
-      <width>131</width>
-      <height>24</height>
+      <width>141</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="text">
-     <string>Delete all exp</string>
+     <string>  Delete All Expried </string>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>../../../Users/hagia/Downloads/qtc++/bin.png</normaloff>../../../Users/hagia/Downloads/qtc++/bin.png</iconset>
     </property>
    </widget>
   </widget>

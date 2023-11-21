@@ -19,7 +19,6 @@ ManagerProduct::ManagerProduct(QWidget *parent) :
 
     ui->setupUi(this);
     ui->Editcommodities->hide();
-    ui->pushButton_2->hide();
     /* */
     for(int i=1;i<13;i++){
         ui->comboBox->addItem( QString::number(i));
@@ -91,67 +90,101 @@ void ManagerProduct::on_pushButton_clicked()
 
     date = QString::number(day) + "/" + QString::number(month) + "/" + QString::number(year);
     dateExp = QString::number(dayexp) + "/" + QString::number(monthexp) + "/" + QString::number(yearexp);
+    if(Checkbox1(commoditieslist,name, id, amount, price)){
+        if(CheckboxID(commoditieslist, id)){
 
-    if (Checkbox(commoditieslist, name, id, amount, price))
+        }else{
 
-    {
+            QMessageBox::information(this, "ERROR", " ERROR ID ");
+
+        }
+        if(CheckboxName(commoditieslist, name)){
+
+        }else{
+
+            QMessageBox::information(this, "ERROR", " ERROR Name ");
+
+        }
+        if(CheckboxAmount(commoditieslist, amount)){
+
+        }else{
+            ui->txtAmount->clear();
+
+            QMessageBox::information(this, "ERROR", " ERROR Amount ");
+        }
+        if (CheckboxPrice(commoditieslist, price)){
+
+        }else{
+            ui->txtPrice->clear();
+
+            QMessageBox::information(this, "ERROR", " ERROR Price ");
+        }
         if (DateAnalysis(day, month, year, dayexp,  monthexp,  yearexp )){
 
-            if(CompareDate(day,month, year, dayexp, monthexp, yearexp)){
+        }else{
+            QMessageBox::information(this, "ERROR", "Invalid date");
+        }
+        if(CompareDate(day,month, year, dayexp, monthexp, yearexp)){
 
-                int i =  findCommodity(commoditieslist, id);
+        }else {
 
-                if(i == -1){
-
-                    addcommodities(commoditieslist, name, id, amount, date, dateExp, price );
-
-                    QTableWidget *tableWidget = ui->tableWidget;  // Đảm bảo rằng "ui->tableWidget" là hợp lệ
-                    populateTableWidget(tableWidget, commoditieslist);
-
-                    ui->txtName->clear();
-                    ui->txtID->clear();
-                    ui->txtAmount->clear();
-                    ui->txtPrice->clear();
-
-                    saveCommoditiesToFile(fileName,commoditieslist);
-
-                }
-
-                else {
-
-                    ui->txtID->clear();
-
-                    QMessageBox::information(this, "ID in Commodities", "The specified ID does not exist.");
-                }
-            }
-            else {
-
-                ui->txtName->clear();
-                ui->txtID->clear();
-                ui->txtAmount->clear();
-                ui->txtPrice->clear();
-
-                QMessageBox::information(this, "ID in Commodities", "ERRON ExpDate ");
-
-            }
+            QMessageBox::information(this, "ERROR", "ERROR ExpDate ");
         }
 
-        else {
+    }else{
+          QMessageBox::information(this, "ERROR", " Box emty ");
 
-            QMessageBox::information(this, "ID in Commodities", "Invail date");
 
+    }
+
+    if(Checkbox1(commoditieslist,name, id, amount, price)){
+        if(CheckboxID(commoditieslist, id)){
+            if(CheckboxName(commoditieslist, name)){
+                if(CheckboxAmount(commoditieslist, amount)){
+
+                    if (CheckboxPrice(commoditieslist, price)){
+
+                        if (DateAnalysis(day, month, year, dayexp,  monthexp,  yearexp )){
+
+                            if(CompareDate(day,month, year, dayexp, monthexp, yearexp)){
+
+                                int i =  findCommodity(commoditieslist, id);
+
+                                if(i == -1){
+
+                                    addcommodities(commoditieslist, name, id, amount, date, dateExp, price );
+
+                                    QTableWidget *tableWidget = ui->tableWidget;  // Đảm bảo rằng "ui->tableWidget" là hợp lệ
+                                    populateTableWidget(tableWidget, commoditieslist);
+
+                                    ui->txtName->clear();
+                                    ui->txtID->clear();
+                                    ui->txtAmount->clear();
+                                    ui->txtPrice->clear();
+
+                                    saveCommoditiesToFile(fileName,commoditieslist);
+
+                                }
+
+                                else {
+
+                                    ui->txtID->clear();
+
+                                    QMessageBox::information(this, "ERROR", "ID is already in the list, please enter a new ID");
+                                }
+
+
+
+                            }
+                        }
+                     }
+                }
+            }
         }
     }
-
-    else{
-        ui->txtName->clear();
-        ui->txtID->clear();
-        ui->txtAmount->clear();
-        ui->txtPrice->clear();
-        QMessageBox::information(this, "ID in Commodities", "Box emty or Wrong data type ");
-    }
-
 }
+
+
 
 /*Nút nhấn chỉnh sửa thông tin sản phẩm*/
 void ManagerProduct::on_btnrepair_clicked()
@@ -233,12 +266,9 @@ void ManagerProduct::on_radioButton_2_clicked()
 /*Xóa sản phẩm*/
 void ManagerProduct::on_pushButton_2_clicked()
 {
-    ui->txtID->setReadOnly(false);
 
-    ui->Editcommodities->hide();
-    ui->pushButton_2->hide();
     QString SearchID;
-    SearchID = ui->txtID->text();
+    SearchID = ui->txtSearch->text();
     int i = findCommodity(commoditieslist, SearchID);
     QTableWidget *tableWidget1 = ui->tableWidget;  // Đảm bảo rằng "ui->tableWidget" là hợp lệ
 
@@ -253,42 +283,47 @@ void ManagerProduct::on_pushButton_2_clicked()
     tableWidget1->setHorizontalHeaderItem(3, new QTableWidgetItem("Purchase Date"));
     tableWidget1->setHorizontalHeaderItem(4, new QTableWidgetItem("Expiration Date"));
     tableWidget1->setHorizontalHeaderItem(5, new QTableWidgetItem("Price"));
-    if(i != -1){
-        QMessageBox::StandardButton reply;
-        reply = QMessageBox::question(nullptr, "", "Are you sure you want to delete this product?",
-                                      QMessageBox::Ok | QMessageBox::Cancel);
+    if (CheckboxID(commoditieslist, SearchID)){
+        if(i != -1){
+                QMessageBox::StandardButton reply;
+                reply = QMessageBox::question(nullptr, "", "Are you sure you want to delete this product?",
+                                              QMessageBox::Ok | QMessageBox::Cancel);
 
-        if (reply == QMessageBox::Ok) {
-            Delete(commoditieslist, SearchID);
-            QTableWidget *tableWidget = ui->tableWidget;  // Đảm bảo rằng "ui->tableWidget" là hợp lệ
+                if (reply == QMessageBox::Ok) {
+                    Delete(commoditieslist, SearchID);
+                    QTableWidget *tableWidget = ui->tableWidget;  // Đảm bảo rằng "ui->tableWidget" là hợp lệ
+                    populateTableWidget(tableWidget, commoditieslist);
+                    saveCommoditiesToFile(fileName,commoditieslist);
+                    ui->txtSearch->clear();
+
+                }
+                else{
+                    QTableWidget *tableWidget = ui->tableWidget;  // Đảm bảo rằng "ui->tableWidget" là hợp lệ
+                    populateTableWidget(tableWidget, commoditieslist);
+                    ui->txtSearch->clear();
+
+                }
+
+            }
+            else {
+
+
+                QMessageBox::information(this, "ID ERROR", "The specified ID does not exist.");
+                populateTableWidget(tableWidget1, commoditieslist);
+
+            }
+
+    }else{
+
+            QMessageBox::information(this, "ERROR", "ID Empty");
+             QTableWidget *tableWidget = ui->tableWidget;
             populateTableWidget(tableWidget, commoditieslist);
-            saveCommoditiesToFile(fileName,commoditieslist);
-            ui->txtID->clear();
-            ui->txtName->clear();
-            ui->txtID->clear();
-            ui->txtAmount->clear();
-            ui->txtPrice->clear();
-        }
-        else{
-            QTableWidget *tableWidget = ui->tableWidget;  // Đảm bảo rằng "ui->tableWidget" là hợp lệ
-            populateTableWidget(tableWidget, commoditieslist);
-            ui->txtID->clear();
-            ui->txtName->clear();
-            ui->txtID->clear();
-            ui->txtAmount->clear();
-            ui->txtPrice->clear();
-        }
+
 
     }
-    else {
-
-        QMessageBox::information(this, "ID ERROR", "The specified ID does not exist.");
-        populateTableWidget(tableWidget1, commoditieslist);
 
     }
-    ui->txtID->setReadOnly(false);
 
-}
 
 /*thêm số lượng sản phẩm*/
 void ManagerProduct::on_pushButton_3_clicked()
@@ -299,9 +334,9 @@ void ManagerProduct::on_pushButton_3_clicked()
     id = ui->txtUpdateAmount->text();
     amount = ui->txtSearchID->text().toUInt();
 
-
-    if(Checkbox(commoditieslist,"hello",id, amount, 8.8)){
-        updateCommodities(commoditieslist, id, amount);
+    updateCommodities(commoditieslist, id, amount);
+    if(CheckboxAmount(commoditieslist, amount)){
+       // updateCommodities(commoditieslist, id, amount);
         // Truy cập vào widget bảng
         QTableWidget *tableWidget = ui->tableWidget;  // Đảm bảo rằng "ui->tableWidget" là hợp lệ
         populateTableWidget(tableWidget, commoditieslist);
@@ -311,7 +346,7 @@ void ManagerProduct::on_pushButton_3_clicked()
         saveCommoditiesToFile(fileName, commoditieslist);
     }
     else{
-        QMessageBox::information(this, "ID in Commodities", "Box emty or Wrong data type ");
+        QMessageBox::information(this, "ERROR", "ERROR Amount ");
         ui->txtUpdateAmount->clear();
         ui->txtSearchID->clear();
     }
@@ -324,7 +359,6 @@ void ManagerProduct::on_Editcommodities_clicked()
 {
     ui->txtID->setReadOnly(false);
     ui->Editcommodities->hide();
-    ui->pushButton_2->hide();
     QString name, id;
     unsigned int amount=0;
     double price;
@@ -391,9 +425,6 @@ void ManagerProduct::on_Editcommodities_clicked()
         QMessageBox::information(this, "ID in Commodities", "Box emty or Wrong data type ");
     }
 
-
-
-
 }
 
 /*Sự kiện click vào bảng*/
@@ -418,7 +449,6 @@ void ManagerProduct::on_tableWidget_cellDoubleClicked(int row, int column)
     ui->comboBox_9->setCurrentText(QString::number(yearexp));
     //--------------
     ui->Editcommodities->show();
-    ui->pushButton_2->show();
     ui->txtID->setReadOnly(true);
 
 }

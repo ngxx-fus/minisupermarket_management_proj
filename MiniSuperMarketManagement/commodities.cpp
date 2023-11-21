@@ -141,8 +141,46 @@ bool CompareDate(int day ,int month, int year,int expday, int expmonth, int expy
 
 }
 
+bool  CheckboxName(vector<Commodities>& commoditieslist,QString defaultName  ){
+    if(defaultName.isEmpty())
+    {
+        return false;
+
+    }
+    else
+        return true;
+}
+bool  CheckboxID(vector<Commodities>& commoditieslist, QString defaultID ){
+    if( defaultID.isEmpty())
+    {
+        return false;
+
+    }
+    else
+        return true;
+}
+bool  CheckboxAmount(vector<Commodities>& commoditieslist, unsigned int defaultAmountCommodities){
+    if(defaultAmountCommodities > 0 )
+    {
+        return true;
+
+    }
+    else
+        return false;
+}
+bool  CheckboxPrice(vector<Commodities>& commoditieslist, double defaultPrice  ){
+    if(defaultPrice > 0.0 )
+    {
+        return true;
+
+    }
+    else
+        return false;
+}
+
+
 bool  Checkbox(vector<Commodities>& commoditieslist,QString defaultName, QString defaultID, unsigned int defaultAmountCommodities, double defaultPrice  ){
-    if(defaultName.isEmpty() || defaultID.isEmpty() ||  defaultAmountCommodities == 0 || defaultPrice == 0.0 )
+    if(defaultName.isEmpty() || defaultID.isEmpty() ||  defaultAmountCommodities <= 0 || defaultPrice <= 0.0 )
     {
         return false;
 
@@ -153,6 +191,15 @@ bool  Checkbox(vector<Commodities>& commoditieslist,QString defaultName, QString
 
 
 
+bool  Checkbox1(vector<Commodities>& commoditieslist,QString defaultName, QString defaultID, unsigned int defaultAmountCommodities, double defaultPrice  ){
+    if(defaultName.isEmpty() && defaultID.isEmpty() && defaultAmountCommodities <= 0 && defaultPrice <= 0.0 )
+    {
+        return false;
+
+    }
+    else
+        return true;
+}
 
 void populateTableWidgetexp(QTableWidget* tableWidget, const vector<Commodities>& commoditieslist) {
     tableWidget->setRowCount(commoditieslist.size());
@@ -328,6 +375,10 @@ void populateTableWidget_expdate(QTableWidget* tableWidget2, const vector<Commod
             QTableWidgetItem* amountItem = new QTableWidgetItem(QString::number(commoditieslist[i].getAmountCommodities()));
             QTableWidgetItem* dateItem = new QTableWidgetItem(commoditieslist[i].getDateCommodities());
             QTableWidgetItem* dateexpItem = new QTableWidgetItem(commoditieslist[i].getDateExpCommodities());
+            if(isDateNearCurrentDate(commoditieslist[i].getDateExpCommodities())== -1){
+                QBrush redBrush(QColor(255, 0, 0));  // Red color
+                dateexpItem->setForeground(redBrush);
+            }
             QTableWidgetItem* priceItem = new QTableWidgetItem(QString::number(commoditieslist[i].getPrice()));
 
             tableWidget2->setItem(rowCount, 0, idItem);

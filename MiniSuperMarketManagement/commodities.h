@@ -91,6 +91,11 @@ void saveCommoditiesToFile(const QString& filename, const vector<Commodities>& c
 void readCommoditiesFromFile(const QString& filename, vector<Commodities>& commoditiesList);
 void updateCommodities(vector<Commodities>& commoditieslist, const QString& searchID, int newAmount);
 bool Checkbox(vector<Commodities>& commoditieslist, QString defaultName, QString defaultID, unsigned int defaultAmountCommodities, double defaultPrice);
+bool Checkbox1(vector<Commodities>& commoditieslist, QString defaultName, QString defaultID, unsigned int defaultAmountCommodities, double defaultPrice);
+bool  CheckboxAmount(vector<Commodities>& commoditieslist, unsigned int defaultAmountCommodities);
+bool  CheckboxName(vector<Commodities>& commoditieslist,QString defaultName  );
+bool  CheckboxID(vector<Commodities>& commoditieslist, QString defaultID );
+bool  CheckboxPrice(vector<Commodities>& commoditieslist, double defaultPrice  );
 void populateTableWidget(QTableWidget* tableWidget, const vector<Commodities>& commoditieslist);
 bool LeapYears(int year);
 bool DateAnalysis(int day, int month, int year, int expday, int expmonth, int expyear ) ;
