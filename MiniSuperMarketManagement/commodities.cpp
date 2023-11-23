@@ -349,8 +349,7 @@ int isDateNearCurrentDate(const QString& date ) {
     }
     else return -1;
 }
-/*In bảng những sản phẩm hết hạn*/
-void populateTableWidget_expdate(QTableWidget* tableWidget2, const vector<Commodities>& commoditieslist,bool &checkexpdate) {
+void populateTableWidget_expdate(QTableWidget* tableWidget2, const vector<Commodities>& commoditieslist, bool &checkexpdate) {
     tableWidget2->setRowCount(0);
     tableWidget2->setRowCount(commoditieslist.size());
     tableWidget2->setColumnCount(6);
@@ -368,14 +367,16 @@ void populateTableWidget_expdate(QTableWidget* tableWidget2, const vector<Commod
 
     int rowCount = 0; // Biến đếm hàng đã thêm
 
+    // Tìm sản phẩm hết hạn
     for (int i = 0; i < commoditieslist.size(); i++) {
         if (isDateNearCurrentDate(commoditieslist[i].getDateExpCommodities()) == -1) {
+            // Thêm sản phẩm vào bảng
             QTableWidgetItem* idItem = new QTableWidgetItem(commoditieslist[i].getID());
             QTableWidgetItem* nameItem = new QTableWidgetItem(commoditieslist[i].getName());
             QTableWidgetItem* amountItem = new QTableWidgetItem(QString::number(commoditieslist[i].getAmountCommodities()));
             QTableWidgetItem* dateItem = new QTableWidgetItem(commoditieslist[i].getDateCommodities());
             QTableWidgetItem* dateexpItem = new QTableWidgetItem(commoditieslist[i].getDateExpCommodities());
-            if(isDateNearCurrentDate(commoditieslist[i].getDateExpCommodities())== -1){
+            if (isDateNearCurrentDate(commoditieslist[i].getDateExpCommodities()) == -1) {
                 QBrush redBrush(QColor(255, 0, 0));  // Red color
                 dateexpItem->setForeground(redBrush);
             }
@@ -387,25 +388,17 @@ void populateTableWidget_expdate(QTableWidget* tableWidget2, const vector<Commod
             tableWidget2->setItem(rowCount, 3, dateItem);
             tableWidget2->setItem(rowCount, 4, dateexpItem);
             tableWidget2->setItem(rowCount, 5, priceItem);
-            rowCount++; // Tăng biến đếm hàng đã thêm
-
-            checkexpdate = false;
+            rowCount++;
         }
-        else {
-            checkexpdate = true;
-
-        }
-
-
     }
-    if(checkexpdate)
-    {
+
+    tableWidget2->setRowCount(rowCount);
+
+    if (rowCount == 0) {
         QMessageBox messageBox;
         messageBox.critical(0, "ERROR", "K có sản phảm hết hạn");
         messageBox.setFixedSize(500, 200); // Tuỳ chỉnh kích thước của MessageBox
-
     }
-    tableWidget2->setRowCount(rowCount);
 }
 /*In dánh bảng danh sách sản phẩm*/
 void populateTableWidget(QTableWidget* tableWidget, const vector<Commodities>& commoditieslist) {

@@ -45,6 +45,9 @@ InvoiceManagement::InvoiceManagement(QWidget *parent) : QDialog(parent),
     file.close();
 }
 
+//
+
+//
 InvoiceManagement::~InvoiceManagement()
 {
     delete ui;
@@ -138,7 +141,7 @@ void InvoiceManagement::on_Btn_AddItem_clicked()
     ui->TxtBox_Total->setText(QString::number(NewInvoice.getTotalPrice()));
     // delete TempTypeOfProduct;
 }
-
+//
 void InvoiceManagement::on_Btn_Print_clicked()
 {
     if (ui->comboBox_Customer->currentIndex() == 0)
@@ -156,19 +159,51 @@ void InvoiceManagement::on_Btn_Print_clicked()
             //_customers CustomerNeedToFind("", "", "");
             if (customer.getID() == ui->TxtBox_CustomerID->text())
             {
+
                 //CustomerNeedToFind = customer;
                 NewInvoice.setCustomerID(customer.getID());
                 NewInvoice.setCustomerName(customer.getName());
                 NewInvoice.setCustomerPhoneNumber(customer.getPhoneNumber());
-                break;
-            }
-            QMessageBox::information(this,"Message",
-                                     "Not already a member!",
-                                     QMessageBox::Ok);
-            return;
-        }
-        clearWhenPressPrintButton();
 
+                // add point
+                unsigned int mPoint = customer.getPoint();
+                mPoint += NewInvoice.getTotalPrice() / 1000;
+                customer.setPoint(mPoint);
+                qInfo() << "Point: " << customer.getPoint();
+                qInfo() << "Total Price: " << NewInvoice.getTotalPrice();
+
+                QFile file("CustomerManagament_DATA");
+
+                if (file.open(QIODevice::WriteOnly | QIODevice::Text))
+                {
+                    QTextStream out(&file);
+
+                    for ( _customers &customer : CustomerList)
+                    {
+                        out << "Name: " << customer.getName() << " | ";
+                        out << "DOB: " << customer.getDOB() << " | ";
+                        out << "Phone: " << customer.getPhoneNumber() << " | ";
+                        out << "Point: " << customer.getPoint() << " | ";
+                        out << "Date: "  << " | ";
+                        out << "ID: " << customer.getID() << "\n\n";
+                    }
+
+                    file.close();
+                }
+                else
+                {
+                    // Xử lý lỗi mở tệp
+                }
+
+                clearWhenPressPrintButton();
+
+
+                return;
+            }
+        }
+        QMessageBox::information(this,"Message",
+                                 "Not already a member!",
+                                 QMessageBox::Ok);
     }
     else if (ui->comboBox_Customer->currentIndex() == 1)
     {
@@ -233,6 +268,8 @@ void InvoiceManagement::on_Btn_Print_clicked()
     }
     // NewInvoice.~Invoice();
 }
+//
+
 
 void InvoiceManagement::on_TxtBox_ProductID_textChanged(const QString &arg1)
 {
@@ -311,7 +348,8 @@ void InvoiceManagement::on_tableWidgetItem_cellDoubleClicked(int row, int column
                 newProductID = new QTableWidgetItem(NewInvoice.getItems()[j].commodities.getID());
                 newProductName = new QTableWidgetItem(NewInvoice.getItems()[j].commodities.getName());
                 newAmount = new QTableWidgetItem(QString::number(NewInvoice.getItems()[j].amount));
-                newPrice = new QTableWidgetItem(QString::number(NewInvoice.getItems()[j].commodities.getPrice() * NewInvoice.getItems()[j].amount));
+                newPrice = new QTableWidgetItem(QString::number(NewInvoice.getItems()[j].commodities.getPrice()
+                                                                * NewInvoice.getItems()[j].amount));
 
                 ui->tableWidgetItem->setItem((ui->tableWidgetItem->rowCount() - 1), 0, newProductID);
                 ui->tableWidgetItem->setItem((ui->tableWidgetItem->rowCount() - 1), 1, newProductName);
@@ -419,5 +457,27 @@ void InvoiceManagement::on_TxtBox_PhoneNumber_editingFinished()
             }
         }
     }
+}
+
+
+
+
+void InvoiceManagement::on_TxtBox_CustomerID_editingFinished()
+{
+
+        if (ui->comboBox_Customer->currentIndex() == 0)
+        {
+            for ( _customers &customer : CustomerList)
+            {
+                if (customer.getID() == ui->TxtBox_CustomerID->text())
+                {
+                    ui->TxtBox_CustomerName->setText(customer.getName());
+                    ui->TxtBox_PhoneNumber->setText(customer.getPhoneNumber());
+                    break;
+                }
+            }
+        }
+
+
 }
 

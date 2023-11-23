@@ -214,7 +214,7 @@ void ManagerProduct::on_btnSearch_clicked()
     tableWidget1->setHorizontalHeaderItem(3, new QTableWidgetItem("Purchase Date"));
     tableWidget1->setHorizontalHeaderItem(4, new QTableWidgetItem("Expiration Date"));
     tableWidget1->setHorizontalHeaderItem(5, new QTableWidgetItem("Price"));
-
+    if (CheckboxID(commoditieslist, SearchID)){
     if (i != -1) {
         // Tạo một hàng mới và thêm dữ liệu tìm thấy
         tableWidget1->insertRow(0);
@@ -238,6 +238,15 @@ void ManagerProduct::on_btnSearch_clicked()
         populateTableWidget(tableWidget1, commoditieslist);
 
     }
+    }else{
+
+        QMessageBox::information(this, "ERROR", "ID Empty");
+        QTableWidget *tableWidget = ui->tableWidget;
+        populateTableWidget(tableWidget, commoditieslist);
+
+
+    }
+
     int columnWidth = 160;
     for (int col = 0; col < tableWidget1->columnCount(); ++col) {
         tableWidget1->setColumnWidth(col, columnWidth);

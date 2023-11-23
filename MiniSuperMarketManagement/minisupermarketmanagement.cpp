@@ -20,6 +20,10 @@ MiniSupermarKetmanagement::MiniSupermarKetmanagement(QWidget *parent)
     , ui(new Ui::MiniSupermarKetmanagement)
 {
     ui->setupUi(this);
+
+    QPixmap pix("C:/Users/hagia/Downloads/pic.jpg");
+    ui->label_pic->setPixmap(pix);
+
     readCommoditiesFromFile(fileName1,commoditieslist);
 }
 

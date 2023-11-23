@@ -82,7 +82,7 @@ bool Invoice::printInvoice()
     QDateTime currentDateTime = QDateTime::currentDateTime();
     setDayBuy(currentDateTime.toString("hh:mm:ss dd.MM.yyyy"));
     //QString formattedTime = date.toString("dd.MM.yyyy hh:mm:ss");
-    std::string duongdanfile = ("D:\\" + currentDateTime.toString("yyyyMMddhhmmss") + ".txt").toStdString();
+    std::string duongdanfile = ("Invoices\\" + currentDateTime.toString("yyyyMMddhhmmss") + ".txt").toStdString();
     ofstream File(duongdanfile, ios::out);
     File << "Invoice ID:\t" << generateInvoiceID().toStdString() << endl;
     File << "Purchase on:\t" <<  getDayBuy().toStdString() << endl;

@@ -43,6 +43,8 @@ private slots:
 
     void on_TxtBox_PhoneNumber_editingFinished();
 
+    void on_TxtBox_CustomerID_editingFinished();
+
 private:
     Ui::InvoiceManagement *ui;
     Invoice NewInvoice;
