@@ -1,5 +1,5 @@
 # MiniSupermarket_Management
-##Guide:
+Guide:
 (1) Clone into a directory that you want the program run in.
 (2) Open <CMakeLists.txt> with QtCreater.
 (3) Build project in QtCreater.
