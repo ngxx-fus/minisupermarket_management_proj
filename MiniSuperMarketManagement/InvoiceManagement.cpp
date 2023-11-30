@@ -9,7 +9,7 @@
 #include <cctype>
 #include <QDebug>
 
-QString FileListOfProducts = "ManagerCommodities.txt";
+QString FileListOfProducts = "./App_data/ManagerCommodities_DATA";
 InvoiceManagement::InvoiceManagement(QWidget *parent) : QDialog(parent),
                                                         ui(new Ui::InvoiceManagement)
 {
@@ -19,7 +19,7 @@ InvoiceManagement::InvoiceManagement(QWidget *parent) : QDialog(parent),
     ui->tableWidgetItem->setColumnWidth(2, 256);
     ui->tableWidgetItem->setColumnWidth(3, 256);
 
-    QFile file("CustomerManagament_DATA");
+    QFile file("./App_data/CustomerManagament_DATA");
     if (file.open(QIODevice::ReadOnly  | QIODevice::Text))
     {
         QTextStream in(&file);
@@ -172,7 +172,7 @@ void InvoiceManagement::on_Btn_Print_clicked()
                 qInfo() << "Point: " << customer.getPoint();
                 qInfo() << "Total Price: " << NewInvoice.getTotalPrice();
 
-                QFile file("CustomerManagament_DATA");
+                QFile file("./App_data/CustomerManagament_DATA");
 
                 if (file.open(QIODevice::WriteOnly | QIODevice::Text))
                 {
@@ -231,7 +231,7 @@ void InvoiceManagement::on_Btn_Print_clicked()
 
 
         //
-        QFile file("CustomerManagament_DATA");
+        QFile file("./App_data/CustomerManagament_DATA");
 
         if (file.open(QIODevice::WriteOnly | QIODevice::Text))
         {

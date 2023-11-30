@@ -9,7 +9,7 @@ vector<Commodities> commoditieslist;
 /*Khái báo để lưu thông tin name id amount từ người dùng nhập vô*/
 #include <QMessageBox>
 /*  */
-QString fileName = "ManagerCommodities.txt";
+QString fileName = "./App_data/ManagerCommodities_DATA";
 QString idedit;
 
 ManagerProduct::ManagerProduct(QWidget *parent) :

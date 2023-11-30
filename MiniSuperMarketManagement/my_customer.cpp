@@ -200,7 +200,7 @@ void my_customer::add_customer(QString cus_name, QString cus_DOB, QString cus_ph
 
 void my_customer::load_config(){
     //read config
-    QFile config_file("CustomerManagament_CONFIG");
+    QFile config_file("./App_data/CustomerManagament_CONFIG");
     if (config_file.open(QIODevice::ReadOnly  | QIODevice::Text)){
         QTextStream config_in(&config_file);
         QString line = config_in.readLine();
@@ -216,7 +216,7 @@ void my_customer::load_config(){
 void my_customer::load_customers()
 {
     //read data
-    QFile file("CustomerManagament_DATA");
+    QFile file("./App_data/CustomerManagament_DATA");
     int current_row = 0;
 
     ui->progressBar_FIND->setRange(0,100);
@@ -255,7 +255,7 @@ void my_customer::load_customers()
 
 void my_customer::save_config(){
     //write config
-    QFile config_file("CustomerManagament_CONFIG");
+    QFile config_file("./App_data/CustomerManagament_CONFIG");
     config_file.remove();
     if (config_file.open(QIODevice::WriteOnly | QIODevice::Text)){
         QTextStream config_out(&config_file);
@@ -271,7 +271,7 @@ void my_customer::save_customers()
     ui->progressBar_FIND->setValue(0);
     int i = 0;
     int current_row = ui->tableWidget->rowCount();
-    QFile file("CustomerManagament_DATA");
+    QFile file("./App_data/CustomerManagament_DATA");
     if (file.open(QIODevice::WriteOnly | QIODevice::Text))
     {
         QTextStream out(&file);

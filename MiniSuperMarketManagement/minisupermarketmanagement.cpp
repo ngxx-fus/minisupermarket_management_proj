@@ -12,7 +12,7 @@
 #include <QDebug>
 #include "my_customer.h"
 using namespace std ;
-QString fileName1 = "ManagerCommodities.txt";
+QString fileName1 = "./App_data/ManagerCommodities_DATA";
 static bool hasReadFile = false; // Biến tĩnh (static) sẽ chỉ được khởi tạo một lần và giữ giá trị qua các lần gọi hàm
 
 MiniSupermarKetmanagement::MiniSupermarKetmanagement(QWidget *parent)
@@ -21,7 +21,7 @@ MiniSupermarKetmanagement::MiniSupermarKetmanagement(QWidget *parent)
 {
     ui->setupUi(this);
 
-    QPixmap pix("C:/Users/hagia/Downloads/pic.jpg");
+    QPixmap pix("./App_data/onepunchman.jpg");
     ui->label_pic->setPixmap(pix);
 
     readCommoditiesFromFile(fileName1,commoditieslist);
