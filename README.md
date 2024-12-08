@@ -7,3 +7,5 @@
   > (that folder contains random data of customers and comedies.)
 5. Run the project in QtCreater.
 Thank you for testing my project, hope you have a great day!
+## Preview
+![img](https://github.com/ngxx-fus/minisupermarket_management_proj/blob/merged_branch/Main_UI.png)
